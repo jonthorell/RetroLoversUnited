@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\media",
+    "\\media\\pictures",
+    "\\static",
+    "\\static\\css",
+    "\\static\\javascript",
+    "\\templates"
   ],
-  "SelectedNode": "\\C:\\Users\\jthor\\Source\\Repos\\RetroLoversUnited",
+  "SelectedNode": "\\media",
   "PreviewInSolutionExplorer": false
 }
