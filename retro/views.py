@@ -1,9 +1,4 @@
-from django.shortcuts import render
-from django.views import generic, View
+from django.views.generic import TemplateView
 
-
-
-# Create your views here.
-
-class home(generic.ListView):
-    template_name = "index.html"
+class Index(TemplateView):
+    template_name = 'retro/index.html'

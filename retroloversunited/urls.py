@@ -20,6 +20,5 @@ import retro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('retro.urls'), name='retro_urls'),
-    #path('', retro.urls),
+    path('', include('retro.urls'))
 ]
