@@ -1,3 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Roboto&display=swap'); 
+
+:root {
+    /* Make sure variables are defined in the root context so available everywhere */
+
+    /*  fonts */
+    --title: 'EB Garamond', serif;
+    --main-font: 'Roboto', serif;
+
+    /* colors */
+
+    --background: #3f006a0f;
+    --blue: #0d6efd;
+    --black: #000;
+    --off-white: #f6f6f6;
+    --white: #fff;
+    --orange: #ffbf50;
+    --grey: #777777;
+    --red: #FF0000;
+
+
+    /* utils */
+
+    --small-box-shadow: 1px  -1px 7px 0 #00000061;
+    --border: 1px solid #00000030;
+    
+}
+
+#latin {
+    background-color: var(--orange);
+    box-shadow: var(--small-box-shadow);
+
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: #ff0000;
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--title);
+}
+
+h1 {
+    color: var(--orange);
+}
+
+h2 { 
+    color: var(--red);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: var(--white);
 }
