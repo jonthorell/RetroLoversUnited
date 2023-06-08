@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" /> -->
     
+
     <!-- default title. Will be overwritten by specific pages -->
     <title>RetroLoversUnited: {% block title %}Default Title{% endblock %}</title>
 
@@ -28,19 +29,19 @@
 
 <body>
     {% include 'includes/header.html' %}
-    <h1>Hello, I am bonkers!</h1>
-    <h2>Or rather Django is...</h2>
 
-    {% include 'includes/centered-latin.html' %}
-    {% include 'includes/demo-modal.html' %}
-   
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% include 'includes/footer.html' %}
 
     <!-- MDB -->
     {% block onload_js %}
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
     {% endblock %}
-
 
 
 </body>
