@@ -20,10 +20,9 @@
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" /> -->
-
-    <title>
-        RetroLoversUnited: {% block title %}{% endblock %}
-    </title>
+    
+    <!-- default title. Will be overwritten by specific pages -->
+    <title>RetroLoversUnited: {% block title %}Default Title{% endblock %}</title>
 
 </head>
 
@@ -33,6 +32,8 @@
     <h2>Or rather Django is...</h2>
 
     {% include 'includes/centered-latin.html' %}
+    {% include 'includes/demo-modal.html' %}
+   
 
     <!-- MDB -->
     {% block onload_js %}
