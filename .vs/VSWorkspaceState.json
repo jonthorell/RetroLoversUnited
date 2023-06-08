@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\media",
-    "\\media\\pictures",
+    "\\retro",
+    "\\retroloversunited",
+    "\\retro\\templates",
+    "\\retro\\templates\\retro",
     "\\static",
     "\\static\\css",
     "\\static\\javascript",
-    "\\templates"
+    "\\templates",
+    "\\templates\\includes"
   ],
-  "SelectedNode": "\\media",
+  "SelectedNode": "\\retroloversunited\\settings.py",
   "PreviewInSolutionExplorer": false
 }
