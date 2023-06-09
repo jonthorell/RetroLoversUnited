@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Roboto&display=swap'); 
+/* import google fonts */
+
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Roboto|Tangerine:bold&display=swap'); 
 
 :root {
     /* Make sure variables are defined in the root context so available everywhere */
@@ -6,6 +8,7 @@
     /*  fonts */
     --title: 'EB Garamond', serif;
     --main-font: 'Roboto', serif;
+    --cursive-font: 'Tangerine', serif;
 
     /* colors */
 
@@ -26,40 +29,52 @@
     
 }
 
-#latin {
-    background-color: var(--red);
-    box-shadow: var(--small-box-shadow);
-
-}
-
 html, body {
     height: 100%;
 }
 
 body {
-    background-color: var(--grey);
     display: flex;
     flex-direction: column;
     font-family: var(--main-font);
 }
 
 h1,h2,h3,h4,h5,h6 {
+    /* all headers should use the title-font 
+        and be white unless overridden
+    */
     font-family: var(--title);
+    color: var(--white);
+}
+
+p {
+    color: var(--white);
+}
+
+.jumbotron-paragraph {
+    color: var(--black);
 }
 
 h1 {
+    /* all h1 should be orange*/
     color: var(--orange);
 }
 
-h2 { 
-    color: var(--red);
-}
 
 main {
+    /* appply to the main section. I.e. the part of the page that is not a part of base.html */
     flex: 1 0 auto;
     background-color: var(--grey);
 }
 
+#disclaimer-bar {
+    /* the bar at the top should be red to stick out */
+    background-color: var(--red);
+}
+
+.cursive-font {
+    font-family: var(--cursive-font);
+}
 /* footer */
 
 footer {
@@ -67,7 +82,17 @@ footer {
     background-color: var(--off-white);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: right;
+    align-items: center;
+    border-top: var(--border);
+}
+
+#copyright {
+    flex-shrink: 0;
+    background-color: var(--off-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
     align-items: center;
     border-top: var(--border);
 }

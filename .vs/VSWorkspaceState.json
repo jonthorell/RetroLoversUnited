@@ -6,11 +6,9 @@
     "\\retro\\templates",
     "\\retro\\templates\\retro",
     "\\static",
-    "\\static\\css",
-    "\\static\\javascript",
     "\\templates",
     "\\templates\\includes"
   ],
-  "SelectedNode": "\\retroloversunited\\settings.py",
+  "SelectedNode": "\\templates\\includes\\footer.html",
   "PreviewInSolutionExplorer": false
 }
