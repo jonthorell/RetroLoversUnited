@@ -1,14 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\media",
     "\\retro",
     "\\retroloversunited",
     "\\retro\\templates",
     "\\retro\\templates\\retro",
     "\\static",
+    "\\static\\css",
+    "\\static\\images",
     "\\templates",
     "\\templates\\includes"
   ],
-  "SelectedNode": "\\templates\\includes\\footer.html",
+  "SelectedNode": "\\retro\\models.py",
   "PreviewInSolutionExplorer": false
 }
