@@ -25,7 +25,6 @@
     /* utils */
 
     --small-box-shadow: 1px  -1px 7px 0 #00000061;
-    --border: 1px solid #00000030;
     
 }
 
@@ -88,7 +87,7 @@ footer {
 }
 
 #copyright {
-    flex-shrink: 0;
+    flex-shrink: 1;
     background-color: var(--off-white);
     display: flex;
     flex-direction: row;
