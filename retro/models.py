@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
-# status is used to check wheter comment or article has been approved
+# status is used to check wheter comment or article has been approved. Some of this has been adapted for my own use from the codestar code-along
 
 STATUS = ((0, "Draft"), (1,"Published"))
 
