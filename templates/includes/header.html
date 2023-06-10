@@ -1,3 +1,4 @@
+{% load static %}
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,22 +18,43 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                <a class="navbar-brand mt-2 mt-lg-0" href="/">
+                    <img src="{% static 'images/Boing_Ball.svg' %}"
                          height="15"
-                         alt="MDB Logo"
+                         alt="BoingBall logo"
                          loading="lazy" />
                 </a>
                 <!-- Left links -->
+                <!-- Categories -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                       href="#"
+                       id="navbarDropdownMenuCategories"
+                       role="button"
+                       data-mdb-toggle="dropdown"
+                       aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuCategories">
+                        <li>
+                            <a class="dropdown-item" href="#">Hardware</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Reviews</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Guides</a>
+                        </li>
+                    </ul>
+                </div>
+            
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="#">Links</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Projects</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -40,10 +62,7 @@
             <!-- Collapsible wrapper -->
             <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <!-- Icon -->
-                <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
+                
 
                 <!-- Notifications -->
                 <div class="dropdown">
