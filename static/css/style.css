@@ -118,25 +118,25 @@ footer {
 /* links */
 
 /* unvisited link */
-a:link {
+.target-link a:link {
     color: var(--black);
     text-decoration: underline;
 }
 
 /* visited link */
-a:visited {
+.target-link a:visited {
     color: var(--black);
     text-decoration: underline;
 }
 
 /* mouse over link */
-a:hover {
+.target-link a:hover {
     color: hotpink;
     text-decoration: underline;
 }
 
 /* selected link */
-a:active {
-    color: blue;
+.target-link a:active {
+    color: var(--black);
     text-decoration: underline;
 }
