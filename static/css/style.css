@@ -50,6 +50,11 @@ p {
     color: var(--white);
 }
 
+.web-header {
+    /* used for the headers in the links page */
+    color: var(--red)
+}
+
 .jumbotron-paragraph {
     color: var(--black);
 }
