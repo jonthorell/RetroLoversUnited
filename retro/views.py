@@ -17,3 +17,6 @@ class About(TemplateView):
     
 class Category(TemplateView):
     template_name = 'retro/category.html'
+
+class Create_article(TemplateView):
+    template_name = 'retro/create_article.html'
