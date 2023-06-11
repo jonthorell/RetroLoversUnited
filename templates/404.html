@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block bg-color %}
-<body class="bg-black">
-    {{ block.super }}
-</body>
-{% endblock %}
-
 {% load static %}
 {% block title %}Page Not Found{% endblock title %}
 
 {% block content %}
 
 <div class="container-fluid text-center">
-    <img src="{% static 'images/Guru_meditation.gif' %}" alt="Guru Meditation" />
-    <p>Oh dear. The page can not be found.</p>
+    <h1>Oh dear!</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md web-header">
+                <img src="{% static 'images/Guru_meditation.gif' %}" alt="Guru Meditation" />
+                <p>Oh dear. The page can not be found.</p>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 {% endblock content %}
