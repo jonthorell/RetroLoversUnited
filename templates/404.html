@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block bg-color %}
+<body class="bg-black">
+    {{ block.super }}
+</body>
+{% endblock %}
+
 {% load static %}
 {% block title %}Page Not Found{% endblock title %}
 

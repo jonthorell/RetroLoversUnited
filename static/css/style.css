@@ -50,6 +50,10 @@ p {
     color: var(--white);
 }
 
+.bg-black {
+    background-color: var(--black);
+}
+
 .web-header {
     /* used for the headers in the links page */
     color: var(--red)
