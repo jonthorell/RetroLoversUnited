@@ -28,11 +28,11 @@ Or:
 
 * Logout
 
-![landing-page](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/mockup.PNG?raw=true)
+![landing-page](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
 
 The landing page is essentially just a welcome page, but with links to three latest articles added to the site.
 
-![footer](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/mockup.PNG?raw=true)
+![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.png?raw=true)
 
 The copyright message in the footer will be hidden on smaller screens so the most important thing here is highlighted, the social media icons.
 JUst a few that I deemed most suitable for a community site. The URLs for twitter and youtube are search strings into respective platform with

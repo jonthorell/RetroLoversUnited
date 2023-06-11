@@ -61,7 +61,7 @@ p {
 
 .web-header {
     /* used for the headers in the links page */
-    color: var(--red)
+    color: var(--black)
 }
 
 .jumbotron-paragraph {
@@ -113,4 +113,30 @@ footer {
 .social-icon {
     height: 2rem;
     margin: 1rem;
+}
+
+/* links */
+
+/* unvisited link */
+a:link {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+/* visited link */
+a:visited {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+    text-decoration: underline;
 }
