@@ -20,3 +20,6 @@ class Category(TemplateView):
 
 class Create_article(TemplateView):
     template_name = 'retro/create_article.html'
+
+class Test(TemplateView):
+    template_name = 'retro/test.html'
