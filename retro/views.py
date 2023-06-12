@@ -40,3 +40,8 @@ class Links(ListView):
     model = Link
     context_object_name = 'links'
 
+    def get_queryset(self, *args, **kwargs):
+         qs = super(Links, self).get_queryset(*args, **kwargs)
+         qs = qs.order_by("name")
+         return qs
+
