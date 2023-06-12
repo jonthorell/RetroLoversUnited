@@ -13,7 +13,11 @@
             Not authenticated
         {% endif %}
     </h2>
-</div>
+    {% for link in links %}
 
+    {{ link.name }}
+
+    {% endfor %}
+</div>
 
 {% endblock content %}

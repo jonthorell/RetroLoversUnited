@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from retro.models import Link
+
 
 class Index(TemplateView):
     template_name = 'retro/index.html'
 
-class Links(TemplateView):
-    template_name = 'retro/links.html'
+#class Links(TemplateView):
+#    template_name = 'retro/links.html'
 
 class Contact(TemplateView):
     template_name = 'retro/contact.html'
@@ -23,3 +26,9 @@ class Create_article(TemplateView):
 
 class Test(TemplateView):
     template_name = 'retro/test.html'
+
+class Links(ListView):
+    template_name = 'retro/links.html'
+    model = Link
+    context_object_name = 'links'
+
