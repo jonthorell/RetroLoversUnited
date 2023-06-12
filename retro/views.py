@@ -3,11 +3,19 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 
-from retro.models import Link
+from retro.models import Link, Article
 
 
-class Index(TemplateView):
+class Index(ListView):
     template_name = 'retro/index.html'
+    model = Article
+    context_object_name = "articles"
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(Index, self).get_queryset(*args, **kwargs)
+        qs = qs.order_by("-updated_on")[:3]
+        return qs
+
 
 #class Links(TemplateView):
 #    template_name = 'retro/links.html'
