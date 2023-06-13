@@ -1,9 +1,10 @@
+from pipes import Template
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 
-from retro.models import Link, Article
+from retro.models import Link, Article, Category
 
 
 class Index(ListView):
@@ -26,8 +27,15 @@ class Contact(TemplateView):
 class About(TemplateView):
     template_name = 'retro/about.html'
     
-class Category(TemplateView):
+class Category(ListView):
     template_name = 'retro/category.html'
+    model = Category
+    context_object_name = "categories"
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(Category, self).get_queryset(*args, **kwargs)
+        qs = qs.order_by("name")
+        return qs
 
 class Create_article(TemplateView):
     template_name = 'retro/create_article.html'

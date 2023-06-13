@@ -13,6 +13,8 @@ User=get_user_model()
 
 class Category(models.Model):
     name = models.CharField(max_length=40, blank=False, null=False, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(default='', null=False)
     def __str__ (self):
         return self.name
 
@@ -45,9 +47,11 @@ class Link(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    comment_title = models.CharField(max_length=80, blank=False, null=False)
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
+    slug = models.SlugField(default='', null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)

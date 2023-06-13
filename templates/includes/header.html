@@ -37,15 +37,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuCategories">
+                        {% for category in categories %}
                         <li>
-                            <a class="dropdown-item" href="/category">Hardware</a>
+                            <a class="dropdown-item" href="/category">{{ category.name }}</a>
                         </li>
-                        <li>
-                            <a class="dropdown-item" href="/category">Reviews</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/guru">Guides</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
 

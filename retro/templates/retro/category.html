@@ -6,6 +6,9 @@
 
 <div class="container-fluid text-center">
     <h1>Category</h1>
+    {% for category in categories %}
+    <p> {{ category.name }} </p>
+    {% endfor %}
 </div>
 
 
