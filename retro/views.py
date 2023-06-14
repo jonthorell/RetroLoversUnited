@@ -62,3 +62,7 @@ class Logout(TemplateView):
 class Login(TemplateView):
     template_name = 'retro/login.html'
 
+class Thankyou(TemplateView):
+    template_name = 'retro/thankyou.html'
+
+

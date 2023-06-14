@@ -10,11 +10,33 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
+        <div class="d-none d-sm-block col-md-8">
             <img class='rounded-circle border border-5 border-success' src="{% static 'images/amy-contact.png' %}" />
         </div>
         <div class="col-md-4">
-            <p>Thanks for contacting us!</p>
+            <form action="thankyou" id="contactform">
+                <fieldset>
+                    <label for="name">Your name:</label>
+                    <input type="text" name="name" id="name" class="form-control form-control-sm" required />
+                    <label for="email">Your E-mail:</label>
+                    <input type="email" name="email" id="email" class="form-control form-control-sm" required>
+                    <label for="subject">Subject:</label>
+                    <select name="subject" id="subject" form="contactform" class="form-control form-control-sm">
+                        <option value="techissue">Technical issue</option>
+                        <option value="factissue">Factual issue</option>
+                        <option value="deadlink">Dead Link or missing image</option>
+                        <option value="aria">Suggestion for accessability</option>
+                        <option value="newidea">Suggestion for new idea</option>
+                        <option value="newlink">Suggestion for new link</option>
+                        <option value="generic">Generic praise/hate</option>
+                    </select>
+                    <label for="fb">What do you want to say to us?</label>
+                    <textarea placeholder="Enter message here" cols="80"
+                              rows="20" id="fb" name="fb" class="form-control form-control-sm">Enter message here</textarea>
+                    <button type="reset" class="btn btn-primary btn-sm btn-block"><strong>Reset form</strong></button>
+                    <button type="submit" class="btn btn-primary btn-sm btn-block"><strong>Submit!</strong></button>
+                </fieldset>
+            </form>
         </div>
     </div>
 

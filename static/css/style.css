@@ -143,7 +143,11 @@ footer {
 
 .cc {
     /* cc stands for creative commons, used for those boxes on about page */
-    background-color: var(--background);
-    /* background-image: url('') */ 
+    background-image: url('https://raw.githubusercontent.com/jonthorell/QuizGame/main/assets/images/backdrop.png');
     border: dotted;
+    border-color: var(--red);
+}
+
+fieldset label {
+    color: var(--white);
 }
