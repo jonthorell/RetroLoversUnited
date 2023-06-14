@@ -4,7 +4,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 
-from retro.models import Link, Article, Category
+from retro.models import Link, Article, Category, Comment
 
 
 class Index(ListView):
@@ -14,12 +14,9 @@ class Index(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(Index, self).get_queryset(*args, **kwargs)
-        qs = qs.order_by("-updated_on")[:3]
+        qs = qs.order_by("-created_on")[:3]
         return qs
 
-
-#class Links(TemplateView):
-#    template_name = 'retro/links.html'
 
 class Contact(TemplateView):
     template_name = 'retro/contact.html'
@@ -52,4 +49,13 @@ class Links(ListView):
          qs = super(Links, self).get_queryset(*args, **kwargs)
          qs = qs.order_by("name")
          return qs
+
+class Create_account(TemplateView):
+    template_name = 'retro/create_account.html'
+
+class Logout(TemplateView):
+    template_name = 'retro/logout.html'
+
+class Login(TemplateView):
+    template_name = 'retro/login.html'
 

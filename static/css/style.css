@@ -140,3 +140,14 @@ footer {
     color: var(--black);
     text-decoration: underline;
 }
+
+.cc {
+    background-color: var(--background);
+    border: dotted;
+}
+
+.amy {
+    /* styles E.S pictures so they stand out */ 
+    border: dotted;
+    color: darkred;
+}
