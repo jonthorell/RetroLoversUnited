@@ -142,12 +142,8 @@ footer {
 }
 
 .cc {
+    /* cc stands for creative commons, used for those boxes on about page */
     background-color: var(--background);
+    /* background-image: url('') */ 
     border: dotted;
-}
-
-.amy {
-    /* styles E.S pictures so they stand out */ 
-    border: dotted;
-    color: darkred;
 }
