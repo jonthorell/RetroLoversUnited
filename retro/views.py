@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
-from time import gmtime, strftime
 
 from retro.models import Link, Article, Category, Comment
 
@@ -13,8 +12,6 @@ class Index(ListView):
     model = Article
     context_object_name = "articles"
 
-    showtime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-
     def get_queryset(self, *args, **kwargs):
         qs = super(Index, self).get_queryset(*args, **kwargs)
         qs = qs.order_by("-created_on")[:3]
@@ -23,6 +20,8 @@ class Index(ListView):
 
 class Contact(TemplateView):
     template_name = 'retro/contact.html'
+
+
 
 class About(TemplateView):
     template_name = 'retro/about.html'
