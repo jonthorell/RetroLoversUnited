@@ -151,3 +151,13 @@ footer {
 fieldset label {
     color: var(--white);
 }
+
+.div-border {
+    border-style: dotted;
+    border-color: coral;
+    padding-top: 1em;
+}
+
+.right-align {
+    float: right;
+}
