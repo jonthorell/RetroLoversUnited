@@ -4,15 +4,15 @@
 
 {% block content %}
 
-<div class="container-fluid text-center">
+<div class="container-fluid target-link text-center">
     <h1>Web Links</h1>
 </div>
-<div class="container text-center">
-    <div class="row d-flex justify-content-center">
-        <div class="d-none d-sm-block col-md-6">
-            <img  class='rounded-circle border border-5 border-success' src="{% static 'images/AmyEditor.png' %}" />
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/AmyEditor.png' %}" alt="Amy Editor" width="640" height="436" />
         </div>
-        <div class="col-md-6 target-link">
+        <div class="col">
             {% for link in links %}
             <i class="fa-solid fa-diamond"></i>
             <a href="{{ link.url }}" target="_blank" alt="{{ link.alt }}"> {{ link.name }}</a>
