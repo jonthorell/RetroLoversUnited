@@ -8,12 +8,13 @@
     <h1>About</h1>
 </div>
 
-<div class="container-fluid">
-    <div class="row d-flex justify-content-evenly">
-        <div class="d-none d-sm-block col-md-6 flex-grow-1">
-            <img class='rounded-circle border border-5 border-success' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />
+<div class="container-fluid target-link">
+
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />
         </div>
-        <div class="col-md-6">
+        <div class="col">
             <p>Once upon a time there was a computer manufaturer called Commodore.</p>
             <p>
                 They started out by making typewriters and pocket calculators, but got their biggest sucesses in the VIC-20, Commodore 64, and the Amiga-line of
@@ -34,40 +35,37 @@
             <p>And of course: it was a fun system to use!</p>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 text-center">
             <h2>Credits</h2>
+            <p class="target-link">
+                The cartoon characters are all &copy; Eric Schwartz and well-known in the Amiga community since the late 1980's at least.
+            <p>The social media icons comes from: <a href="https://uxwing.com/" alt="Link to uxwing" target="_blank">UX Wing</a> (attribution unneccesary)</p>
         </div>
-        <p class="target-link">
-            The cartoon characters are all &copy; Eric Schwartz and well-known in the Amiga community since the late 1980's at least.
-        <p>The social media icons comes from: <a href="https://uxwing.com/" alt="Link to uxwing" target="_blank">UX Wing</a> (attribution unneccesary)</p>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card bg-image cc">
-                    <div class="card-body">
-                        <h5 class="card-title jumbotron-paragraph">CC-BY-2.5 Attribution</h5>
-                        <p class="card-text jumbotron-paragraph">
-                            Author: &copy; Bill Bertram 2006, &nbsp; Amiga 500 image<br />
-                            <a href="https://www.flaticon.com/free-icon/user_3899618" alt="Freeicon website" target="_blank">The dummy user icon on the top right</a>
-                        </p>
-                    </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card bg-image cc">
+                <div class="card-body">
+                    <h5 class="card-title jumbotron-paragraph">CC-BY-2.5 Attribution</h5>
+                    <p class="card-text jumbotron-paragraph">
+                        Author: &copy; Bill Bertram 2006, &nbsp; Amiga 500 image<br />
+                        <a href="https://www.flaticon.com/free-icon/user_3899618" alt="Freeicon website" target="_blank">The dummy user icon on the top right</a>
+                    </p>
                 </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="card cc">
-                    <div class="card-body">
-                        <h5 class="card-title jumbotron-paragraph">Creative Commons Attribution-Share Alike 4.0 International license</h5>
-                        <p class="card-text jumbotron-paragraph">
-                            Author: The Copyright Holder, Amiga 1200 Image<br />
-                            Author: Berdajeno, Boing-ball
-                        </p>
-                    </div>
+        </div>
+        <div class="col">
+            <div class="card bg-image cc">
+                <div class="card-body">
+                    <h5 class="card-title jumbotron-paragraph">Creative Commons Attribution-Share Alike 4.0 International license</h5>
+                    <p class="card-text jumbotron-paragraph">
+                        Author: The Copyright Holder, Amiga 1200 Image<br />
+                        Author: Berdajeno, Boing-ball
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<p>&nbsp;</p>
     {% endblock content %}

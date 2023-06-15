@@ -153,6 +153,7 @@ fieldset label {
 }
 
 .div-border {
+    /* remove before submitting. Used to show div borders to make sure nothing overflows for debugging purposes */
     border-style: dotted;
     border-color: coral;
     padding-top: 1em;
