@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\media",
     "\\retro",
     "\\retroloversunited",
     "\\retro\\templates",
@@ -12,6 +11,6 @@
     "\\templates",
     "\\templates\\includes"
   ],
-  "SelectedNode": "\\retro\\models.py",
+  "SelectedNode": "\\retro\\templates\\retro\\about.html",
   "PreviewInSolutionExplorer": false
 }
