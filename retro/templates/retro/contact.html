@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block title %}Contact{% endblock title %}
 
 {% block content %}
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center target-link">
     <h1>Contact Form</h1>
 </div>
 
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="d-none d-sm-block col-md-8">
-            <img class='rounded-circle border border-5 border-success' src="{% static 'images/amy-contact.png' %}" />
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='rounded-circle border border-5 border-success right-align' width="640" height="436" src="{% static 'images/amy-contact.png' %}" />
         </div>
-        <div class="col-md-4">
+        <div class="col">
             <form action="thankyou" id="contactform">
                 <fieldset>
                     <label for="name">Your name:</label>
