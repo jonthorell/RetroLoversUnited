@@ -162,3 +162,8 @@ fieldset label {
 .right-align {
     float: right;
 }
+
+#form-email {
+    background-color: var(--grey);
+    color: var(--green);
+}
