@@ -1,4 +1,4 @@
-
+NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate
 
 # Retro Lovers United
 
