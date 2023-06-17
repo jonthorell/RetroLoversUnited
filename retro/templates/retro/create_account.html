@@ -4,47 +4,41 @@
 
 {% block content %}
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center target-link">
     <h1>Create Account</h1>
 </div>
 
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
-            <img  class='rounded-circle border border-5 border-success' src="{% static 'images/createaccount.png' %}" />
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img  class='rounded-circle border border-5 border-success right-align' width="640" height="436" src="{% static 'images/createaccount.png' %}" />
         </div>
-        <div class="col-md-4">
+        <div class="col">
             <form>
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form1Example1" class="form-control" />
-                    <label class="form-label" for="form1Example1">Email address</label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" id="form1Example2" class="form-control" />
-                    <label class="form-label" for="form1Example2">Password</label>
-                </div>
-
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                            <label class="form-check-label" for="form1Example3"> Remember me </label>
-                        </div>
+                <fieldset>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email" class="form-control" required/>
+                        <label for="email">Email address</label>
                     </div>
 
-                    <div class="col">
-                        <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="password" class="form-control" required />
+                        <label for="password">Password</label>
                     </div>
-                </div>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <!-- Confirm Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="confirm-password" class="form-control" required />
+                        <label for="confirm-password">Repeat Password</label>
+                    </div>
+
+
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block">Create Account!</button>
+                </fieldset>
             </form>
         </div>
     </div>
