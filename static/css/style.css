@@ -167,3 +167,7 @@ fieldset label {
     background-color: var(--grey);
     color: var(--orange);
 }
+
+.not-logged-in {
+    color: var(--black);
+}

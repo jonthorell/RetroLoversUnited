@@ -14,6 +14,7 @@
             <img class='rounded-circle border border-5 border-success right-align' width="640" height="436 " src="{% static 'images/create-article.jpg' %}" />
         </div>
         <div class="col">
+            {% if user.is_authenticated %}
             <form id="articleform" action="/">
                 <fieldset>
                     <label for="category">Category: </label>
@@ -38,10 +39,23 @@
                         <button type="submit" class="btn btn-primary btn-block">Create Article!</button>
                     </p>
                     {% else %}
-                        <p id="status" class="form-ro">You are not logged in and therefor not authorized to create an article.</p>
+                    <p id="status" class="not-logged-in">
+                        <h2>
+                            <i class="fas fa-circle-exclamation me-2 text-warning"></i>
+                            You are not logged in and therefor not authorized to create an article.
+                        </h2>
+                    </p>
                     {% endif %}
                 </fieldset>
             </form>
+            {% else %}
+            <p class="not-logged-in">
+                <h2>
+                    <i class="fas fa-circle-exclamation me-2 text-warning"></i>
+                    Since you are not logged in, you are not authorized to see this page.
+                </h2>
+            </p>
+            {% endif %}
         </div>
     </div>
 
