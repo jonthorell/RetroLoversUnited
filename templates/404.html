@@ -1,18 +1,20 @@
 {% extends "base.html" %}
-
 {% load static %}
 {% block title %}Page Not Found{% endblock title %}
 
 {% block content %}
 
-<div class="container-fluid text-center">
+<div class="container-fluid target-link text-center">
     <h1>Oh dear!</h1>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md web-header">
-                <img src="{% static 'images/Guru_meditation.gif' %}" alt="Guru Meditation" />
-                <p>The page can not be found. I've looked here, and there, and everywhere. No luck!'</p>
-            </div>
+</div>
+
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img width="652" height="93" alt="Guru Meditation"src="{% static 'images/Guru_meditation.gif' %}" />
+        </div>
+        <div class="col web-header">
+            <p>The page can not be found. I've looked here, and there, and everywhere. No luck!</p>
         </div>
     </div>
 </div>
