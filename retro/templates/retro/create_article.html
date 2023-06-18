@@ -4,9 +4,47 @@
 
 {% block content %}
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center target-link">
     <h1>Create Article</h1>
 </div>
 
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='rounded-circle border border-5 border-success right-align' width="640" height="436 " src="{% static 'images/create-article.jpg' %}" />
+        </div>
+        <div class="col">
+            <form id="articleform" action="/">
+                <fieldset>
+                    <label for="category">Category: </label>
+                    <select name="category" id="category" form="articleform" class="form-control form-control-sm" required>
+                        <option value="review">Review</option>
+                        <option value="guide">Guide</option>
+                    </select>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" class="form-control form-control-sm" required />
+                    <label for="content">Content:</label>
+                    <textarea cols="80" rows="20" id="content" name="content" class="form-control form-control-sm" required></textarea>
+                    <label for="created">Created:</label>
+                    <input type="date" id="created" class="form-control form-control-sm" readonly />
+                    <label for="excerpt">Excerpt:</label>
+                    <input type="text" id="excerpt" class="form-control form-control-sm" required />
+                    <label for="status">Status:</label>
+                    <p id="status" class="form-ro">Draft</p>
+                    <label for="user">Create article as user: </label>
+                    {% if user.is_authenticated %}
+                    <p id="status" class="form-ro">
+                        {{ user.first_name }} {{ user.last_name }}
+                        <button type="submit" class="btn btn-primary btn-block">Create Article!</button>
+                    </p>
+                    {% else %}
+                        <p id="status" class="form-ro">You are not logged in and therefor not authorized to create an article.</p>
+                    {% endif %}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 {% endblock content %}
