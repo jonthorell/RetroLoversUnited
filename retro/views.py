@@ -6,8 +6,14 @@ from django.views.generic import TemplateView, ListView
 
 from retro.models import Link, Article, Category, Comment
 
+class CustomMixin_kategorimenu(object):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
 
-class Index(ListView):
+class Index(CustomMixin_kategorimenu, ListView):
     template_name = 'retro/index.html'
     model = Article
     context_object_name = "articles"
@@ -17,61 +23,30 @@ class Index(ListView):
         qs = qs.order_by("-created_on")[:3]
         return qs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
-
-class Contact(TemplateView):
+class Contact(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/contact.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
 
 
-class About(TemplateView):
+class About(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/about.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
     
-class Kategory(TemplateView):
+class Kategory(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/category.html'
+    
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
-
-class Create_article(TemplateView):
+class Create_article(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/create_article.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
-class Test(TemplateView):
+class Test(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
-class Links(ListView):
+class Links(CustomMixin_kategorimenu, ListView):
     template_name = 'retro/links.html'
     model = Link
     context_object_name = 'links'
@@ -81,46 +56,18 @@ class Links(ListView):
          qs = qs.order_by("name")
          return qs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
-
-class Create_account(TemplateView):
+class Create_account(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/create_account.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
-
-class Logout(TemplateView):
+class Logout(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/logout.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
-
-class Login(TemplateView):
+class Login(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/login.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
-class Thankyou(TemplateView):
+class Thankyou(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['links'] = Link.objects.all()
-        context['categories'] = Category.objects.all()
-        return context
 
 
