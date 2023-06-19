@@ -1,5 +1,8 @@
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate
 
+Bug: the code to retrieve categories from the database threw a "has no attributes" error. Turned out to be a name-mismatch since the name Category was used for a view as well.
+Renaming the view name was not the same as the model name.
+
 # Retro Lovers United
 
 This is a site for dedicated users of the now very old Amiga-line of computers where they can get help, tips, and ideas of things to do with their beloved antiques.

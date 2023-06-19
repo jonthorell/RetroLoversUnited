@@ -27,6 +27,12 @@ class Index(ListView):
 class Contact(TemplateView):
     template_name = 'retro/contact.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 
 
 class About(TemplateView):
@@ -40,19 +46,30 @@ class About(TemplateView):
     
 class Kategory(TemplateView):
     template_name = 'retro/category.html'
-    #model = Category
-    #context_object_name = "categories"
 
-    #def get_queryset(self, *args, **kwargs):
-    #    qs = super(Category, self).get_queryset(*args, **kwargs)
-    #    qs = qs.order_by("name")
-    #    return qs
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
 
 class Create_article(TemplateView):
     template_name = 'retro/create_article.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 class Test(TemplateView):
     template_name = 'retro/test.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
 
 class Links(ListView):
     template_name = 'retro/links.html'
@@ -64,16 +81,46 @@ class Links(ListView):
          qs = qs.order_by("name")
          return qs
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 class Create_account(TemplateView):
     template_name = 'retro/create_account.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
 
 class Logout(TemplateView):
     template_name = 'retro/logout.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 class Login(TemplateView):
     template_name = 'retro/login.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 class Thankyou(TemplateView):
     template_name = 'retro/thankyou.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
 
 
