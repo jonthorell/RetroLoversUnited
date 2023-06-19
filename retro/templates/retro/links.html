@@ -15,7 +15,7 @@
         </div>
         <div class="col">
             {% for link in links %}
-            <i class="fa-solid fa-diamond"></i>
+            <i class="fa-solid fa-diamond" aria-hidden="true"></i>
             <a href="{{ link.url }}" target="_blank" alt="{{ link.alt }}"> {{ link.name }}</a>
             <p>{{ link.description }} </p>
             {% endfor %}
