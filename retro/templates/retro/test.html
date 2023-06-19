@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mixins %}
 {% block title %}Test Page{% endblock title %}
+
+{% mixin foo %}
+<div class="text-center target-link">
+    <p>Mixin test</p>
+    <div>{{ name }}</div>
+    <div>{{ description }}</div>
+    <hr />    
+</div>
+{% endmixin %}
 
 {% block content %}
 
@@ -28,6 +38,10 @@
             Another row beneath the columns
         </div>
     </div>
-    </div>
+</div>
+
+
+    {% mix foo with name="hello" description="world" %}
+    
 
     {% endblock content %}

@@ -17,6 +17,12 @@ class Index(ListView):
         qs = qs.order_by("-created_on")[:3]
         return qs
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 
 class Contact(TemplateView):
     template_name = 'retro/contact.html'
@@ -25,16 +31,22 @@ class Contact(TemplateView):
 
 class About(TemplateView):
     template_name = 'retro/about.html'
-    
-class Category(ListView):
-    template_name = 'retro/category.html'
-    model = Category
-    context_object_name = "categories"
 
-    def get_queryset(self, *args, **kwargs):
-        qs = super(Category, self).get_queryset(*args, **kwargs)
-        qs = qs.order_by("name")
-        return qs
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+    
+class Kategory(TemplateView):
+    template_name = 'retro/category.html'
+    #model = Category
+    #context_object_name = "categories"
+
+    #def get_queryset(self, *args, **kwargs):
+    #    qs = super(Category, self).get_queryset(*args, **kwargs)
+    #    qs = qs.order_by("name")
+    #    return qs
 
 class Create_article(TemplateView):
     template_name = 'retro/create_article.html'

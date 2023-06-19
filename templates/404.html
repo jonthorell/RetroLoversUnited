@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mixins %}
 {% block title %}Page Not Found{% endblock title %}
 
 {% block content %}
@@ -13,7 +14,7 @@
         <div class="col d-none d-lg-block">
             <img class='right-align' width="652" height="93" alt="Guru Meditation" src="{% static 'images/Guru_meditation.gif' %}" />
         </div>
-        <div class="col web-header">
+        <div class="col web-header text-center">
             <p>The page can not be found. I've looked here, and there, and everywhere. No luck!</p>
         </div>
     </div>

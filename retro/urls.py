@@ -1,13 +1,14 @@
 
+from urllib import request
 from django.urls import path
-from .views import Index, Links,Contact, About, Category, Create_article, Test, Login, Logout, Create_account, Thankyou
+from .views import Index, Links,Contact, About, Kategory, Create_article, Login, Logout, Create_account, Thankyou, Test
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
     path('links', Links.as_view(), name='links'),
     path('contact',Contact.as_view(), name='contact'),
     path('about', About.as_view(), name='about'),
-    path('category', Category.as_view(), name='Category'),
+    path('category', Kategory.as_view(), name='Kategory'),
     path('create_article', Create_article.as_view(), name='Create_article'),
     path('test', Test.as_view(), name='test'),
     path('login', Login.as_view(), name='Login'),

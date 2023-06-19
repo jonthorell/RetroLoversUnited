@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mixins %}
 {% block title %}Home{% endblock title %}
 
 {% block content %}
@@ -14,7 +15,7 @@
             {% for article in articles %}
             &nbsp;&nbsp;<i class="fa-solid fa-check">&nbsp;</i>{{ article.title }}
             {% endfor %}
-</div>
+    </div>
 </div>
 <!-- Jumbotron -->
 
