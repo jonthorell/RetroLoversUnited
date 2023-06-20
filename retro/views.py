@@ -17,15 +17,16 @@ class CustomMixin_kategorimenu(object):
 
         return context
 
-class Index(CustomMixin_kategorimenu, ListView):
+class Index(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
-    model = Article
-    context_object_name = "articles"
 
-    def get_queryset(self, *args, **kwargs):
-        qs = super(Index, self).get_queryset(*args, **kwargs)
-        qs = qs.order_by("-created_on")[:3]
-        return qs
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['articles'] = Article.objects.all()[:3]
+
+        return context
+
+
 
 
 class Contact(CustomMixin_kategorimenu, TemplateView):

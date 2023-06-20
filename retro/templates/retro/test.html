@@ -40,43 +40,12 @@
     </div>
 </div>
 
-<!--
+
     {% mix foo with name="hello" description="world" %}
-    -->
-
-<p>Categories:</p>
-{% for category in categories %}
-
-<p class="target-link">{{ category.name }}</p>
-
-                        {% endfor %}
-<p>Links:</p>
-{% for link in links %}
-
-<p class="target-link">{{ link.name }}</p>
-
-                        {% endfor %}
-
-<p>Articles:</p>
-
+<h1>Articles:</h1>
 {% for article in articles %}
+    <p>{{ article.title }} </p>
+{% endfor %}
 
-<p class="target-link">{{ article.title }}</p>
 
-                        {% endfor %}
-
-<p>Comments:</p>
-{% for comment in comments %}
-
-<p class="target-link">{{ comment.title }}</p>
-
-                        {% endfor %}
-
-<p>Users:</p>
-
-{% for user in users %}
-
-<p class="target-link">{{ user.username }}</p>
-
-                        {% endfor %}
     {% endblock content %}
