@@ -44,5 +44,39 @@
     {% mix foo with name="hello" description="world" %}
     -->
 
+<p>Categories:</p>
+{% for category in categories %}
 
+<p class="target-link">{{ category.name }}</p>
+
+                        {% endfor %}
+<p>Links:</p>
+{% for link in links %}
+
+<p class="target-link">{{ link.name }}</p>
+
+                        {% endfor %}
+
+<p>Articles:</p>
+
+{% for article in articles %}
+
+<p class="target-link">{{ article.title }}</p>
+
+                        {% endfor %}
+
+<p>Comments:</p>
+{% for comment in comments %}
+
+<p class="target-link">{{ comment.title }}</p>
+
+                        {% endfor %}
+
+<p>Users:</p>
+
+{% for user in users %}
+
+<p class="target-link">{{ user.username }}</p>
+
+                        {% endfor %}
     {% endblock content %}

@@ -8,7 +8,7 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 class CommentAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("comment_title",)}
+    prepopulated_fields = {"slug": ("title",)}
 
 # Register your models here.
 
