@@ -23,7 +23,10 @@
             <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />
         </div>
         <div class="col div-border">
-            Main column
+            <h1>Articles:</h1>
+            {% for article in articles %}
+            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ article.slug }}">{{ article.title }}</a></p>
+            {% endfor %}
         </div>
     </div>
     <div class="row">
@@ -42,10 +45,7 @@
 
 
     {% mix foo with name="hello" description="world" %}
-<h1>Articles:</h1>
-{% for article in articles %}
-    <p>{{ article.title }} </p>
-{% endfor %}
+
 
 
     {% endblock content %}
