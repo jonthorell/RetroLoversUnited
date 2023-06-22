@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
+from django.contrib.auth.models import User, Group
 
 from retro.models import Link, Article, Category, Comment,User
 
@@ -49,6 +50,16 @@ class Create_article(CustomMixin_kategorimenu, TemplateView):
 
 class Test(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
+    
+    print("Existing groups2:")
+    query_set = User.objects.all()
+
+    for g in query_set:
+        print(g.username)
+        # print(g.first_name)
+        # print(g.last_name)
+        print(g.groups.filter(name="Editors").exists())
+        #
 
 
 class Links(CustomMixin_kategorimenu, ListView):

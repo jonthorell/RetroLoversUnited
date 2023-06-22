@@ -171,3 +171,7 @@ fieldset label {
 .not-logged-in {
     color: var(--black);
 }
+
+.welcome-header {
+    background-color: var(--orange);
+}

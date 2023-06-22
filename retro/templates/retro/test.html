@@ -43,9 +43,13 @@
     </div>
 </div>
 
-
+<!--
     {% mix foo with name="hello" description="world" %}
 
+    -->
+ {% for user in users %}
+<p>{{ user.username }}</p>
 
+            {% endfor %}
 
     {% endblock content %}

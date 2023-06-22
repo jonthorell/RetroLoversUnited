@@ -20,5 +20,6 @@ import retro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('', include('retro.urls'))
 ]
