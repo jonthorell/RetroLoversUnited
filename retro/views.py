@@ -55,7 +55,7 @@ class Kategory(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/category.html'
     
 
-class Create_article(custom_mixin_kategorimenu, TemplateView):
+class Create_article(EditorRequiredMixin,custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/create_article.html'
 
 class Edit_profile(custom_mixin_kategorimenu, TemplateView):
