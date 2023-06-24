@@ -1,5 +1,17 @@
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate
 
+# User classes
+
+Every user belongs to one or more classes of user.
+
+1. Admin. Or superusercs. They can do anything.
+2. Editors. Has the ability to create new articles.
+3. Members. Can comment on articles (and potentially like articles)
+4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
+
+Members is essentially everyone that is logged in. Admins is the designated superusers. Should also be a member of the editor group.
+Editors are those users the admin has added to the editors group. If not a member of the editors group, the create article link disappears.
+
 Bug: the code to retrieve categories from the database threw a "has no attributes" error. Turned out to be a name-mismatch since the name Category was used for a view as well.
 Renaming the view name was not the same as the model name.
 

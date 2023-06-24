@@ -55,6 +55,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
                     </li>
+                    <!-- first check if user is authenticated in the first place 
+                        If not, skip create/admin links
+                        -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="/create_article">Create Article</a>
@@ -118,6 +121,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="/edit_profile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="view_profile">View Profile</a>
+                        </li>
                         <li>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </li>

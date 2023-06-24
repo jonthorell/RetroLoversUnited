@@ -47,6 +47,12 @@ class Kategory(CustomMixin_kategorimenu, TemplateView):
 class Create_article(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/create_article.html'
 
+class Edit_profile(CustomMixin_kategorimenu, TemplateView):
+    template_name = 'retro/edit_profile.html'
+
+class View_profile(CustomMixin_kategorimenu, TemplateView):
+    template_name = 'retro/view_profile.html'
+
 
 class Test(CustomMixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
