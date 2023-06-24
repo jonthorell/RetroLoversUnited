@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% load mixins %}
+{% block title %}Unauthoriezed{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid target-link text-center">
+    <h1>Oh dear!</h1>
+</div>
+
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='right-align' width="652" height="93" alt="Guru Meditation" src="{% static 'images/Guru_meditation.gif' %}" />
+        </div>
+        <div class="col web-header text-center">
+            <p>You are not authorized to view this page. Most likely, you need to be a designated Editor.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
