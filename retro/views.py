@@ -7,7 +7,7 @@ from django.contrib.auth.models import User, Group
 
 from retro.models import Link, Article, Category, Comment,User
 
-class CustomMixin_kategorimenu(object):
+class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['links'] = Link.objects.all()
@@ -18,7 +18,7 @@ class CustomMixin_kategorimenu(object):
 
         return context
 
-class Index(CustomMixin_kategorimenu, TemplateView):
+class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
 
     def get_context_data(self, **kwargs):
@@ -30,31 +30,31 @@ class Index(CustomMixin_kategorimenu, TemplateView):
 
 
 
-class Contact(CustomMixin_kategorimenu, TemplateView):
+class Contact(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/contact.html'
 
 
 
 
-class About(CustomMixin_kategorimenu, TemplateView):
+class About(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/about.html'
 
     
-class Kategory(CustomMixin_kategorimenu, TemplateView):
+class Kategory(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/category.html'
     
 
-class Create_article(CustomMixin_kategorimenu, TemplateView):
+class Create_article(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/create_article.html'
 
-class Edit_profile(CustomMixin_kategorimenu, TemplateView):
+class Edit_profile(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/edit_profile.html'
 
-class View_profile(CustomMixin_kategorimenu, TemplateView):
+class View_profile(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
 
 
-class Test(CustomMixin_kategorimenu, TemplateView):
+class Test(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
     print("Existing groups2:")
@@ -68,7 +68,7 @@ class Test(CustomMixin_kategorimenu, TemplateView):
         #
 
 
-class Links(CustomMixin_kategorimenu, ListView):
+class Links(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/links.html'
     model = Link
     context_object_name = 'links'
@@ -78,17 +78,17 @@ class Links(CustomMixin_kategorimenu, ListView):
          qs = qs.order_by("name")
          return qs
 
-class Create_account(CustomMixin_kategorimenu, TemplateView):
+class Create_account(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/create_account.html'
 
-class Logout(CustomMixin_kategorimenu, TemplateView):
+class Logout(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/logout.html'
 
-class Login(CustomMixin_kategorimenu, TemplateView):
+class Login(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/login.html'
 
 
-class Thankyou(CustomMixin_kategorimenu, TemplateView):
+class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
 
 
