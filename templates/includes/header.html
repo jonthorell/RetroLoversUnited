@@ -55,13 +55,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
                     </li>
-                    <!-- first check if user is authenticated in the first place 
-                        If not, skip create/admin links
-                        -->
+
+
+
                     {% if user.is_authenticated %}
+                            {% comment %}
+                                first check if user is authenticated in the first place
+                                If not, skip create/admin links
+                            {% endcomment %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="/create_article">Create Article</a>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="/admin">Admin</a>
                     </li>

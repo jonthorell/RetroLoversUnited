@@ -46,7 +46,7 @@
 
     {% mix foo with name="hello" description="world" %}
 
-    
+
 
 <table>
     <tr>
@@ -76,5 +76,11 @@
 
 
 </table>
+ {% if user.is_authenticated %}
+<p>Your Username is : {{user}} </p>
+<p>Your User Id is  : {{user.id}} </p>
+{% else %}
+<p>You are not logged in!</p>
+{% endif %}
 
     {% endblock content %}

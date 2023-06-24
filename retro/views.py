@@ -4,8 +4,19 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.decorators import user_passes_test
 
 from retro.models import Link, Article, Category, Comment,User
+
+def is_editor(user):
+    return user.groups.filter(name="Editors").exists()
+
+editor_required = user_passes_test(is_editor)
+
+class EditorRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.groups.filter(name="Editors").exists()
 
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
@@ -53,8 +64,7 @@ class Edit_profile(custom_mixin_kategorimenu, TemplateView):
 class View_profile(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
 
-
-class Test(custom_mixin_kategorimenu, TemplateView):
+class Test(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
     

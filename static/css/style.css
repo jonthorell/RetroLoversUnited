@@ -164,6 +164,7 @@ fieldset label {
 }
 
 .form-ro {
+    /* used to style read-only fields in forms. Such as "Create article as user" in create_article */
     background-color: var(--grey);
     color: var(--orange);
 }
