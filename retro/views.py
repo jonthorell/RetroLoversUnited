@@ -18,6 +18,10 @@ class EditorRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.groups.filter(name="Editors").exists()
 
+class TestViewRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.groups.filter(name="TestView").exists()
+
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,7 +68,7 @@ class Edit_profile(custom_mixin_kategorimenu, TemplateView):
 class View_profile(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
 
-class Test(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+class Test(TestViewRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
     
