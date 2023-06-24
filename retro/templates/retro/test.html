@@ -43,13 +43,38 @@
     </div>
 </div>
 
-<!--
+
     {% mix foo with name="hello" description="world" %}
 
-    -->
- {% for user in users %}
-<p>{{ user.username }}</p>
+    
 
-            {% endfor %}
+<table>
+    <tr>
+        <td>Username</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Editor?</td>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        {% for group in user.groups.all %}
+        {% if group.name == 'Editors' %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        {% endfor %}
+
+
+    </tr>
+    {% endfor %}
+
+
+
+</table>
 
     {% endblock content %}

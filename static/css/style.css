@@ -175,3 +175,8 @@ fieldset label {
 .welcome-header {
     background-color: var(--orange);
 }
+
+td {
+    background-color: var(--black);
+    color: var(--orange);
+}

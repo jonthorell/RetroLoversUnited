@@ -1,4 +1,4 @@
-from pipes import Template
+from django import template
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
@@ -57,15 +57,7 @@ class View_profile(custom_mixin_kategorimenu, TemplateView):
 class Test(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
-    print("Existing groups2:")
-    query_set = User.objects.all()
-
-    for g in query_set:
-        print(g.username)
-        # print(g.first_name)
-        # print(g.last_name)
-        print(g.groups.filter(name="Editors").exists())
-        #
+    
 
 
 class Links(custom_mixin_kategorimenu, ListView):
