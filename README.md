@@ -3,8 +3,8 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 # Bugs
 
 1. Navbar did not list categories for all pages at first. Solved with a mixin to the class-based views
-2. Navbar catgories did not work from error pages
-3. Problem finding a way of getting the group for the current user
+2. Navbar catgories does not work from error pages
+3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 
 # User classes
 

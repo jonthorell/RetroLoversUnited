@@ -9,6 +9,7 @@
     --title: 'EB Garamond', serif;
     --main-font: 'Roboto', serif;
     --cursive-font: 'Tangerine', serif;
+    --sans3: 'Source Sans 3', sans-serif;
 
     /* colors */
 
@@ -87,6 +88,10 @@ main {
 
 .cursive-font {
     font-family: var(--cursive-font);
+}
+
+.sans-font {
+    font-family: var(--sans3);
 }
 /* footer */
 
@@ -178,6 +183,7 @@ fieldset label {
 }
 
 td {
+    /* used for the table on the testpage. Remove before submitting */
     background-color: var(--black);
     color: var(--orange);
 }

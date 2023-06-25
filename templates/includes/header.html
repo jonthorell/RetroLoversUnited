@@ -56,25 +56,47 @@
                         <a class="nav-link" href="/about">About</a>
                     </li>
 
-
+                    {% comment %}
+                        Add links depending on group membership
+                    {% endcomment %}
 
                     {% if user.is_authenticated %}
-                            {% comment %}
-                                first check if user is authenticated in the first place
-                                If not, skip create/admin links
-                            {% endcomment %}
+                    {% comment %}
+                        first check if user is authenticated in the first place
+                         If not, skip create/admin links
+                    {% endcomment %}
 
+                    {% for group in user.groups.all %}
+                    {% comment %}
+                        Iterate over the groups of the current user
+                        If user is a member of group Editors, add create article link
+                    {% endcomment %}
+                    {% if group.name == 'Editors' %}
                     <li class="nav-item">
                         <a class="nav-link" href="/create_article">Create Article</a>
                     </li>
+                    {% endif %}
+                    {% endfor %}
 
+                    {% comment %}
+                        Do the same for admin link
+                        Admin link should not be necessary when everything is ready
+                        but remains anyway since it sometimes could be a handier way
+                        of doing things.
+                    {% endcomment %}
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link welcome-header" href="#">Welcome, {{ user.first_name }} {{ user.last_name }} </a>
-                    </li>
+                    {% for group in user.groups.all %}
+                    {% comment %}
+                        Iterate over the groups of the current user
+                        if user is a member of the admins group, add admin link
+                    {% endcomment %}
+
+                    {% if group.name == 'admins' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
                     {% endif %}
                 </ul>
                 <!-- Left links -->
@@ -129,10 +151,13 @@
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item" href="/edit_profile">Edit Profile</a>
+                            <a class="dropdown-item disabled sans-font" href="#"> {{ user.first_name }} {{ user.last_name }}</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="view_profile">View Profile</a>
+                            <a class="dropdown-item" href="/edit_profile">Edit my Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/view_profile">View my Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="/logout">Logout</a>
