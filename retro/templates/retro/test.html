@@ -79,6 +79,11 @@
  {% if user.is_authenticated %}
 <p>Your Username is : {{user}} </p>
 <p>Your User Id is  : {{user.id}} </p>
+{% for profile in profiles %}
+<p>ID: {{ profile.id }} </p>
+<p>Slug: {{ profile.slug }}</p>
+<p>User: {{ profile.user_id }}</p>
+{% endfor %}
 {% else %}
 <p>You are not logged in!</p>
 {% endif %}

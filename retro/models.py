@@ -1,7 +1,9 @@
 # from getpass import getuser
+from django.db.models import CharField, Model
 from django.db import models
 from django.contrib.auth import get_user_model
 from cloudinary.models import CloudinaryField
+from autoslug import AutoSlugField
 
 # Create your models here.
 
@@ -61,4 +63,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
+
+class Profile(models.Model):
+    short_description = models.CharField(max_length=60, blank=False, null=False)
+    description = models.TextField(max_length=2000, blank=False, null=False)
+    updated_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    slug = AutoSlugField(populate_from='short_description')
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.short_description
 

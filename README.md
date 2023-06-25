@@ -1,5 +1,11 @@
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate
 
+# Bugs
+
+1. Navbar did not list categories for all pages at first. Solved with a mixin to the class-based views
+2. Navbar catgories did not work from error pages
+3. Problem finding a way of getting the group for the current user
+
 # User classes
 
 Every user belongs to one or more classes of user.

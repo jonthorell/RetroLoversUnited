@@ -7,7 +7,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import user_passes_test
 
-from retro.models import Link, Article, Category, Comment,User
+from retro.models import Link, Article, Category, Comment,User,Profile
 
 def is_editor(user):
     return user.groups.filter(name="Editors").exists()
@@ -15,12 +15,19 @@ def is_editor(user):
 editor_required = user_passes_test(is_editor)
 
 class EditorRequiredMixin(UserPassesTestMixin):
+    # Class used to restrict access to views where user needs to be editor
     def test_func(self):
         return self.request.user.groups.filter(name="Editors").exists()
 
-class TestViewRequiredMixin(UserPassesTestMixin):
+class AdminRequiredMixin(UserPassesTestMixin):
+    # Class used to restrict access to views where user needs to be admin
     def test_func(self):
-        return self.request.user.groups.filter(name="TestView").exists()
+        return self.request.user.groups.filter(name="admins").exists()
+
+class MemberRequiredMixin(UserPassesTestMixin):
+    # Class used to restrict access to views where user needs to be member
+    def test_func(self):
+        return self.request.user.groups.filter(name="members").exists()
 
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
@@ -30,6 +37,7 @@ class custom_mixin_kategorimenu(object):
         context['users'] = User.objects.all()
         context['articles'] = Article.objects.all()
         context['comments'] = Comment.objects.all()
+        context['profiles'] = Profile.objects.all()
 
         return context
 
@@ -65,10 +73,10 @@ class Create_article(EditorRequiredMixin,custom_mixin_kategorimenu, TemplateView
 class Edit_profile(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/edit_profile.html'
 
-class View_profile(custom_mixin_kategorimenu, TemplateView):
+class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
 
-class Test(TestViewRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
     
