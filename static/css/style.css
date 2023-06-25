@@ -181,3 +181,8 @@ td {
     background-color: var(--black);
     color: var(--orange);
 }
+
+.body-error {
+    /* used to style the background for error pages like 404 */
+    background-color: var(--black);
+}
