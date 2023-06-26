@@ -22,6 +22,8 @@ Every user belongs to one or more classes of user.
 3. Members. Can comment on articles (and potentially like articles)
 4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
 
+In the issues tracker, webuser is a not logged in user. User is a logged in user.
+
 Members is essentially everyone that is logged in. Admins is the designated superusers. Should also be a member of the editor group.
 Editors are those users the admin has added to the editors group. If not a member of the editors group, the create article link disappears.
 

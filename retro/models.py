@@ -16,13 +16,13 @@ User=get_user_model()
 class Category(models.Model):
     name = models.CharField(max_length=40, blank=False, null=False, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    slug = AutoSlugField(populate_from='name')
+    slug = AutoSlugField(populate_from='name', unique=True)
     def __str__ (self):
         return self.name
 
 class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = AutoSlugField(populate_from='title')
+    slug = AutoSlugField(populate_from='title', unique=True)
     title = models.CharField(max_length=60, blank=False, null=False, unique=True)
     content = models.TextField(max_length=2000, blank=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)
@@ -40,7 +40,7 @@ class Article(models.Model):
 
 class Link(models.Model):
     name = models.CharField(max_length=60, blank=False, null=False, unique=True)
-    slug = AutoSlugField(populate_from='name')
+    slug = AutoSlugField(populate_from='name', unique=True)
     url = models.CharField(max_length=255, blank=False, null=False, unique=True)
     description = models.CharField(max_length=255, blank=False, null=False)
     alt = models.CharField(max_length=255, blank=False, null=False)
@@ -54,7 +54,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
-    slug = AutoSlugField(populate_from='title')
+    slug = AutoSlugField(populate_from='title', unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -72,7 +72,7 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     computer = models.TextField(max_length=400, blank=False, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = AutoSlugField(populate_from='short_description')
+    slug = AutoSlugField(populate_from='short_description', unique=True)
 
     class Meta:
         ordering = ['-created_on']
