@@ -16,13 +16,13 @@ User=get_user_model()
 class Category(models.Model):
     name = models.CharField(max_length=40, blank=False, null=False, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(default='', null=False)
+    slug = AutoSlugField(populate_from='name')
     def __str__ (self):
         return self.name
 
 class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title')
     title = models.CharField(max_length=60, blank=False, null=False, unique=True)
     content = models.TextField(max_length=2000, blank=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)
@@ -40,6 +40,7 @@ class Article(models.Model):
 
 class Link(models.Model):
     name = models.CharField(max_length=60, blank=False, null=False, unique=True)
+    slug = AutoSlugField(populate_from='name')
     url = models.CharField(max_length=255, blank=False, null=False, unique=True)
     description = models.CharField(max_length=255, blank=False, null=False)
     alt = models.CharField(max_length=255, blank=False, null=False)
@@ -53,7 +54,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
-    slug = models.SlugField(default='', null=False)
+    slug = AutoSlugField(populate_from='title')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)

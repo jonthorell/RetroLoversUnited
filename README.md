@@ -5,6 +5,13 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 1. Navbar did not list categories for all pages at first. Solved with a mixin to the class-based views
 2. Navbar catgories does not work from error pages
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
+4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
+
+# Todo
+
+Clean up css from redundant classes
+Document models
+Add comments wherever needed
 
 # User classes
 
