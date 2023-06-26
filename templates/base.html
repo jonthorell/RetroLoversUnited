@@ -7,21 +7,17 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Community page for retro computers" />
     <meta name="keywords" content="community retro computers amiga atari commodore" />
     <meta name="author" content="Jonas Thorell" />
     {% block extra_css %}
-    <script src="https://kit.fontawesome.com/9a55b16a72.js" crossorigin="anonymous"></script>
-    <!-- font awsome
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"> -->
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- materialize bootstrp -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" type="text/css" />
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" /> -->
 
     <link rel='shortcut icon' type='image/x-icon' href="{% static 'icons/favicon.ico' %}">
 
@@ -48,11 +44,13 @@
 
     {% include 'includes/footer.html' %}
 
-    <!-- MDB -->
+
     {% block onload_js %}
+    <!-- MDB -->
     <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js">
+            src="{% static 'javascript/mdb.min.js' %}">
     </script>
+    <!--custom script -->
     <script type="text/javascript"
             src="{% static 'javascript/script.js' %}">
     </script>

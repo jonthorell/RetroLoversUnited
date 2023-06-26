@@ -6,11 +6,11 @@
     "\\retro\\templates\\retro",
     "\\static",
     "\\static\\css",
+    "\\static\\javascript",
     "\\templates",
     "\\templates\\allauth",
-    "\\templates\\allauth\\account",
     "\\templates\\includes"
   ],
-  "SelectedNode": "\\retro\\models.py",
+  "SelectedNode": "\\templates\\base_black.html",
   "PreviewInSolutionExplorer": false
 }

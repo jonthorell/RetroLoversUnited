@@ -25,15 +25,16 @@
                     </select>
                     <div class="input-field">
                         <label for="title">Title:</label>
-                        <input type="text" id="title" name="title "class="form-control form-control-sm validate" required />
+                        <input type="text" id="title" name="title " class="form-control form-control-sm validate" required />
                     </div>
                     <div class="input-field">
                         <label for="content">Content:</label>
                         <textarea cols="80" rows="20" id="content" name="content" class="form-control form-control-sm" required></textarea>
                     </div>
-                    <div class="input-field">
-                        <label for="created">Created:</label>
-                        <input type="text" id="created" name="created" class="form-control form-control-sm myDatepicker" readonly />
+                    <label for="created">Created:</label>
+                    <div class="form-outline datepicker-disable-past" data-mdb-inline="true">
+                        <input type="text" id="created" name="created" class="form-control form-control-sm" />
+                        <label for="created" class="form-label">Select a date</label>
                     </div>
                     <div class="input-field">
                         <label for="excerpt">Excerpt:</label>
@@ -70,11 +71,5 @@
 
 </div>
 
-<script>
-    const dateoptions = {
-        format: 'dd-mm-yyyy'
-    }
-    const myDatepicker = new mdb.Datepicker(document.getElementById('myDatepicker'), dateoptions)
-</script>
 
 {% endblock content %}
