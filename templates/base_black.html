@@ -18,7 +18,7 @@
           integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"> -->
     <!-- materialize bootstrp -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" type="text/css" />
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" /> -->
@@ -51,7 +51,10 @@
     <!-- MDB -->
     {% block onload_js %}
     <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <script type="text/javascript"
+            src="{% static 'javascript/script.js' %}">
+    </script>
     {% endblock %}
 
 

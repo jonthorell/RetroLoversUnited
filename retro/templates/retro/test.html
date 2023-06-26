@@ -27,6 +27,10 @@
             {% for article in articles %}
             <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ article.slug }}">{{ article.title }}</a></p>
             {% endfor %}
+            <div class="form-outline datepicker">
+                <input type="text" class="form-control" id="exampleDatepicker1" />
+                <label for="exampleDatepicker1" class="form-label">Select a date</label>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -76,7 +80,7 @@
 
 
 </table>
- {% if user.is_authenticated %}
+ <!--{% if user.is_authenticated %}
 <p>Your Username is : {{user}} Your User Id is  : {{user.id}} </p>
 
 {% for group in user.groups.all %}
@@ -88,5 +92,8 @@ No
         {% endfor %}
 {% else %}
 <p>You are not logged in!</p>
-{% endif %}
+{% endif %}-->
+
+
+
     {% endblock content %}
