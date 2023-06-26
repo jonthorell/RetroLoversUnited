@@ -69,6 +69,7 @@ class Profile(models.Model):
     description = models.TextField(max_length=2000, blank=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    computer = models.TextField(max_length=400, blank=False, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='short_description')
 
