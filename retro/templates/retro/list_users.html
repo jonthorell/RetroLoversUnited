@@ -16,9 +16,11 @@
         </div>
         <div class="col">
             <h1>Users:</h1>
-            {% for article in articles %}
-            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ article.slug }}">{{ article.title }}</a></p>
-            {% endfor %}
+            <ul>
+            {% for user in users %}
+            <li class="form-ro">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
