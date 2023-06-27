@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\retro",
+    "\\retroloversunited",
     "\\retro\\templates",
     "\\retro\\templates\\retro",
     "\\static",
@@ -11,6 +12,6 @@
     "\\templates\\allauth",
     "\\templates\\includes"
   ],
-  "SelectedNode": "\\templates\\base_black.html",
+  "SelectedNode": "\\retro\\templates\\retro\\list_users.html",
   "PreviewInSolutionExplorer": false
 }

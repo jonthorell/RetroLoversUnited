@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,10 +25,13 @@
 
     <!-- default title. Will be overwritten by specific pages -->
     <title>RetroLoversUnited: {% block title %}Default Title{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
 
 </head>
 
 <body>
+    {% block body %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center" id="disclaimer-bar">
@@ -54,6 +58,7 @@
     <script type="text/javascript"
             src="{% static 'javascript/script.js' %}">
     </script>
+    {% endblock %}
     {% endblock %}
 
 
