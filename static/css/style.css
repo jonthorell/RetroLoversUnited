@@ -192,3 +192,10 @@ td {
     /* used to style the background for error pages like 404 */
     background-color: var(--black);
 }
+
+.form {
+    width: 100%;
+    margin 3% auto;
+    box-shadow: var(--small-box-shadow);
+    border-radius: 5px;
+}
