@@ -23,6 +23,11 @@ class MemberRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.groups.filter(name="members").exists()
 
+class ManagerRequiredMixin(UserPassesTestMixin):
+    # Class used to restrict access to views where user needs to be manager
+    def test_func(self):
+        return self.request.user.groups.filter(name="Managers").exists()
+
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,7 +78,8 @@ class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
     
-    
+class List_Users(ManagerRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/list_users.html'    
 
 
 class Links(custom_mixin_kategorimenu, ListView):

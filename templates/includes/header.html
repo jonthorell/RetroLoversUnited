@@ -57,19 +57,19 @@
                     </li>
 
                     {% comment %}
-                        Add links depending on group membership
+                    Add links depending on group membership
                     {% endcomment %}
 
                     {% if user.is_authenticated %}
                     {% comment %}
-                        first check if user is authenticated in the first place
-                         If not, skip create/admin links
+                    first check if user is authenticated in the first place
+                    If not, skip create/admin links
                     {% endcomment %}
 
                     {% for group in user.groups.all %}
                     {% comment %}
-                        Iterate over the groups of the current user
-                        If user is a member of group Editors, add create article link
+                    Iterate over the groups of the current user
+                    If user is a member of group Editors, add create article link
                     {% endcomment %}
                     {% if group.name == 'Editors' %}
                     <li class="nav-item">
@@ -79,22 +79,38 @@
                     {% endfor %}
 
                     {% comment %}
-                        Do the same for admin link
-                        Admin link should not be necessary when everything is ready
-                        but remains anyway since it sometimes could be a handier way
-                        of doing things.
+                    Do the same for admin link
+                    Admin link should not be necessary when everything is ready
+                    but remains anyway since it sometimes could be a handier way
+                    of doing things.
                     {% endcomment %}
 
                     {% for group in user.groups.all %}
                     {% comment %}
-                        Iterate over the groups of the current user
-                        if user is a member of the admins group, add admin link
+                    Iterate over the groups of the current user
+                    if user is a member of the admins group, add admin link
                     {% endcomment %}
 
                     {% if group.name == 'admins' %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Admin</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% comment %}
+                    Do the same for list users link
+                    {% endcomment %}
+                    {% for group in user.groups.all %}
+                    {% comment %}
+                    Iterate over the groups of the current user
+                    if user is a member of the managers group, add managers link
+                    {% endcomment %}
+
+                    {% if group.name == 'Managers' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/list_users">List Active Users</a>
+                    </li>
                     {% endif %}
                     {% endfor %}
                     {% endif %}

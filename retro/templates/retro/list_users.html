@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load mixins %}
+{% block title %}List Active Users{% endblock title %}
+
+
+{% block content %}
+
+<div class="container-fluid target-link text-center">
+    <h1>List Active Users</h1>
+</div>
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col d-none d-lg-block">
+            <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/sabrina.jpg' %}" alt="Sabrina the Skunk" width="640" height="436" />
+        </div>
+        <div class="col">
+            <h1>Users:</h1>
+            {% for article in articles %}
+            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ article.slug }}">{{ article.title }}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+    {% endblock content %}
