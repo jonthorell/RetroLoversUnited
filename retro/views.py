@@ -2,11 +2,11 @@
 from django import template
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
+from django.contrib import messages
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
@@ -45,11 +45,12 @@ class custom_mixin_kategorimenu(object):
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.all()[:3]
 
         return context
+
 
 
 
