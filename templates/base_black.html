@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,7 @@
 </head>
 
 <body class="body-error">
+    {% block body %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center" id="disclaimer-bar">
@@ -54,7 +56,7 @@
             src="{% static 'javascript/script.js' %}">
     </script>
     {% endblock %}
-
+    {% endblock %}
 
 </body>
 </html>

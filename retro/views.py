@@ -71,7 +71,7 @@ class Kategory(custom_mixin_kategorimenu, TemplateView):
 class Create_article(EditorRequiredMixin,custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/create_article.html'
 
-class Edit_profile(custom_mixin_kategorimenu, TemplateView):
+class Edit_profile(MemberRequiredMixin,custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/edit_profile.html'
 
 class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
@@ -93,15 +93,6 @@ class Links(custom_mixin_kategorimenu, ListView):
          qs = super(Links, self).get_queryset(*args, **kwargs)
          qs = qs.order_by("name")
          return qs
-
-class Create_account(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/create_account.html'
-
-class Logout(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/logout.html'
-
-class Login(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/login.html'
 
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):

@@ -18,9 +18,9 @@
             <form action="thankyou" id="contactform" class="p-2 form">
                 <fieldset>
                     <label for="name">Your name:</label>
-                    <input type="text" name="name" id="name" class="form-control form-control-sm" required />
+                    <input type="text" name="name" id="name" class="form-control form-control-sm" required autocomplete="off" />
                     <label for="email">Your E-mail:</label>
-                    <input type="email" name="email" id="email" class="form-control form-control-sm" required>
+                    <input type="email" name="email" id="email" class="form-control form-control-sm" required autocomplete="off">
                     <label for="subject">Subject:</label>
                     <select name="subject" id="subject" form="contactform" class="form-control form-control-sm">
                         <option value="techissue">Technical issue</option>
@@ -34,10 +34,12 @@
                     <label for="fb">What do you want to say to us?</label>
                     <textarea placeholder="Enter message here" cols="80"
                               rows="20" id="fb" name="fb" class="form-control form-control-sm">Enter message here</textarea>
-                    <button type="reset" class="btn btn-primary btn-sm btn-block"><strong>Reset form</strong></button>
-                    <button type="submit" class="btn btn-primary btn-sm btn-block"><strong>Submit!</strong></button>
                 </fieldset>
+                <br />
+                <button class="btn btn-primary w-25 mb-2" type="reset">Reset form</button>
+                <button class="btn btn-primary w-25 mb-2" type="submit">Submit!</button>
             </form>
+            <br />
         </div>
     </div>
 
