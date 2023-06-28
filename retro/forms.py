@@ -1,6 +1,10 @@
 from allauth.account.forms import SignupForm
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django import forms
- 
+
+class CreateForm(forms.Form):
+    foo = forms.CharField(widget=SummernoteWidget())
+
  
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')

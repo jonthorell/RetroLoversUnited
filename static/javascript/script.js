@@ -1,6 +1,5 @@
 //start with defining some constants
 
-
 function printAlert(newMessage) {
     let myAlert = "<h2>" + newMessage + "</h2><hr>"
     console.log(myAlert)

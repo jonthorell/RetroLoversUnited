@@ -95,6 +95,8 @@ class Links(custom_mixin_kategorimenu, ListView):
          qs = qs.order_by("name")
          return qs
 
+class Editor(custom_mixin_kategorimenu, TemplateView):
+    template_name='retro/editor.html'
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
