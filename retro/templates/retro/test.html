@@ -57,7 +57,7 @@
 
 
 
-<table>
+<!--<table>
     <tr>
         <td>Username</td>
         <td>First Name</td>
@@ -84,20 +84,24 @@
 
 
 
-</table>
- <!--{% if user.is_authenticated %}
+</table>-->
+ {% if user.is_authenticated %}
 <p>Your Username is : {{user}} Your User Id is  : {{user.id}} </p>
+
+{% if user.is_active %}
+<p>User is valid, active and authenticated</p>
+{% else %}
+<p>The password is valid, but the account has been disabled!</p>
+{% endif %}
 
 {% for group in user.groups.all %}
         {% if group.name == 'Editors' %}
-Yes
-        {% else %}
-No
+<p>Yes, you are an editor</p>
         {% endif %}
         {% endfor %}
 {% else %}
 <p>You are not logged in!</p>
-{% endif %}-->
+{% endif %}
 
 
     {% endblock content %}

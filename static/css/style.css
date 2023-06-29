@@ -201,6 +201,9 @@ td {
     border-radius: 5px;
 }
 
-.alert-text {
-    color: var(--black);
+.user-names {
+    /* used to style usernames in list_all_users */
+    background-color: var(--grey);
+    color: var(--white);
 }
+

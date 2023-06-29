@@ -15,10 +15,15 @@
             <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/sabrina.jpg' %}" alt="Sabrina the Skunk" width="640" height="436" />
         </div>
         <div class="col">
-            <h1>Users:</h1>
+            
+            <p>Those in black are disabled.</p>
             <ul>
-            {% for user in users %}
-            <li class="form-ro">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </li>
+                {% for user in users %}
+                {% if user.is_active %}
+                <li class="user-names">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </li>
+                {% else %}
+                <li> <i class="fa-solid fa-poo"></i>  {{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
