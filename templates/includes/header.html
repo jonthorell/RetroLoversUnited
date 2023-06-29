@@ -25,9 +25,35 @@
                          loading="lazy" />
                 </a>
                 <!-- Left links -->
+                <!-- Authors -->
+                <div class="dropdown">
+                    <a class="text-reset dropdown-toggle d-flex align-items-center"
+                       href="#"
+                       id="navbarDropdownMenuAuthors"
+                       role="button"
+                       data-mdb-toggle="dropdown"
+                       aria-expanded="false">
+                        Authors
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuAuthors">
+                        {% for user in users %}
+                        {% for group in user.groups.all %}
+                        {% if group.name == 'Editors' %}
+                        {% comment %}
+                        Only list user that are editors
+                        {% endcomment %}
+                        <li>
+                            <a class="dropdown-item" href="/author"> {{ user.first_name }} {{ user.last_name }} </a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
                 <!-- Categories -->
                 <div class="dropdown">
-                    <a class="text-reset dropdown-toggle d-flex align-items-center hidden-arrow"
+                    <a class="text-reset dropdown-toggle d-flex align-items-center"
                        href="#"
                        id="navbarDropdownMenuCategories"
                        role="button"
@@ -39,7 +65,7 @@
                         aria-labelledby="navbarDropdownMenuCategories">
                         {% for category in categories %}
                         <li>
-                            <a class="dropdown-item" href="/category">{{ category.name }}</a>
+                            <a class="dropdown-item" href="/category"> {{ category.name }} </a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -114,6 +140,8 @@
                     {% endif %}
                     {% endfor %}
                     {% endif %}
+                   
+
                 </ul>
                 <!-- Left links -->
             </div>
@@ -204,9 +232,8 @@
                 </ul>
             </div>
         </div>
-            {% endif %}
-            <!-- Right elements -->
-        
+        {% endif %}
+        <!-- Right elements -->
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->

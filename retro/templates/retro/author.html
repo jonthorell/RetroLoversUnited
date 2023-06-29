@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% load mixins %}
+{% block title %}Author{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <h1>Author</h1>
+    {% for user in users %}
+    <p> {{ user.first_name }} </p>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

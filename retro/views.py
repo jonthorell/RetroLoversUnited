@@ -51,7 +51,8 @@ class Index(custom_mixin_kategorimenu, TemplateView):
 
         return context
 
-
+class Author(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/author.html'
 
 
 

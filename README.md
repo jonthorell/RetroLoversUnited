@@ -7,6 +7,7 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
 5. Bell-drop down created an empty menu if there were no messages. Fixed by moving the ul-container.
+6. Spacing issue between author and category menu. Not fixed yet
 
 # Todo
 
@@ -22,6 +23,7 @@ Every user belongs to one or more classes of user.
 2. Editors. Has the ability to create new articles.
 3. Members. Can comment on articles (and potentially like articles)
 4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
+5. Managers
 
 In the issues tracker, webuser is a not logged in user. User is a logged in user.
 

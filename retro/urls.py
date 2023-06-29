@@ -1,7 +1,7 @@
 
 from urllib import request
 from django.urls import path
-from .views import Index, Links,Contact, About, Kategory, Create_article, Thankyou, Test, Edit_profile, View_profile,List_Users
+from .views import Index, Links,Contact, About, Kategory, Create_article, Thankyou, Test, Edit_profile, View_profile,List_Users,Author
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
@@ -14,5 +14,6 @@ urlpatterns = [
     path('thankyou', Thankyou.as_view(), name='thankyou'),
     path('edit_profile', Edit_profile.as_view(), name='edit_profile'),
     path('view_profile', View_profile.as_view(), name='view_profile'),
-    path('list_users', List_Users.as_view(), name='list_users')
+    path('list_users', List_Users.as_view(), name='list_users'),
+    path('author', Author.as_view(), name='author')
     ]
