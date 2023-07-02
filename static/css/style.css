@@ -120,7 +120,11 @@ footer {
     margin: 1rem;
 }
 
-/* links */
+/* links 
+   target-link first is to make sure the links in the navbar are not affected
+    categories first is to make sure navlinks in the categories cards are never shown as links since the card itself is the link
+
+*/
 
 /* unvisited link */
 .target-link a:link {
@@ -144,6 +148,30 @@ footer {
 .target-link a:active {
     color: var(--black);
     text-decoration: underline;
+}
+
+/* unvisited link */
+.categories a:link {
+    color: var(--black);
+    text-decoration: none;
+}
+
+/* visited link */
+.categories a:visited {
+    color: var(--black);
+    text-decoration: none;
+}
+
+/* mouse over link */
+.categories a:hover {
+    color: hotpink;
+    text-decoration: none;
+}
+
+/* selected link */
+.categories a:active {
+    color: var(--black);
+    text-decoration: none;
 }
 
 .cc {
@@ -207,3 +235,7 @@ td {
     color: var(--white);
 }
 
+.categories {
+    /* used for the right-hand menu in categories*/
+    text-decoration: none;
+}

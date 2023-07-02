@@ -14,13 +14,13 @@
         <div class="col d-none d-lg-block">
             <img class='rounded-circle border border-5 border-success right-align' width="640" height="436" src="{% static 'images/amylogin.jpg' %}" />
         </div>
-        <div class="col">
+        <div class="col categories">
             <h1 class="text-center">All categories</h1>
             {% for category in categories %}
-            <a href="#" class="categories" aria-label="Click to view {{ category.name }} ">
+            <a href="" aria-label="Click to view {{ category.name }} ">
                 <div class="card m-3">
                     <div class="card-body">
-                        <h5 class="card-title web-header">{{ category.name }}</h5>
+                        <h2 class="card-title web-header">{{ category.name }}</h2>
                         <p class="web-header">{{ category.description }}</p>
                     </div>
                 </div>
