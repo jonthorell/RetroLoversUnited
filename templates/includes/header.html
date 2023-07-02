@@ -63,6 +63,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuCategories">
+                        <li>
+                            <a class="dropdown-item sans-font" href="/category">All categories</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
                         {% for category in categories %}
                         <li>
                             <a class="dropdown-item" href="/category"> {{ category.name }} </a>
