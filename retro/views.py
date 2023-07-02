@@ -1,12 +1,8 @@
 
-from django import template
-from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic, View
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
-from django.contrib import messages
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor

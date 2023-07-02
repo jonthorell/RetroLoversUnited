@@ -1,5 +1,6 @@
 
 from urllib import request
+from . import views
 from django.urls import path
 from .views import Index, Links,Contact, About, Kategory, Create_article, Thankyou, Test, Edit_profile, View_profile,List_Users,Author
 

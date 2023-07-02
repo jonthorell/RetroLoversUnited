@@ -19,9 +19,9 @@
             <p>&nbsp;<i class="fa-sharp fa-solid fa-check"></i>&nbsp; are enabled. <i class="fa-solid fa-xmark"></i> are disabled. <br></p>
             {% for user in users %}
             {% if user.is_active %}
-            <i class="fa-sharp fa-solid fa-check user-names"></i>&nbsp; <a href="userdetails/{{ x.slug }}">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </a><br>
+            <i class="fa-sharp fa-solid fa-check user-names"></i>&nbsp; <a href="detailuser/{{ x.slug }}">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </a><br>
             {% else %}
-            <i class="fa-solid fa-xmark user-names"></i> &nbsp; <a href="userdetails/{{ x.slug }}">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </a><br>
+            <i class="fa-solid fa-xmark user-names"></i> &nbsp; <a href="detailuser/{{ x.slug }}">{{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) </a><br>
             {% endif %}
             {% endfor %}
         </div>
