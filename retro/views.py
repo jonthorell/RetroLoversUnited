@@ -62,8 +62,12 @@ class About(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/about.html'
 
     
-class Kategory(custom_mixin_kategorimenu, TemplateView):
+class Kategories(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/category.html'
+    model = Category
+    context_object_name = 'categories'
+
+
     
 
 class Create_article(EditorRequiredMixin,custom_mixin_kategorimenu, TemplateView):

@@ -17,6 +17,7 @@ class Category(models.Model):
     name = models.CharField(max_length=40, blank=False, null=False, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from='name', unique=True)
+    description = models.CharField(max_length=200, blank=False, null=False)
     def __str__ (self):
         return self.name
 
