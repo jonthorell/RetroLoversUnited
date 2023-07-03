@@ -16,7 +16,7 @@
         </div>
         <div class="col categories">
             {% for category in categories %}
-            <a href="" aria-label="Click to view {{ category.name }} ">
+            <a href="{% url 'category_by_category' category.id %}" aria-label="Click to view {{ category.name }} ">
                 <div class="card m-3">
                     <div class="card-body">
                         <h2 class="card-title web-header">{{ category.name }}</h2>
