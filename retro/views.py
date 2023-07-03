@@ -1,5 +1,6 @@
 
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
+from django.urls import reverse
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
@@ -26,6 +27,7 @@ class ManagerRequiredMixin(UserPassesTestMixin):
 
 
 
+
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -37,6 +39,11 @@ class custom_mixin_kategorimenu(object):
         context['profiles'] = Profile.objects.all()
 
         return context
+
+class article_detail(custom_mixin_kategorimenu, DetailView):
+    template_name = 'retro/get_article.html'
+    model = Article
+    context_object_name = 'article'
 
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'

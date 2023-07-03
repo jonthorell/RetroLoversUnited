@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load mixins %}
+{% block title %}View Article - {{ article.title }} {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="article-info mt-3 p-1">
+        <!-- img -->
+    </div>
+    <div class="article-detail">
+        <h1 class="text-center">{{ article.title }}</h1>
+        <p class="text-center">Posted by: {{ article.user.first_name }}&nbsp; {{ article.user.last_name }}</p>
+
+        {% if request.user == article.user %}
+        <div class="text-center">
+            <a href="">Edit</a>
+            <a href="">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="article-container">
+    <div class="ingredients p-3">
+        <p>{{ article.content|safe}}</p>
+    </div>
+</div>
+
+    {% endblock content %}
