@@ -7,7 +7,8 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
 5. Bell-drop down created an empty menu if there were no messages. Fixed by moving the ul-container.
-6. Spacing issue between author and category menu. Not fixed yet
+6. Spacing issue between author and category menu. Not fixed yet.
+7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
 
 # Todo
 

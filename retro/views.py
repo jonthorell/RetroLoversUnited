@@ -1,4 +1,5 @@
 
+from unicodedata import category
 from django.views.generic import TemplateView, ListView, DetailView
 from django.urls import reverse
 from django.contrib.auth.models import User, Group
@@ -44,6 +45,15 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
     model = Article
     context_object_name = 'article'
+
+class category_by_category(custom_mixin_kategorimenu, DetailView):
+    template_name = 'retro/category_by_category.html'
+    model = Category
+    context_object_name = 'category'
+
+    #def get_context_data(self, *args, **kwargs):
+    #    context = super().get_context_data(*args, **kwargs)
+    #    context['articles'] = Article.objects.get(category.category_id)
 
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
