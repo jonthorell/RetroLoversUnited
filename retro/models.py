@@ -18,6 +18,10 @@ class Category(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from='name', unique=True)
     description = models.CharField(max_length=200, blank=False, null=False)
+
+    class Meta:
+        ordering = ['name']
+
     def __str__ (self):
         return self.name
 
