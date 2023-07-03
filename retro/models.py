@@ -50,6 +50,9 @@ class Link(models.Model):
     description = models.CharField(max_length=255, blank=False, null=False)
     alt = models.CharField(max_length=255, blank=False, null=False)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
