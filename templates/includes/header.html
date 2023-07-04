@@ -44,7 +44,7 @@
                         Only list user that are editors
                         {% endcomment %}
                         <li>
-                            <a class="dropdown-item" href="/author"> {{ user.first_name }} {{ user.last_name }} </a>
+                            <a class="dropdown-item" href="{% url 'articles_by_author' user.id %}"> {{ user.first_name }} {{ user.last_name }} </a>
                         </li>
                         {% endif %}
                         {% endfor %}
@@ -69,7 +69,7 @@
                         <li><hr class="dropdown-divider"></li>
                         {% for category in categories %}
                         <li>
-                            <a class="dropdown-item" href="{% url 'category_by_category' category.id %}"> {{ category.name }} </a>
+                            <a class="dropdown-item" href="{% url 'articles_by_category' category.id %}"> {{ category.name }} </a>
                         </li>
                         {% endfor %}
                     </ul>
