@@ -124,6 +124,3 @@ class Editor(custom_mixin_kategorimenu, TemplateView):
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
-
-
-
