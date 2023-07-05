@@ -16,7 +16,7 @@ urlpatterns = [
     path('edit_profile', Edit_profile.as_view(), name='edit_profile'),
     path('view_profile', View_profile.as_view(), name='view_profile'),
     path('list_users', List_Users.as_view(), name='list_users'),
-    path("article/<slug:pk>/", article_detail.as_view(), name="article_detail"),
-    path("category/<slug:pk>/", articles_by_category.as_view(), name="articles_by_category"),
-    path("author/<slug:pk>/", articles_by_author.as_view(), name="articles_by_author")
+    path("article/<int:pk>/", article_detail.as_view(), name="article_detail"),
+    path("category/<int:pk>/", articles_by_category.as_view(), name="articles_by_category"),
+    path("author/<int:pk>/", articles_by_author.as_view(), name="articles_by_author")
     ]

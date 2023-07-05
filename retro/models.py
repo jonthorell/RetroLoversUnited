@@ -33,7 +33,7 @@ class Article(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
-    excerpt = models.TextField(blank=True)
+    excerpt = models.TextField(blank=False, null=False)
     status = models.IntegerField(choices=STATUS, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
