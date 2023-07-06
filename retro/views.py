@@ -59,12 +59,13 @@ class articles_by_category(custom_mixin_kategorimenu, DetailView):
 
 class articles_by_author(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/articles_by_author.html'
-    model = User
-    context_object_name = 'user'
+    model = Category
+    context_object_name = 'category'
 
-    #def get_context_data(self, *args, **kwargs):
-    #    context = super().get_context_data(*args, **kwargs)
-    #    context['articles'] = Article.objects.get(Article.user_id)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(user__id=self.kwargs.get("pk")).select_related('user').all()
+        return context
 
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
@@ -79,6 +80,12 @@ class Index(custom_mixin_kategorimenu, TemplateView):
 
 class Contact(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/contact.html'
+
+class FAQ(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/faq.html'
+
+class Credits(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/credits.html'
 
 
 
