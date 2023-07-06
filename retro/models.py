@@ -80,6 +80,7 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     computer = models.TextField(max_length=400, blank=False, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    avatar = models.CharField(max_length=60)
     slug = AutoSlugField(populate_from='short_description', unique=True)
 
     class Meta:

@@ -210,12 +210,6 @@ fieldset label {
     background-color: var(--orange);
 }
 
-td {
-    /* used for the table on the testpage. Remove before submitting */
-    background-color: var(--black);
-    color: var(--orange);
-}
-
 .body-error {
     /* used to style the background for error pages like 404 */
     background-color: var(--black);
@@ -238,4 +232,16 @@ td {
 .categories {
     /* used for the right-hand menu in categories*/
     text-decoration: none;
+}
+
+table th {
+    /* used for the table header in article-by-category*/
+    color: var(--black);
+    font-family: var(--sans3);
+}
+
+.table-desc {
+    /* used for the description in article-by-category*/
+    color: var(--off-white);
+    font-style: italic;
 }

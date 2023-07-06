@@ -54,7 +54,7 @@ class articles_by_category(custom_mixin_kategorimenu, DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.filter(category_id=kwargs.get("pk"))
+        context['articles'] = Article.objects.filter(category__id=self.kwargs.get("pk")).select_related('category').all()
         return context
 
 class articles_by_author(custom_mixin_kategorimenu, DetailView):

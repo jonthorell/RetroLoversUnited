@@ -12,9 +12,11 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 
 # Todo
 
-Clean up css from redundant classes
-Document models
-Add comments wherever needed
+1. Clean up css from redundant classes
+2. Document models
+3. Add comments wherever needed
+4. Chnage chip in category to display right avatar and editor-name
+5. Add a credits view. Avatars needs to be added there apart from the rest
 
 # User classes
 
