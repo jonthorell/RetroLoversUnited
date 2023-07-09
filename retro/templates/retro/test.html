@@ -23,9 +23,11 @@
             <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />
         </div>
         <div class="col div-border">
-            <h1>Articles:</h1>
-            {% for article in articles %}
-            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ article.slug }}">{{ article.title }}</a></p>
+            <h1>Profiles:</h1>
+            {% for profile in profiles %}
+            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ profile.slug }}">{{ profile.user_id }} {{profile.short_description}}</a></p>
+                  <img src="{% static 'avatars/kallekula.png' %}" width='80' height='80' alt="Author" />
+
             {% endfor %}
             <div class="form-outline datepicker">
                 <input type="text" class="form-control" id="exampleDatepicker1" />
