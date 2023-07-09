@@ -18,6 +18,10 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 4. Chnage chip in category to display right avatar and editor-name
 5. Add a credits view. Avatars needs to be added there apart from the rest
 
+# Other
+
+1. Credits works fine. Should be moved to separate app.
+
 # User classes
 
 Every user belongs to one or more classes of user.
