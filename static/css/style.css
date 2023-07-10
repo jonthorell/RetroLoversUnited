@@ -20,6 +20,7 @@
     --white: #fff;
     --orange: #ffbf50;
     --grey: #777777;
+    --grey2: #999999;
     --red: #FF0000;
     --green: #97aa88aa;
 
@@ -28,6 +29,49 @@
 
     --small-box-shadow: 1px  -1px 7px 0 #00000061;
     
+}
+
+/* classes for all the background colors */
+
+.background {
+    /* used for table-bg */
+    background-color: var(--background);
+}
+
+.blue {
+    background-color: var(--blue);
+}
+
+.black {
+    background-color: var(--black);
+}
+
+.off-white {
+    background-color: var(--off-white);
+}
+
+.white {
+    background-color: var(--white);
+}
+
+.orange {
+    background-color: var(--orange);
+}
+
+.grey {
+    background-color: var(--grey);
+}
+
+.grey2 {
+    background-color: var(--grey2);
+}
+
+.red {
+    background-color: var(--red);
+}
+
+.green {
+    background-color: var(--green);
 }
 
 html, body {
@@ -174,13 +218,6 @@ footer {
     text-decoration: none;
 }
 
-.cc {
-    /* cc stands for creative commons, used for those boxes on about page */
-    background-image: url('https://raw.githubusercontent.com/jonthorell/QuizGame/main/assets/images/backdrop.png');
-    border: dotted;
-    border-color: var(--red);
-}
-
 fieldset label {
     color: var(--white);
 }
@@ -244,4 +281,9 @@ table th {
     /* used for the description in article-by-category*/
     color: var(--off-white);
     font-style: italic;
+}
+
+.td-desc {
+    /* used for description column in table on credits page*/
+    color: var(--black);
 }
