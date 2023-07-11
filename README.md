@@ -9,14 +9,16 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 5. Bell-drop down created an empty menu if there were no messages. Fixed by moving the ul-container.
 6. Spacing issue between author and category menu. Not fixed yet.
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
+8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
+9. When using view-by-author, the system inexplicable logs the user in as that user??
 
 # Todo
 
 1. Clean up css from redundant classes
 2. Document models
 3. Add comments wherever needed
-4. Chnage chip in category to display right avatar and editor-name
-5. Add a credits view. Avatars needs to be added there apart from the rest
+4. Chnage chip in category to display right avatar and editor-name. DONE
+5. Add a credits view. Avatars needs to be added there apart from the rest. DONE
 
 # Other
 
@@ -28,9 +30,9 @@ Every user belongs to one or more classes of user.
 
 1. Admin. Or superusercs. They can do anything.
 2. Editors. Has the ability to create new articles.
-3. Members. Can comment on articles (and potentially like articles)
+3. Members. Can comment on articles (and potentially like articles). Also needed to view profiles.
 4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
-5. Managers
+5. Managers. Can see all active and inactive users.
 
 In the issues tracker, webuser is a not logged in user. User is a logged in user.
 

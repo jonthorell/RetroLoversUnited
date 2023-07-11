@@ -59,12 +59,12 @@ class articles_by_category(custom_mixin_kategorimenu, DetailView):
 
 class articles_by_author(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/articles_by_author.html'
-    model = Category
-    context_object_name = 'category'
+    model = User
+    context_object_name = 'user'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.filter(user__id=self.kwargs.get("pk")).select_related('user').all()
+        context['articles'] = Article.objects.filter(user__id=self.kwargs.get("pk")).all()
         return context
 
 class Index(custom_mixin_kategorimenu, TemplateView):

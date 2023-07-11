@@ -19,19 +19,28 @@
                         <th>Category</th>
                     </tr>
                 </thead>
-                {% for article in articles %}
-                <tr>
-                    <td>
-                        <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
-                    </td>
-                    <td>
-                        <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Category</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-desc">{{ article.excerpt }} </td>
-                </tr>
-                {% endfor %}
+                <tbody class="background">
+                    {% for article in articles %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+                        </td>
+                        <td>
+                            {% for category in categories %}
+                            {% if article.category_id == category.id %}
+                            <a href="{% url 'articles_by_category' category.id %}">
+                                <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
+                                </a>
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-desc">{{ article.excerpt }} </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
             </table>
         </div>
     </div>
