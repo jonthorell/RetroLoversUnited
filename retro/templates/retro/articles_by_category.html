@@ -19,24 +19,40 @@
                         <th>Article</th>
                         <th>Author</th>
                     </tr>
-                    </thead>
+                </thead>
+                <tbody class="background">
                     {% for article in articles %}
                     <tr>
                         <td>
                             <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
                         </td>
                         <td>
+                            {% for profile in profiles %}
+                            {% if article.user_id == profile.user_id %}
+                            {% with urlbase="avatars/"|add:profile.avatar %}
                             <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
-                                <img src="{% static 'avatars/kallekula.png' %}" alt="Author" />
-                                {{ article.user_id }}
-                                <i class="close fas fa-times"></i>
+                               
+                                <img src="{% static urlbase %}" alt="Author" />
+                                {% for user in users %}
+                                {% if user.id == profile.user_id %}
+                                <a href="{% url 'view_profile' %}">
+                                    {{ user.first_name }}
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                                
                             </div>
+                            {% endwith %}
+                            {% endif %}
+                            {% endfor %}
                         </td>
                     </tr>
-                <tr>
-                    <td class="table-desc">{{ article.excerpt }} </td>
-                </tr>
+                    <tr>
+                        <td class="table-desc">{{ article.excerpt }} </td>
+                        <td> &nbsp; </td>
+                    </tr>
                     {% endfor %}
+                    </tbody>
             </table>
         </div>
     </div>
