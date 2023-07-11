@@ -1,4 +1,5 @@
 # from getpass import getuser
+from email.policy import default
 from django.db.models import CharField, Model
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -80,7 +81,7 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     computer = models.TextField(max_length=400, blank=False, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    avatar = models.CharField(max_length=60)
+    avatar = models.CharField(max_length=60, default="default-user.png")
     slug = AutoSlugField(populate_from='short_description', unique=True)
 
     class Meta:
