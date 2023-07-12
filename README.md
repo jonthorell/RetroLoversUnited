@@ -12,6 +12,7 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
 9. When using view-by-author, the system inexplicable logs the user in as that user??
 10. Faq gets same value from links.description all the time??
+11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving.
 
 # Todo
 
