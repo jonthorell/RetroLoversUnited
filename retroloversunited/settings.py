@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'mixin_templatetag',
     'retro',
     'credits',
+    'faq',
 ]
 
 SITE_ID = 1

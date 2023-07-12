@@ -11,6 +11,7 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
 8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
 9. When using view-by-author, the system inexplicable logs the user in as that user??
+10. Faq gets same value from links.description all the time??
 
 # Todo
 
