@@ -21,6 +21,7 @@ import retro
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('credits/', include("credits.urls"), name="credits-urls"),
     path('summernote/', include('django_summernote.urls')),
     path('', include('retro.urls'))
 ]
