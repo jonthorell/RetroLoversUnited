@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load mixins %}
 {% block title %}FAQ{% endblock title %}
 
 {% block content %}
@@ -21,7 +20,7 @@
                         <td>
                             <!-- Button trigger modal -->
                             <a href="#" data-mdb-toggle="modal" data-mdb-target="#termModal">
-                                Open Modal
+                                {{ link.name }}
                             </a>
                         </td>
                     </tr>

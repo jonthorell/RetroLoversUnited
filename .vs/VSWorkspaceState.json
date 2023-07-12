@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\credits\\templates",
+    "\\credits\\templates\\credits",
+    "\\faq\\templates",
+    "\\faq\\templates\\retro",
     "\\retro",
-    "\\retroloversunited",
     "\\retro\\templates",
     "\\retro\\templates\\retro",
-    "\\static",
-    "\\static\\css",
-    "\\static\\javascript",
-    "\\templates",
-    "\\templates\\allauth",
-    "\\templates\\includes"
+    "\\static\\images",
+    "\\templates\\allauth"
   ],
-  "SelectedNode": "\\retro\\templates\\retro\\list_users.html",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
