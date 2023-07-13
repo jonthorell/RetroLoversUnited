@@ -14,7 +14,7 @@ class custom_mixin_kategorimenu(object):
         context['articles'] = Article.objects.all()
         context['comments'] = Comment.objects.all()
         context['profiles'] = Profile.objects.all()
-        context['terminologys'] = Terminology.objects.all()
+        context['faqs'] = Terminology.objects.all()
 
         return context
 
@@ -23,6 +23,6 @@ class Faq(custom_mixin_kategorimenu, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['terminologys'] = Terminology.objects.all()
+        context['faqs'] = Terminology.objects.all()
 
         return context
