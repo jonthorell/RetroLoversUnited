@@ -1,8 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_create_art.html" %}
 {% load static %}
 {% block title %}Create Article{% endblock title %}
 
 {% block content %}
+
+
 
 <div class="container-fluid text-center target-link">
     <h1>Create Article</h1>
@@ -29,10 +31,10 @@
                     <div class="input-field">
                         <label for="content">Content:</label>
                         <textarea cols="80" rows="20" id="content" name="summernote" class="form-control form-control-sm" required></textarea>
-                        Test
                     </div>
                     <label for="created">Created:</label>
-                    <div class="form-outline datepicker-disable-past" data-mdb-inline="true">
+
+                    <div class="form-outline" data-mdb-inline="true" id="datepicker-disable-past">
                         <input type="text" id="created" name="created" class="form-control form-control-sm" />
                         <label for="created" class="form-label">Select a date</label>
                     </div>
@@ -70,6 +72,5 @@
     </div>
 
 </div>
-
 
 {% endblock content %}

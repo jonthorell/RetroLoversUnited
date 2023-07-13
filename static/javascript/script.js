@@ -6,10 +6,3 @@ function printAlert(newMessage) {
     document.getElementById('alert-id').innerHTML = myAlert;
     mdb.Alert.getInstance(document.getElementById('alert-id')).show();
 }
-
-
-
-const datepickerDisablePast = document.querySelector('.datepicker-disable-past');
-new mdb.Datepicker(datepickerDisablePast, {
-    disablePast: true
-});
