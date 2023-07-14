@@ -112,7 +112,7 @@ class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
     template_name = 'retro/view_profile.html'
 
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/test.html'
+    template_name = 'retro/test3.html'
     
 class List_Users(ManagerRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/list_users.html'    
