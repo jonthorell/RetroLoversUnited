@@ -82,10 +82,10 @@ class Contact(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/contact.html'
 
 class FAQ(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/faq.html'
+    template_name = 'faq/faq.html'
 
 class Credits(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/credits.html'
+    template_name = 'credits/credits.html'
 
 
 
