@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %}Test Page{% endblock title %}
 
+{% mixin foo %}
+<div class="text-center target-link">
+    <p>Mixin test</p>
+    <div>{{ name }}</div>
+    <div>{{ description }}</div>
+    <hr />
+</div>
+{% endmixin %}
+
 {% block content %}
 
 <div class="container-fluid target-link text-center">
@@ -14,38 +23,86 @@
         </div>
         <div class="col div-border">
             <h1>Profiles:</h1>
-            <a href="" data-mdb-toggle="modal" data-mdb-target="#termModal">
-                Open modal
-            </a>
-            <!-- Modal -->
-            <div class="modal top fade" id="termModal" tabindex="-1" aria-labelledby="TermLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-                <div class="modal-dialog modal-dialog-scrollable modal-lg  modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title blackfg" id="TermLabel">Term Explained</h5>
-                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            {% for profile in profiles %}
+            <p><i class="fa-solid fa-check"></i> &nbsp; <a href="{{ profile.slug }}">{{ profile.user_id }} {{profile.short_description}}</a><img src="{% static 'avatars/kallekula.png' %}" width='20' height='20' alt="Author" /></p>
+                  
 
-                            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-
-                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
+            <div class="form-outline datepicker">
+                <input type="text" class="form-control" id="exampleDatepicker1" />
+                <label for="exampleDatepicker1" class="form-label">Select a date</label>
             </div>
+            <input type="button" onclick="printAlert('Well done!')" value="Display">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Anything below the columns</h2>
+            <p class="target-link">
+                Full width info goes here
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            Another row beneath the columns
+        </div>
+        <div class="wysiwyg" data-mdb-wysiwyg="wysiwyg">
+            <br />
+            Test editor
         </div>
     </div>
 </div>
 
 
+    {% mix foo with name="hello" description="world" %}
 
+
+
+<!--<table>
+    <tr>
+        <td>Username</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Editor?</td>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        {% for group in user.groups.all %}
+        {% if group.name == 'Editors' %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        {% endfor %}
+
+
+    </tr>
+    {% endfor %}
+
+
+
+</table>-->
+ {% if user.is_authenticated %}
+<p>Your Username is : {{user}} Your User Id is  : {{user.id}} </p>
+
+{% if user.is_active %}
+<p>User is valid, active and authenticated</p>
+{% else %}
+<p>The password is valid, but the account has been disabled!</p>
+{% endif %}
+
+{% for group in user.groups.all %}
+        {% if group.name == 'Editors' %}
+<p>Yes, you are an editor</p>
+        {% endif %}
+        {% endfor %}
+{% else %}
+<p>You are not logged in!</p>
+{% endif %}
 
 
     {% endblock content %}
