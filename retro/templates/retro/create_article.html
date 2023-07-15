@@ -43,7 +43,7 @@
                         <input type="text" id="excerpt" name="excerpt" class="form-control form-control-sm" required />
                     </div>
                     <label for="status">Status:</label>
-                    <input type="text" id="status" name="status" class="form-control form-control-sm form-ro" disabled placeholder="Draft" />
+                    <input type="text" id="status" name="status" class="form-control form-control-sm form-ro" disabled placeholder="Published" />
                     <label for="user">Create article as user: </label>
                     {% if user.is_authenticated %}
                     <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}" />

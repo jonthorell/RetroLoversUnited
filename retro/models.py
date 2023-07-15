@@ -10,8 +10,17 @@ from autoslug import AutoSlugField
 # Create your models here.
 
 # status is used to check wheter comment or article has been approved. Some of this has been adapted for my own use from the codestar code-along
+# Articles have their status automatically set to published. User needs to be a member of the editors group and the only one that can do that
+# is the superuser, so presumably those that can create articles have been deemed trustworthy.
 
-STATUS = ((0, "Draft"), (1,"Published"))
+# Comments are in draft status by default. That means an admin has to approve the comment before it can be seen
+
+# Status deleted is just that, deleted. Instead of removing the article/comment upon deletion it is marked as deleted and not shown.
+# In other words, it is never removed from the database.
+
+
+
+STATUS = ((0, "Draft"), (1,"Published"), (2,"Deleted"))
 
 User=get_user_model()
 
@@ -39,7 +48,7 @@ class Article(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     excerpt = models.TextField(blank=False, null=False)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:

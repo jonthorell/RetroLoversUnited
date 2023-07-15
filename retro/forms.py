@@ -4,7 +4,7 @@ from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
-from retro.models import Profile
+from retro.models import Profile,Article
 
 class articleform(forms.Form):
     foo = forms.CharField(widget=SummernoteWidget())
@@ -42,3 +42,8 @@ class CustomSignupForm(SignupForm):
         new = Profile(short_description=short,description=description,user_id=user_id,computer=computer)
         new.save()
         return user
+
+class myCreateArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = "__all__"

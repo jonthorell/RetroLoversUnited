@@ -2,15 +2,6 @@
 {% load static %}
 {% block title %}Test Page{% endblock title %}
 
-{% mixin foo %}
-<div class="text-center target-link">
-    <p>Mixin test</p>
-    <div>{{ name }}</div>
-    <div>{{ description }}</div>
-    <hr />
-</div>
-{% endmixin %}
-
 {% block content %}
 
 <div class="container-fluid target-link text-center">
@@ -19,7 +10,14 @@
 <div class="container-fluid target-link">
     <div class="row">
         <div class="col div-border d-none d-lg-block">
-            <img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />
+            <p>Form:</p>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form }}
+                <input type="submit" value="" Submit">
+            </form>
+            <!--<img class='rounded-circle border border-5 border-success right-align' src="{% static 'images/amygrief.gif' %}" alt="Amy grieves" width="640" height="436" />-->
         </div>
         <div class="col div-border">
             <h1>Profiles:</h1>
@@ -52,11 +50,6 @@
         </div>
     </div>
 </div>
-
-
-    {% mix foo with name="hello" description="world" %}
-
-
 
 <!--<table>
     <tr>
@@ -103,6 +96,7 @@
 {% else %}
 <p>You are not logged in!</p>
 {% endif %}
+
 
 
     {% endblock content %}
