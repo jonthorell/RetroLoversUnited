@@ -22,12 +22,12 @@
                     {% for article in articles %}
                     <tr>
                         <td>
-                            <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+                            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
                         </td>
                         <td>
                             {% for category in categories %}
                             {% if article.category_id == category.id %}
-                            <a href="{% url 'articles_by_category' category.id %}">
+                            <a href="{{ category.get_absolute_url }}">
                                 <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
                                 </a>
                             {% endif %}

@@ -4,6 +4,7 @@ from django.db.models import CharField, Model
 from django.db import models
 from django.contrib.auth import get_user_model
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 from autoslug import AutoSlugField
 
 # Create your models here.
@@ -26,6 +27,9 @@ class Category(models.Model):
     def __str__ (self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("articles_by_category", args=[str(self.id)])
+
 class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='title', unique=True)
@@ -44,6 +48,9 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("article_detail", args=[str(self.id)])
+
 class Link(models.Model):
     name = models.CharField(max_length=60, blank=False, null=False, unique=True)
     slug = AutoSlugField(populate_from='name', unique=True)
@@ -56,6 +63,8 @@ class Link(models.Model):
 
     def __str__(self):
         return self.name
+
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
