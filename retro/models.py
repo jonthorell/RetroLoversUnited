@@ -99,3 +99,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.short_description
 
+    def get_absolute_url(self):
+        return reverse("view_profile", args=[str(self.id)])
+

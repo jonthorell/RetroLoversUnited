@@ -1,3 +1,4 @@
+from queue import Full
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.contrib.auth.models import User, Group
@@ -35,10 +36,9 @@ class CustomSignupForm(SignupForm):
         user.save()
         full_name=user.first_name+" "+user.last_name
         short="Short description of "+full_name
-        description="Placeholder"
-        computer="Placeholder"
-        avatar="default-user.png"
+        description="Description of "+full_name
+        computer="Describe your computer setup here."
         user_id=user.id
-        new = Profile(short_description=short,description=description,user_id=user_id,computer=computer,avatar=avatar)
+        new = Profile(short_description=short,description=description,user_id=user_id,computer=computer)
         new.save()
         return user

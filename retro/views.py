@@ -110,6 +110,13 @@ class Edit_profile(MemberRequiredMixin,custom_mixin_kategorimenu, TemplateView):
 
 class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
+    model = Profile
+    context_object_name = 'profile'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(category__id=self.kwargs.get("pk")).select_related('category').all()
+        return context
 
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
