@@ -1,4 +1,6 @@
 from queue import Full
+from random import choices
+from unicodedata import category
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.contrib.auth.models import User, Group
@@ -43,7 +45,41 @@ class CustomSignupForm(SignupForm):
         new.save()
         return user
 
-class myCreateArticleForm(forms.ModelForm):
+class CreateArticleForm(forms.ModelForm):
+    content = forms.CharField(
+        required=True,
+        widget=forms.widgets.Textarea(
+            attrs={
+                "placeholder": "Main content of article",
+                "class": "form-control form-control-sm",
+            }
+        ),
+        label="",
+    )
+
+    title = forms.CharField(
+        required=True,
+        widget = forms.widgets.TextInput(
+            attrs={
+                 "placeholder": "Title of article",
+                "class": "form-control form-control-sm validate",
+                }
+            ),
+        label="",
+    )
+
+    excerpt = forms.CharField(
+        required=True,
+        widget = forms.widgets.TextInput(
+            attrs={
+                 "placeholder": "Excerpt of article",
+                "class": "form-control form-control-sm validate",
+                }
+            ),
+        label="",
+    )
+
+
     class Meta:
         model = Article
-        fields = "__all__"
+        exclude = ("user", "featured_image", "status",)

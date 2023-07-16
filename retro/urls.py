@@ -2,10 +2,13 @@
 from urllib import request
 from . import views
 from django.urls import path
-from .views import Index, Links,Contact, About, Kategories, Create_article, Thankyou, Test, Edit_profile, View_profile,List_Users,article_detail,articles_by_category,articles_by_author,form_view
+from .views import Index, Links,Contact, About, Kategories, Create_article, Thankyou, Test, Edit_profile, View_profile,List_Users,article_detail,articles_by_category,articles_by_author,create2
+
+#app_name = "retro"
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
+    path('create2', create2, name='create2'),
     path('links', Links.as_view(), name='links'),
     path('contact',Contact.as_view(), name='contact'),
     path('about', About.as_view(), name='about'),

@@ -4,13 +4,14 @@
     "\\credits\\templates",
     "\\credits\\templates\\credits",
     "\\faq\\templates",
-    "\\faq\\templates\\retro",
     "\\retro",
     "\\retro\\templates",
     "\\retro\\templates\\retro",
     "\\static\\images",
-    "\\templates\\allauth"
+    "\\templates\\allauth",
+    "\\templates\\allauth\\account",
+    "\\templates\\includes"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\retro\\views.py",
   "PreviewInSolutionExplorer": false
 }

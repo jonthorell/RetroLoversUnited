@@ -3,7 +3,7 @@ from unicodedata import category
 from django.shortcuts import get_object_or_404,render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.urls import reverse
-from retro.forms import myCreateArticleForm
+from retro.forms import CreateArticleForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
@@ -28,21 +28,6 @@ class ManagerRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.groups.filter(name="Managers").exists()
 
-
-def form_view(request):
-    context={}
-    # create object of form
-    form = myCreateArticleForm(request.POST or None, request.FILES or None)
-     
-    # check if form data is valid
-    if form.is_valid():
-        # save the form data to model
-        form.save()
- 
-    context['form']= form
-    return render(request, "test.html", context)
-
-
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,6 +39,16 @@ class custom_mixin_kategorimenu(object):
         context['profiles'] = Profile.objects.all()
 
         return context
+
+def create2(request):
+    form = CreateArticleForm(request.POST or None)
+
+    return render(
+        request,
+        "retro/create_article2.html",
+        {"form": form},
+    )
+
 
 class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
@@ -133,6 +128,7 @@ class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
 
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
+
     
 class List_Users(ManagerRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/list_users.html'    
