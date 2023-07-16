@@ -1,6 +1,6 @@
 
 from unicodedata import category
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404,render,redirect
 from django.views.generic import TemplateView, ListView, DetailView
 from django.urls import reverse
 from retro.forms import CreateArticleForm
@@ -40,12 +40,18 @@ class custom_mixin_kategorimenu(object):
 
         return context
 
-def create2(request):
+def create_article(request):
     form = CreateArticleForm(request.POST or None)
 
+    if request.method == "POST":
+        if form.is_valid():
+            Article = form.save(commit=False)
+            Article.user_id = request.user.id
+            Article.save()
+            return redirect("/")
     return render(
         request,
-        "retro/create_article2.html",
+        "retro/create_article.html",
         {"form": form},
     )
 
@@ -108,11 +114,6 @@ class Kategories(custom_mixin_kategorimenu, ListView):
     context_object_name = 'categories'
 
 
-    
-
-class Create_article(EditorRequiredMixin,custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/create_article.html'
-
 class Edit_profile(MemberRequiredMixin,custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/edit_profile.html'
 
@@ -143,9 +144,6 @@ class Links(custom_mixin_kategorimenu, ListView):
          qs = super(Links, self).get_queryset(*args, **kwargs)
          qs = qs.order_by("name")
          return qs
-
-class Editor(custom_mixin_kategorimenu, TemplateView):
-    template_name='retro/editor.html'
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'

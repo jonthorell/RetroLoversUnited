@@ -40,7 +40,7 @@ class Category(models.Model):
         return reverse("articles_by_category", args=[str(self.id)])
 
 class Article(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False, null=False)
     slug = AutoSlugField(populate_from='title', unique=True)
     title = models.CharField(max_length=60, blank=False, null=False, unique=True)
     content = models.TextField(max_length=2000, blank=False, null=False)
@@ -55,7 +55,11 @@ class Article(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.title
+        return (
+            f"Excerpt: {self.excerpt[:30]}..., "
+            f"Editor: {self.user} "
+            f"({self.created_on:%Y-%m-%d %H:%M}): "
+        )
 
     def get_absolute_url(self):
         return reverse("article_detail", args=[str(self.id)])
