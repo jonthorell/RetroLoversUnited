@@ -21,15 +21,17 @@
                     <label for="email">Your E-mail:</label>
                     <input type="email" name="email" id="email" class="form-control form-control-sm" required autocomplete="off">
                     <label for="subject">Subject:</label>
-                    <select name="subject" id="subject" form="contactform" class="form-control form-control-sm">
-                        <option value="techissue">Technical issue</option>
-                        <option value="factissue">Factual issue</option>
-                        <option value="deadlink">Dead Link or missing image</option>
-                        <option value="aria">Suggestion for accessability</option>
-                        <option value="newidea">Suggestion for new idea</option>
-                        <option value="newlink">Suggestion for new link</option>
-                        <option value="generic">Generic praise/hate</option>
-                    </select>
+                    <div class="white">
+                        <select name="subject" id="subject" form="contactform" class="form-control form-control-sm select" data-mdb-clear-button="true">
+                            <option value="techissue" class="whitefg">Technical issue</option>
+                            <option value="factissue">Factual issue</option>
+                            <option value="deadlink">Dead Link or missing image</option>
+                            <option value="aria">Suggestion for accessability</option>
+                            <option value="newidea">Suggestion for new idea</option>
+                            <option value="newlink">Suggestion for new link</option>
+                            <option value="generic">Generic praise/hate</option>
+                        </select>
+                    </div>
                     <label for="fb">What do you want to say to us?</label>
                     <textarea placeholder="Enter message here" cols="80"
                               rows="20" id="fb" name="fb" class="form-control form-control-sm">Enter message here</textarea>

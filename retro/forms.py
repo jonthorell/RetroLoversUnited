@@ -1,16 +1,11 @@
-from queue import Full
-from random import choices
-from unicodedata import category
+
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
-from retro.models import Profile,Article
-
-class articleform(forms.Form):
-    foo = forms.CharField(widget=SummernoteWidget())
+from retro.models import Category, Profile,Article
 
  
 class CustomSignupForm(SignupForm):
@@ -48,6 +43,7 @@ class CustomSignupForm(SignupForm):
 
 class CreateArticleForm(forms.ModelForm):
     foo = SummernoteTextField()
+    
     content = forms.CharField(
         required=True,
         widget=forms.widgets.Textarea(
