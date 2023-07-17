@@ -8,7 +8,8 @@ from retro.forms import CreateArticleForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
-from django.http import Http404
+from django.http import Http404, HttpResponse
+from django.core.exceptions import PermissionDenied
 
 
 class EditorRequiredMixin(UserPassesTestMixin):
@@ -37,7 +38,7 @@ def check_user_able_to_see_page(*groups):
         def wrapper(request, *args, **kwargs):
             if request.user.groups.filter(name__in=groups).exists():
                 return function(request, *args, **kwargs)
-            raise Http404
+            raise PermissionDenied
 
         return wrapper
 
@@ -55,7 +56,7 @@ class custom_mixin_kategorimenu(object):
 
         return context
 
-@check_user_able_to_see_page("admin")
+@check_user_able_to_see_page("Editors")
 def create_article(request):
     
     form = CreateArticleForm(request.POST or None)
