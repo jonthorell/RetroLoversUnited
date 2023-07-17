@@ -1,16 +1,15 @@
 /* import google fonts */
 
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Roboto|Tangerine|Source Sans 3:bold&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Roboto|Tangerine|Source Sans 3:bold&display=swap');
+
 
 :root {
     /* Make sure variables are defined in the root context so available everywhere */
-
     /*  fonts */
     --title: 'EB Garamond', serif;
     --main-font: 'Roboto', serif;
     --cursive-font: 'Tangerine', serif;
     --sans3: 'Source Sans 3', sans-serif;
-
     /* colors */
 
     --background: #3f006a0f;
@@ -23,12 +22,9 @@
     --grey2: #999999;
     --red: #FF0000;
     --green: #97aa88aa;
-
-
     /* utils */
 
-    --small-box-shadow: 1px  -1px 7px 0 #00000061;
-    
+    --small-box-shadow: 1px -1px 7px 0 #00000061;
 }
 
 /* classes for all the background colors */

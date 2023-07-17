@@ -25,6 +25,7 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 # Other
 
 1. Credits works fine. Should be moved to separate app.
+2. Code for pagination adapted from examples at: https://realpython.com/django-pagination/
 
 # User classes
 
