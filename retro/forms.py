@@ -3,6 +3,7 @@ from random import choices
 from unicodedata import category
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
@@ -46,6 +47,7 @@ class CustomSignupForm(SignupForm):
         return user
 
 class CreateArticleForm(forms.ModelForm):
+    foo = SummernoteTextField()
     content = forms.CharField(
         required=True,
         widget=forms.widgets.Textarea(
@@ -82,4 +84,8 @@ class CreateArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
+        widgets = {
+            'foo': SummernoteWidget(),
+            'bar': SummernoteInplaceWidget(),
+        } 
         exclude = ("user", "featured_image", "status",)
