@@ -1,5 +1,6 @@
 
 from unicodedata import category
+from urllib import request
 from django.shortcuts import get_object_or_404,render,redirect
 from django.views.generic import TemplateView, ListView, DetailView
 from django.urls import reverse
@@ -7,6 +8,8 @@ from retro.forms import CreateArticleForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
+from django.http import Http404
+
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
@@ -28,6 +31,18 @@ class ManagerRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.groups.filter(name="Managers").exists()
 
+def check_user_able_to_see_page(*groups):
+
+    def decorator(function):
+        def wrapper(request, *args, **kwargs):
+            if request.user.groups.filter(name__in=groups).exists():
+                return function(request, *args, **kwargs)
+            raise Http404
+
+        return wrapper
+
+    return decorator
+
 class custom_mixin_kategorimenu(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -40,7 +55,9 @@ class custom_mixin_kategorimenu(object):
 
         return context
 
+@check_user_able_to_see_page("admin")
 def create_article(request):
+    
     form = CreateArticleForm(request.POST or None)
 
     if request.method == "POST":
