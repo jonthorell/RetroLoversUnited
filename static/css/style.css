@@ -292,6 +292,7 @@ table th {
     color: var(--black);
 }
 
-.shadow-custom {
+.shadow-pagination {
+    /* used for the border around the pagination controls */
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .25), 0 3px 4px 10px rgba(0, 0, 0, 0.55) !important;
 }
