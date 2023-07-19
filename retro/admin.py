@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+from django_summernote.utils import get_attachment_model
 from django.contrib.auth.models import User, Group
 from .models import Category,Article,Link,Comment,Profile
+from allauth import account
 
 class ArticleAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
@@ -16,6 +18,8 @@ class UserAdmin(admin.ModelAdmin):
 # Register your models here.
 
 admin.site.unregister(User)
+admin.site.unregister(get_attachment_model())
+#admin.site.unregister(account)
 admin.site.unregister(Group)
 admin.site.register(User, UserAdmin)
 admin.site.register(Category)
