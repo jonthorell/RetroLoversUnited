@@ -12,9 +12,11 @@
         <p class="last_articles">Last three articles:</p>
         <p class="last_articles">
             {% for article in articles %}
+           
             <a href="{{ article.get_absolute_url }}">
                 &nbsp;&nbsp;<i class="fa-solid fa-check">&nbsp;</i>{{ article.title }}
             </a>
+            
             {% endfor %}
         </p>
     </div>

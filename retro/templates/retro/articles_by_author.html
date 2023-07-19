@@ -24,6 +24,7 @@
                 <tbody class="background">
 
                     {% for article in articles %}
+                    {% if article.status == 1 %}
                     <tr>
                         <td>
                             <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
@@ -42,10 +43,12 @@
                         <td class="table-desc">{{ article.excerpt }} </td>
                         <td>&nbsp;</td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
             {% endif %}
+            <p>&nbsp;</p>
         </div>
     </div>
 </div>

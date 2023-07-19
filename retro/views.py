@@ -132,7 +132,7 @@ class Index(custom_mixin_kategorimenu, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.all()[:3]
+        context['articles'] = Article.objects.filter(status=1)[:3]
 
         return context
 
