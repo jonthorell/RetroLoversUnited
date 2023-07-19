@@ -84,4 +84,4 @@ class CreateArticleForm(forms.ModelForm):
             'foo': SummernoteWidget(),
             'bar': SummernoteInplaceWidget(),
         } 
-        exclude = ("user", "featured_image", "status",)
+        exclude = ("user", "featured_image")

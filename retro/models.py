@@ -10,17 +10,15 @@ from autoslug import AutoSlugField
 # Create your models here.
 
 # status is used to check wheter comment or article has been approved. Some of this has been adapted for my own use from the codestar code-along
-# Articles have their status automatically set to published. User needs to be a member of the editors group and the only one that can do that
+# Articles have their status automatically set to published (although can be changed). If not changed, it is immediately visible. 
+# User needs to be a member of the editors group to be able to create an article and the only one that can do that
 # is the superuser, so presumably those that can create articles have been deemed trustworthy.
 
 # Comments are in draft status by default. That means an admin has to approve the comment before it can be seen
 
-# Status deleted is just that, deleted. Instead of removing the article/comment upon deletion it is marked as deleted and not shown.
-# In other words, it is never removed from the database.
 
 
-
-STATUS = ((0, "Draft"), (1,"Published"), (2,"Deleted"))
+STATUS = ((0, "Draft"), (1,"Published"))
 
 User=get_user_model()
 
