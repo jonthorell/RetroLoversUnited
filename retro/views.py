@@ -40,6 +40,33 @@ def listing_links_api(request):
     }
     return JsonResponse(payload)
 
+def listing_article_api(request):
+    page_number = request.GET.get("page", 1)
+    per_page = request.GET.get("per_page", 5)
+    #startswith = request.GET.get("startswith", "")
+    keywords = Article.objects.filter(user_id=15)
+        
+    paginator = Paginator(keywords, per_page)
+    page_obj = paginator.get_page(page_number)
+    data = [{"title": kw.title} for kw in page_obj.object_list]
+
+    payload = {
+        "page": {
+            "current": page_obj.number,
+            "has_next": page_obj.has_next(),
+            "has_previous": page_obj.has_previous(),
+        },
+        "data": data
+    }
+    return JsonResponse(payload)
+
+def listing_article_by_category(request, page):
+    keywords = Article.objects.all().order_by("name")
+    paginator = Paginator(keywords, per_page=5)
+    page_object = paginator.get_page(page)
+    context = {"page_obj": page_object}
+    return render(request, "retro/articles_by_category.html", context)
+
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
     def test_func(self):
@@ -107,22 +134,20 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     model = Article
     context_object_name = 'article'
 
-class articles_by_category(custom_mixin_kategorimenu, ListView):
+class articles_by_category(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/articles_by_category.html'
     model = Category
     context_object_name = 'category'
-    paginate_by = 5
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.filter(category__id=self.kwargs.get("pk")).select_related('category').all()
         return context
 
-class articles_by_author(custom_mixin_kategorimenu, ListView):
+class articles_by_author(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/articles_by_author.html'
     model = User
     context_object_name = 'user'
-    paginate_by = 5
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)

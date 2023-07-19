@@ -11,6 +11,7 @@ urlpatterns = [
     path('links', Links.as_view(), name='links'),
     path('links/page/<int:page>',views.listing_links, name='listing-links-by-page'),
     #path('links.json', views.listing_api, name='links-api'),
+    path('article.json', views.listing_article_api, name='article-api'),
     path('contact',Contact.as_view(), name='contact'),
     path('about', About.as_view(), name='about'),
     path('category', Kategories.as_view(), name='Kategories'),
