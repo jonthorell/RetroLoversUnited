@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Community page for retro computers">
+    <meta name="keywords" content="community retro computers amiga atari commodore">
+    <meta name="author" content="Jonas Thorell">
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- materialize bootstrp -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" type="text/css">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <link rel='shortcut icon' type='image/x-icon' href="{% static 'icons/favicon.ico' %}">
+
+    <title>RetroLoversUnited: Admin: Login</title>
+</head>
+
+<body class="admin-grey">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 text-center" id="disclaimer-bar">
+                This is for educational purposes only and not intended to be used as a live site.
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card mt-5">
+            <div class="card-header">
+                <img src="{% static 'images/Boing_Ball.svg' %}"
+                     height="40"
+                     width="40"
+                     alt="BoingBall logo"
+                     loading="lazy">
+            Admin Login</div>
+            <div class="card-body admin-bg-card">
+                <form class="form p-3" role="form" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-primary p-1">Login</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

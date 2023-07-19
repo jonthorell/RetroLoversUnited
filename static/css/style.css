@@ -296,3 +296,13 @@ table th {
     /* used for the border around the pagination controls */
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .25), 0 3px 4px 10px rgba(0, 0, 0, 0.55) !important;
 }
+
+.admin-grey {
+    /* used for bg color on django-admin-login*/
+    background-color: var(--grey);
+}
+
+.admin-bg-card {
+    background-image: url("https://jonthorell.github.io/QuizGame/assets/images/backdrop.png");
+    background-color: var(--grey);
+}
