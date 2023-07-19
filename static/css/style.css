@@ -170,7 +170,9 @@ footer {
 
 /* links 
    target-link first is to make sure the links in the navbar are not affected
-    categories first is to make sure navlinks in the categories cards are never shown as links since the card itself is the link
+    categories first is to make sure navlinks in the categories cards (all categories)
+    are never shown as links since the card itself is the link.
+    categories is also used to remove the underline for the navigation links in pagination
 
 */
 

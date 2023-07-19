@@ -24,8 +24,9 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 
 # Other
 
-1. Credits works fine. Should be moved to separate app.
+1. Credits works fine. Should be moved to separate app. DONE
 2. Code for pagination adapted from examples at: https://realpython.com/django-pagination/
+3. Filter on status. Done in view for index. Cant do that for the others since it needs custom code in the template
 
 # User classes
 

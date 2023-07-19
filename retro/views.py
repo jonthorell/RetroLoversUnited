@@ -12,14 +12,14 @@ from django.http import Http404, HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 
-def listing(request, page):
+def listing_links(request, page):
     keywords = Link.objects.all().order_by("name")
     paginator = Paginator(keywords, per_page=5)
     page_object = paginator.get_page(page)
     context = {"page_obj": page_object}
     return render(request, "retro/links.html", context)
 
-def listing_api(request):
+def listing_links_api(request):
     page_number = request.GET.get("page", 1)
     per_page = request.GET.get("per_page", 5)
     startswith = request.GET.get("startswith", "")
@@ -107,20 +107,22 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     model = Article
     context_object_name = 'article'
 
-class articles_by_category(custom_mixin_kategorimenu, DetailView):
+class articles_by_category(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/articles_by_category.html'
     model = Category
     context_object_name = 'category'
+    paginate_by = 5
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.filter(category__id=self.kwargs.get("pk")).select_related('category').all()
         return context
 
-class articles_by_author(custom_mixin_kategorimenu, DetailView):
+class articles_by_author(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/articles_by_author.html'
     model = User
     context_object_name = 'user'
+    paginate_by = 5
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
