@@ -306,7 +306,7 @@ table th {
 
 .admin-bg-card {
     /* used for django-admin-login*/
-    background-image: url("https://jonthorell.github.io/QuizGame/assets/images/backdrop.png");
+    background-image: url("https://res.cloudinary.com/retroloversunited/image/upload/v1686733588/static/images/backdrop.89bfed3dd490.png");
     background-color: var(--grey);
 }
 
