@@ -29,6 +29,7 @@
                     {% comment %}
                     Article is published
                     {% endcomment %}
+
                     <tr>
                         <td>
                             <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
@@ -71,6 +72,7 @@
                     {% comment %}
                     Article is not published
                     {% endcomment %}
+                    {% if request.user == article.user %}
                     <tr>
                         <td>
                             <p class="text-info text-opacity-75 not-published">{{ article.title }}</p>
@@ -107,10 +109,10 @@
                             {% endif %}
                         </td>
                     </tr>
-
+                    {% endif %}
                     {% endif %}
                     {% endfor %}
-                    
+
                 </tbody>
             </table>
             {% endif %}
