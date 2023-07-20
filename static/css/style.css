@@ -305,6 +305,12 @@ table th {
 }
 
 .admin-bg-card {
+    /* used for django-admin-login*/
     background-image: url("https://jonthorell.github.io/QuizGame/assets/images/backdrop.png");
     background-color: var(--grey);
+}
+
+.not-published {
+    /* used for  "urls" when the article is not published */
+    text-decoration: line-through;
 }

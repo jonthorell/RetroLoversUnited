@@ -26,6 +26,9 @@
 
                     {% for article in articles %}
                     {% if article.status == 1 %}
+                    {% comment %}
+                    Article is published
+                    {% endcomment %}
                     <tr>
                         <td>
                             <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
@@ -53,10 +56,61 @@
                     </tr>
                     <tr>
                         <td class="table-desc">{{ article.excerpt }} </td>
-                        <td> &nbsp; </td>
+                        <td>
+                            {% if request.user == article.user %}
+                            <span class="text-center">
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </span>
+                            {% else %}
+                            <p>&nbsp;</p>
+                            {% endif %}
+                        </td>
                     </tr>
+                    {% else %}
+                    {% comment %}
+                    Article is not published
+                    {% endcomment %}
+                    <tr>
+                        <td>
+                            <p class="text-info text-opacity-75 not-published">{{ article.title }}</p>
+                        </td>
+                        <td>
+                            {% for profile in profiles %}
+                            {% if article.user_id == profile.user_id %}
+                            {% with urlbase="avatars/"|add:profile.avatar %}
+                            <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
+                                <img src="{% static urlbase %}" alt="Author" />
+                                {% for user in users %}
+                                {% if user.id == profile.user_id %}
+                                <a href="{% url 'view_profile' %}">
+                                    {{ user.first_name }}
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% endwith %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-desc">{{ article.excerpt }} </td>
+                        <td>
+                            {% if request.user == article.user %}
+                            <span class="text-center">
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </span>
+                            {% else %}
+                            <p>&nbsp;</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+
                     {% endif %}
                     {% endfor %}
+                    
                 </tbody>
             </table>
             {% endif %}

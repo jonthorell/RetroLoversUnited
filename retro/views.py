@@ -41,10 +41,11 @@ def listing_links_api(request):
     return JsonResponse(payload)
 
 def listing_article_api(request):
+    
     page_number = request.GET.get("page", 1)
     per_page = request.GET.get("per_page", 5)
     #startswith = request.GET.get("startswith", "")
-    keywords = Article.objects.filter(user_id=15)
+    keywords = Article.objects.filter(category_id=15)
         
     paginator = Paginator(keywords, per_page)
     page_obj = paginator.get_page(page_number)
