@@ -63,7 +63,7 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     model = Article
     context_object_name = 'article'
 
-class articles_by_category(custom_mixin_kategorimenu, DetailView):
+class articles_by_category(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/articles_by_category.html'
     model = Category
     context_object_name = 'category'

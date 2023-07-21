@@ -21,6 +21,7 @@ import retro
 
 urlpatterns = [
     path('admin/login/', auth_views.LoginView.as_view(template_name='admin-login.html'), name='login'), #new
+     path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('credits/', include("credits.urls"), name="credits-urls"),

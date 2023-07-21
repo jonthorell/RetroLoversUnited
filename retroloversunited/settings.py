@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     #'allauth.socialaccount',
+    'debug_toolbar',
     'django_summernote',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -78,12 +79,19 @@ CSRF_TRUSTED_ORIGINS = [
     'https://retroloversunited.herokuapp.com'
 ]
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 SUMMERNOTE_THEME = 'bs5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
