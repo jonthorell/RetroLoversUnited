@@ -44,7 +44,20 @@
                         Only list user that are editors
                         {% endcomment %}
                         <li>
-                            <a class="dropdown-item" href="{% url 'articles_by_author' user.id %}"> {{ user.first_name }} {{ user.last_name }} </a>
+                            <a class="dropdown-item" href="{% url 'articles_by_author' user.id %}">
+                                {% for profile in profiles %}
+                                {% if user.id == profile.user_id %}
+                                {% with avatarimg="avatars/"|add:profile.avatar %}
+                                <img src="{% static avatarimg %}"
+                                     height="25"
+                                     alt="Author"
+                                     class="rounded-circle"
+                                     loading="lazy" />
+                                {% endwith %}
+                                {% endif %}
+                                {% endfor %}
+                                {{ user.first_name }} {{ user.last_name }}
+                            </a>
                         </li>
                         {% endif %}
                         {% endfor %}
@@ -64,12 +77,28 @@
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuCategories">
                         <li>
-                            <a class="dropdown-item sans-font" href="/category">All categories</a>
+                            <a class="dropdown-item sans-font" href="/category">
+                                <img src="{% static 'categories/all.png' %}"
+                                     height="25"
+                                     alt="Category"
+                                     class="rounded-circle"
+                                     loading="lazy" />
+                            All categories</a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         {% for category in categories %}
                         <li>
-                            <a class="dropdown-item" href="{{ category.get_absolute_url }}"> {{ category.name }} </a>
+                            <a class="dropdown-item" href="{{ category.get_absolute_url }}">
+                                {% with catimg="categories/"|add:category.avatar %}
+                                <img src="{% static catimg %}"
+                                     height="25"
+                                     alt="Category"
+                                     class="rounded-circle"
+                                     loading="lazy" />
+                                {% endwith %}
+
+                                {{ category.name }}
+                            </a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -193,11 +222,17 @@
                        role="button"
                        data-mdb-toggle="dropdown"
                        aria-expanded="false">
-                        <img src="{% static 'avatars/default-user.png' %}"
+                        {% for profile in profiles %}
+                        {% if user.id == profile.user_id %}
+                        {% with avatarimg="avatars/"|add:profile.avatar %}
+                        <img src="{% static avatarimg %}"
+                             alt="Author"
                              class="rounded-circle"
                              height="25"
-                             alt="Default avatar"
                              loading="lazy">
+                        {% endwith %}
+                        {% endif %}
+                        {% endfor %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdownMenuAvatar">
@@ -205,13 +240,13 @@
                             <a class="dropdown-item disabled sans-font" href="#"> {{ user.first_name }} {{ user.last_name }}</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/edit_profile">Edit my Profile</a>
+                            <a class="dropdown-item" href="/edit_profile"><i class="fas fa-cog pe-2"></i>Edit my Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/view_profile">View my Profile</a>
+                            <a class="dropdown-item" href="/view_profile"><i class="fas fa-user-alt pe-2"></i>View my Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/accounts/logout">Logout</a>
+                            <a class="dropdown-item" href="/accounts/logout"><i class="fas fa-door-open pe-2"></i>Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -233,10 +268,10 @@
                 <ul class="dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
-                        <a class="dropdown-item" href="/accounts/signup">Create account</a>
+                        <a class="dropdown-item" href="/accounts/signup"><i class="fa-solid fa-plus pe-2"></i>Create account</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/accounts/login">Login</a>
+                        <a class="dropdown-item" href="/accounts/login"><i class="fas fa-door-open pe-2"></i>Login</a>
                     </li>
                 </ul>
             </div>

@@ -27,6 +27,7 @@ class Category(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from='name', unique=True)
     description = models.CharField(max_length=200, blank=False, null=False)
+    avatar = models.CharField(max_length=60, blank=False, null=False, default="default-category.png")
 
     class Meta:
         ordering = ['name']
