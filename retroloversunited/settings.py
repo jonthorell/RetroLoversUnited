@@ -74,6 +74,10 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
     }
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://retroloversunited.herokuapp.com'
+]
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 SUMMERNOTE_THEME = 'bs5'
