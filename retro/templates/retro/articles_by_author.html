@@ -32,9 +32,15 @@
                         <td>
                             {% for category in categories %}
                             {% if article.category_id == category.id %}
+                            {% if category.name == 'Software development' %}
+                            <a href="{{ category.get_absolute_url }}">
+                                <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
+                            </a>
+                            {% else %}
                             <a href="{{ category.get_absolute_url }}">
                                 <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
                             </a>
+                            {% endif %}
                             {% endif %}
                             {% endfor %}
                         </td>
