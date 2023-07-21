@@ -8,6 +8,7 @@ from .views import Index, Links,Contact, About, Kategories, Thankyou, Test, Edit
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
+    #path('mult', views.my_view, name='mult'),
     path('links', Links.as_view(), name='links'),
     path('links/page/<int:page>',views.listing_links, name='listing-links-by-page'),
     #path('links.json', views.listing_api, name='links-api'),

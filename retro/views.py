@@ -11,6 +11,12 @@ from retro.models import Link, Article, Category, Comment,User,Profile
 from django.http import Http404, HttpResponse, JsonResponse
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
+from .utils import multiply
+
+def my_view(request): 
+    # Temporary to test custom utils.py
+    result = multiply(2, 3) 
+    return HttpResponse(result) 
 
 def listing_links(request, page):
     keywords = Link.objects.all().order_by("name")
