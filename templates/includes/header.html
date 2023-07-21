@@ -188,31 +188,6 @@
             <div class="d-flex align-items-center">
 
 
-                <!-- Notifications -->
-                {% if user.is_authenticated %}
-                <!-- only show notifications if logged in -->
-                <div class="dropdown">
-                    <a class="text-reset me-3 dropdown-toggle hidden-arrow"
-                       href="#"
-                       id="navbarDropdownMenuLink"
-                       role="button"
-                       data-mdb-toggle="dropdown"
-                       aria-expanded="false">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger"></span>
-                    </a>
-
-                    {% if messages %}
-                    <ul class="dropdown-menu dropdown-menu-end p-4 text-muted"
-                        aria-labelledby="navbarDropdownMenuLink">
-                        {% for message in messages %}
-                        <li class="mb-0">{{message}}</li>
-                        <li><hr class="dropdown-divider"></li>
-                        {% endfor %}
-                        {% endif %}
-                    </ul>
-                </div>
-                {% endif %}
                 <!-- Avatar -->
                 {% if user.is_authenticated %}
                 <div class="dropdown">
