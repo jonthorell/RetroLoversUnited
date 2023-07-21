@@ -1,11 +1,8 @@
 from django.core.paginator import Paginator
 from retro.models import Link, Article, Category, Comment,User,Profile
-from django.http import Http404, HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404,render,redirect
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
-
-def multiply(a, b): 
-    return a * b 
 
 def listing_links(request, page):
     keywords = Link.objects.all().order_by("name")

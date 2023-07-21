@@ -1,22 +1,12 @@
 
-from unicodedata import category
-from urllib import request
-from django.shortcuts import get_object_or_404,render,redirect
+
+from django.shortcuts import render,redirect
 from django.views.generic import TemplateView, ListView, DetailView
-from django.urls import reverse
 from retro.forms import CreateArticleForm
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
-from django.http import Http404, HttpResponse, JsonResponse
-from django.core.exceptions import PermissionDenied
-from django.core.paginator import Paginator
-from .utils import multiply, listing_links, listing_links_api, listing_article_api,listing_article_by_category, check_user_able_to_see_page
-
-def my_view(request): 
-    # Temporary to test custom utils.py
-    result = multiply(2, 3) 
-    return HttpResponse(result) 
+from .utils import listing_links, listing_links_api, listing_article_api,listing_article_by_category, check_user_able_to_see_page
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
