@@ -31,7 +31,7 @@
                     {% if article.status == 1 %}
                     <tr>
                         <td>
-                            <a href="{{ article.get_absolute_url }}">{{ article.title }} {{ article.user.first_name }}</a>
+                            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
                         </td>
                         <td>
                             {% for category in categories %}
