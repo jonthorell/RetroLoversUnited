@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Category: {{ category.name }} {% endblock title %}
+{% block title %}Articles by Category{% endblock title %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
             {% if articles|length == 0 %}
             <h1>There are no articles (yet) in this category.</h1>
             {% else %}
-            <h1>Articles in category: {{ category.name }}</h1>
+            <h1>Articles in Category: {{ category.name }}</h1>
             <table class="table table-striped table-hover table-borderless align-middle mb-0">
                 <thead class="light">
                     <tr>

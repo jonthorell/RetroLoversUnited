@@ -7,12 +7,12 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
 5. Bell-drop down created an empty menu if there were no messages. Fixed by moving the ul-container.
-6. Spacing issue between author and category menu. Not fixed yet.
+6. Spacing issue between author and category menu. DONE
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
 8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
-9. When using view-by-author, the system inexplicable logs the user in as that user??
+9. When using view-by-author, the system inexplicable logs the user in as that user??. Fixed. context_view was wrong
 10. Faq gets same value from links.description all the time??
-11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving.
+11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving. Changed to pop-out instead
 
 # Todo
 
@@ -26,7 +26,7 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 
 1. Credits works fine. Should be moved to separate app. DONE
 2. Code for pagination adapted from examples at: https://realpython.com/django-pagination/
-3. Filter on status. Done in view for index. Cant do that for the others since it needs custom code in the template
+3. Filter on status. Done in views.py for index. Cant do that for the others since it needs custom code in the template with if/else/for-loops
 
 # User classes
 
