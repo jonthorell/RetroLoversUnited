@@ -70,16 +70,64 @@
                                 {% endfor %}
                             </td>
                         </tr>
+                            <!-- Add tr above here for unpublished This comment added to know where need to remove if ir was wrong -->
+                    {% else %}
+                        {% comment %}
+                            Article is not published
+                        {% endcomment %}
+                        <tr>
+                            <td>
+                                <p class="text-info text-opacity-75 not-published">{{ article.title }}</p>
+                            </td>
+                            <td>
+                                {% for category in categories %}
+                                    {% comment %}
+                                        This loop prints the category the article belongs to
+                                     {% endcomment %}
+                                    {% if article.category_id == category.id %}
+                                        {% comment %}
+                                            Only print when the category of the article match up with the category in the loop
+                                        {% endcomment %}
+                                        {% if category.name == 'Software development' %}
+                                            {% comment %}
+                                                if/else clause shortens the category name when it is "Software development"
+                                                reason is to make it look better on lower resolutions
+                                            {% endcomment %}
+                                            <a href="{{ category.get_absolute_url }}">
+                                                <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ category.get_absolute_url }}">
+                                                <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                            </td>
+                        </tr>
+                    {% endif %}
                     <tr>
                         <td class="table-desc">{{ article.excerpt }} </td>
-                        <td>&nbsp;</td>
+                        <td>
+                            {% if request.user == article.user %}
+                            <span class="text-center">
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </span>
+                            {% else %}
+                            <p>&nbsp;</p>
+                            {% endif %}
+                        </td>
                     </tr>
-                    {% endif %}
+                    
                     
                     {% endfor %}
                 </tbody>
             </table>
             {% endif %}
+            {% comment %}
+                endif closes if that checks if articles is zero
+            {% endcomment %}
             <p>&nbsp;</p>
         </div>
     </div>
