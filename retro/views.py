@@ -1,5 +1,9 @@
 
 
+from pipes import Template
+from subprocess import DETACHED_PROCESS
+from telnetlib import Telnet
+from urllib import request
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView, ListView, DetailView
 from retro.forms import CreateArticleForm
@@ -82,6 +86,19 @@ class articles_by_author(custom_mixin_kategorimenu, DetailView):
         context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.filter(user__id=self.kwargs.get("pk")).select_related('user').all()
         return context
+
+class my_Articles(custom_mixin_kategorimenu, EditorRequiredMixin, TemplateView):
+    template_name = 'retro/my-articles.html'
+
+    model = User
+    context_object_name = 'article'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(user__id=self.request.user.id).select_related('user').all()
+        return context
+
+
 
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'

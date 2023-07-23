@@ -220,6 +220,17 @@
                         <li>
                             <a class="dropdown-item" href="/view_profile"><i class="fas fa-user-alt pe-2"></i>View my Profile</a>
                         </li>
+                        {% for group in user.groups.all %}
+                        {% comment %}
+                        Iterate over the groups of the current user
+                        If user is a member of group Editors, add view my articles link
+                        {% endcomment %}
+                        {% if group.name == 'Editors' %}
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/my-articles"><i class="fa-regular fa-newspaper pe-2"></i>View my Articles</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
                         <li>
                             <a class="dropdown-item" href="/accounts/logout"><i class="fas fa-door-open pe-2"></i>Logout</a>
                         </li>
