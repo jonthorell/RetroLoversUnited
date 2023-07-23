@@ -1,7 +1,7 @@
 
 from . import views
 from django.urls import path
-from .views import Index, Links,Contact, About, Kategories, Thankyou, Test, Edit_profile, View_profile,List_Users,article_detail,articles_by_category,articles_by_author,create_article,my_Articles,view_my_profile
+from .views import Index, Links,Contact, About, Kategories, Thankyou, Test, edit_profile, View_profile,List_Users,article_detail,articles_by_category,articles_by_author,create_article,my_Articles,view_my_profile
 
 #app_name = "retro"
 
@@ -17,7 +17,7 @@ urlpatterns = [
     path('create_article', create_article, name='create_article'),
     path('test', Test.as_view(), name='test'),
     path('thankyou', Thankyou.as_view(), name='thankyou'),
-    path('edit_profile', Edit_profile.as_view(), name='edit_profile'),
+    path('edit_profile', edit_profile, name='edit_profile'),
     path("view_profile", View_profile.as_view(), name='view_profile'),
     path("view_my_profile", view_my_profile.as_view(), name='view__my_profile'),
     path('list_users', List_Users.as_view(), name='list_users'),

@@ -3,9 +3,10 @@ from pipes import Template
 from telnetlib import Telnet
 from urllib import request
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
+from django import forms
 from django.views.generic import TemplateView, ListView, DetailView
-from retro.forms import CreateArticleForm
+from retro.forms import CreateArticleForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
@@ -43,6 +44,7 @@ class custom_mixin_kategorimenu(object):
 
         return context
 
+
 @check_user_able_to_see_page("Editors")
 def create_article(request):
     
@@ -60,6 +62,22 @@ def create_article(request):
         {"form": form},
     )
 
+@check_user_able_to_see_page("members")
+def edit_profile(request):
+    user_profile = get_object_or_404(Profile, user_id=request.user.id)
+    form = EditProfileForm(instance=user_profile)
+
+    if request.method == "POST":
+        if form.is_valid():
+            #Profile = form.save(commit=False)
+            #Profile.user_id = request.user.id
+            #Profile.form.save()
+            return redirect("/view_my_profile")
+    return render(
+        request,
+        "retro/edit_profile.html",
+        {"form": form},
+    )
 
 class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
@@ -124,9 +142,6 @@ class Kategories(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/category.html'
     model = Category
     context_object_name = 'categories'
-
-class Edit_profile(MemberRequiredMixin,custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/edit_profile.html'
 
 class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'

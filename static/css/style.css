@@ -78,6 +78,10 @@
     color: var(--white);
 }
 
+.redfg {
+    color: var(--red);
+}
+
 html, body {
     height: 100%;
 }

@@ -41,6 +41,36 @@ class CustomSignupForm(SignupForm):
         new.save()
         return user
 
+class EditProfileForm(forms.ModelForm):
+    description = forms.CharField(
+        required = True,
+        widget = forms.widgets.TextInput(
+            attrs={
+                "placeholder": "Description of user",
+                "class": "form-control form-control-sm",
+                }
+            ),
+            label="",
+        )
+    computer = forms.CharField(
+        required = True,
+        widget = forms.widgets.Textarea(
+            attrs={
+                "placeholder": "Computer setup",
+                "class": "form-control form-control-sm",
+                }
+            ),
+            label="",
+        )
+
+    class Meta:
+        model = Profile
+        widgets = {
+            'foo': SummernoteWidget(),
+            'bar': SummernoteInplaceWidget(),
+        } 
+        exclude = ("short_description", "user", "avatar",)
+
 class CreateArticleForm(forms.ModelForm):
     foo = SummernoteTextField()
     
