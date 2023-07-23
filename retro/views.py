@@ -1,3 +1,7 @@
+from pipes import Template
+# from subprocess import DETACHED_PROCESS
+from telnetlib import Telnet
+from urllib import request
 
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView, ListView, DetailView
