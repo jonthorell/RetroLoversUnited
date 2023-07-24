@@ -318,3 +318,8 @@ table th {
     /* used for  "urls" when the article is not published */
     text-decoration: line-through;
 }
+
+.text-yellow {
+    /* used for read-only star-rating */
+    color: #FFFF00;
+}
