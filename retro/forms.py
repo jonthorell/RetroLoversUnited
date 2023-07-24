@@ -69,7 +69,8 @@ class EditProfileForm(forms.ModelForm):
             'foo': SummernoteWidget(),
             'bar': SummernoteInplaceWidget(),
         } 
-        exclude = ("short_description", "user", "avatar",)
+        #exclude = ("short_description", "user", "avatar",)
+        fields = '__all__'
 
 class CreateArticleForm(forms.ModelForm):
     foo = SummernoteTextField()

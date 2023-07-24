@@ -62,23 +62,6 @@ def create_article(request):
         {"form": form},
     )
 
-@check_user_able_to_see_page("members")
-def edit_profile(request):
-    user_profile = get_object_or_404(Profile, user_id=request.user.id)
-    form = EditProfileForm(instance=user_profile)
-
-    if request.method == "POST":
-        if form.is_valid():
-            #Profile = form.save(commit=False)
-            #Profile.user_id = request.user.id
-            #Profile.form.save()
-            return redirect("/view_my_profile")
-    return render(
-        request,
-        "retro/edit_profile.html",
-        {"form": form},
-    )
-
 class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
     model = Article
@@ -162,6 +145,49 @@ class view_my_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
         context = super().get_context_data(*args, **kwargs)
         context['profiles'] = Profile.objects.filter(user__id=self.request.user.id).select_related('user').all()
         return context
+
+class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/edit_profile.html'
+    model = User
+    context_object_name = 'profile'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['profiles'] = Profile.objects.filter(user__id=self.request.user.id).select_related('user').all()
+        return context
+
+    def get(self, request, *args, **kwargs):
+        user_profile = get_object_or_404(Profile, user_id=self.request.user.id)
+        form = EditProfileForm(instance=user_profile)
+        return render(
+            request,
+            "retro/edit_profile.html",
+            {"form": form},
+    )
+
+    def post(self, request, *args, **kwargs):
+        profile_form = EditProfileForm(data=request.POST)
+        user_profile = get_object_or_404(Profile, user_id=self.request.user.id)
+        if profile_form.is_valid():
+            my_profile = profile_form.save(commit=False)
+            my_profile.post = user_profile
+            my_profile.save()
+            return render(
+                request,
+                "retro/view_my_profile.html",
+                {"form": profile_form},
+            )
+        else:
+            profile_form = EditProfileForm()
+
+        return render(
+            request,
+            "retro/edit_profile.html",
+            {"form": profile_form},
+    )
+
+
+
 
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
