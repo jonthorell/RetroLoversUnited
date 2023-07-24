@@ -1,9 +1,11 @@
+from http.client import HTTPResponse
 from pipes import Template
 # from subprocess import DETACHED_PROCESS
 from telnetlib import Telnet
 from urllib import request
 
 from django.shortcuts import render,redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django import forms
 from django.views.generic import TemplateView, ListView, DetailView
 from retro.forms import CreateArticleForm, EditProfileForm
@@ -166,17 +168,14 @@ class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
     )
 
     def post(self, request, *args, **kwargs):
-        profile_form = EditProfileForm(data=request.POST)
+        
         user_profile = get_object_or_404(Profile, user_id=self.request.user.id)
+        profile_form = EditProfileForm(data=request.POST, instance=user_profile)
         if profile_form.is_valid():
             my_profile = profile_form.save(commit=False)
             my_profile.post = user_profile
             my_profile.save()
-            return render(
-                request,
-                "retro/view_my_profile.html",
-                {"form": profile_form},
-            )
+            return HttpResponseRedirect("/view_my_profile")
         else:
             profile_form = EditProfileForm()
 

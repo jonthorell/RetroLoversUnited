@@ -17,17 +17,7 @@
             <h1>Edit my Profile ({{ user.first_name }} {{ user.last_name }})</h1>
             
             <form method="post" class="form p-2">
-                {% with avatarimg="avatars/amy.png" %}
-                <img src="{% static avatarimg %}"
-                     alt="Author"
-                     class="rounded-circle"
-                     height="80"
-                     width="80"
-                     loading="lazy">
-                {% endwith %}
-
-                <p class="cursive-font blackfg">{{ user.first_name }} {{ user.last_name }}</p>
-
+                
                 {% csrf_token %}
                 {{ form.as_p |safe}}
                 <button type="submit" class="btn btn-primary btn-block">Update profile of {{ user.first_name }} {{ user.last_name }}!</button>

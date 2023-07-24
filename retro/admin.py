@@ -8,12 +8,12 @@ from allauth import account
 class ArticleAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
 
-#class ProfileInline(admin.StackedInline):
-#    model = Profile
+class ProfileInline(admin.StackedInline):
+    model = Profile
 
 class UserAdmin(admin.ModelAdmin):
     model = User
-    #inlines = [ProfileInline]
+    inlines = [ProfileInline]
 
 # Register your models here.
 
@@ -26,4 +26,4 @@ admin.site.register(Category)
 admin.site.register(Article,ArticleAdmin)
 admin.site.register(Link)
 admin.site.register(Comment)
-admin.site.register(Profile)
+#admin.site.register(Profile)

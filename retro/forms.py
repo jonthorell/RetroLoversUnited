@@ -50,7 +50,7 @@ class EditProfileForm(forms.ModelForm):
                 "class": "form-control form-control-sm",
                 }
             ),
-            label="",
+            label="About me",
         )
     computer = forms.CharField(
         required = True,
@@ -60,7 +60,7 @@ class EditProfileForm(forms.ModelForm):
                 "class": "form-control form-control-sm",
                 }
             ),
-            label="",
+            label="My computer setup",
         )
 
     class Meta:
@@ -69,8 +69,8 @@ class EditProfileForm(forms.ModelForm):
             'foo': SummernoteWidget(),
             'bar': SummernoteInplaceWidget(),
         } 
-        #exclude = ("short_description", "user", "avatar",)
-        fields = '__all__'
+        exclude = ("short_description", "user", "avatar",)
+        #fields = '__all__'
 
 class CreateArticleForm(forms.ModelForm):
     foo = SummernoteTextField()
