@@ -185,6 +185,9 @@ class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
             {"form": profile_form},
     )
 
+class all_profiles(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = "retro/all_profiles.html"
+
 
 
 

@@ -220,6 +220,9 @@
                         <li>
                             <a class="dropdown-item" href="/view_my_profile"><i class="fas fa-user-alt pe-2"></i>View my Profile</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="/all_profiles"><i class="fa-solid fa-users pe-2"></i>List all Profiles</a>
+                        </li>
                         {% for group in user.groups.all %}
                         {% comment %}
                         Iterate over the groups of the current user

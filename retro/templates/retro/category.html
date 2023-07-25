@@ -1,32 +1,34 @@
-{% extends "base.html" %}
+{% extends "base.html" %}}
 {% load static %}
 {% block title %}All Categories{% endblock title %}
 
 {% block content %}
 
 <div class="container-fluid text-center target-link">
-    <h1>All categories</h1>
+    <h1>All Categories</h1>
 </div>
 
+
 <div class="container-fluid target-link">
-    <div class="row">
-        <div class="col d-none d-lg-block">
-            <img class='rounded-circle border border-5 border-success right-align' width="640" height="436" src="{% static 'images/amylogin.jpg' %}" />
-        </div>
-        <div class="col categories">
-            {% for category in categories %}
-            <a href="{% url 'articles_by_category' category.id %}" aria-label="Click to view {{ category.name }} ">
-                <div class="card m-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        {% for category in categories %}
+        <div class="col">
+            <div class="card h-100 categories">
+                <!--<img src="https://res.cloudinary.com/retroloversunited/image/upload/v1686733588/static/images/backdrop.89bfed3dd490.png" class="card-img-top" alt="MagicWB header" />-->
+                <a href="{% url 'articles_by_category' category.id %}" aria-label="Click to view {{ category.name }} ">
                     <div class="card-body">
-                        <h2 class="card-title web-header">{{ category.name }}</h2>
-                        <p class="web-header">{{ category.description }}</p>
+                        <h5 class="card-title blackfg">{{ category.name }}</h5>
+                        <p class="blackfg">
+                            {{ category.description }}
+                        </p>
                     </div>
-                </div>
-            </a>
-            {% endfor %}
+                </a>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
+<p>&nbsp;</p>
 
 
     {% endblock content %}
