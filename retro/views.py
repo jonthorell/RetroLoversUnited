@@ -1,9 +1,5 @@
-from http.client import HTTPResponse
-from pipes import Template
-# from subprocess import DETACHED_PROCESS
-from telnetlib import Telnet
-from urllib import request
 
+from pyexpat import model
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
@@ -12,7 +8,8 @@ from retro.forms import CreateArticleForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
-from .utils import listing_links, listing_links_api, listing_article_api,listing_article_by_category, check_user_able_to_see_page
+from .utils import listing_links, listing_links_api, listing_article_api,listing_article_by_category
+# from .utils import check_user_able_to_see_page
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
@@ -45,24 +42,6 @@ class custom_mixin_kategorimenu(object):
         context['profiles'] = Profile.objects.all()
 
         return context
-
-
-@check_user_able_to_see_page("Editors")
-def create_article(request):
-    
-    form = CreateArticleForm(request.POST or None)
-
-    if request.method == "POST":
-        if form.is_valid():
-            Article = form.save(commit=False)
-            Article.user_id = request.user.id
-            Article.save()
-            return redirect("/")
-    return render(
-        request,
-        "retro/create_article.html",
-        {"form": form},
-    )
 
 class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
@@ -99,8 +78,6 @@ class my_Articles(custom_mixin_kategorimenu, EditorRequiredMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.filter(user__id=self.request.user.id).select_related('user').all()
         return context
-
-
 
 class Index(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/index.html'
@@ -195,9 +172,6 @@ class all_profiles(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
         context['profiles'] = Profile.objects.select_related('user').all()
         return context
 
-
-
-
 class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/test.html'
 
@@ -217,3 +191,29 @@ class Links(custom_mixin_kategorimenu, ListView):
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
+
+class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = "retro/create_article.html"
+    model = Article
+    context_object_name="articles"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.select_related('user').all()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = CreateArticleForm(request.POST or None)
+        if form.is_valid():
+            Article = form.save(commit=False)
+            Article.user_id = request.user.id
+            Article.save()
+            return redirect("/")
+    def get(self, request, *args, **kwargs):
+        form = CreateArticleForm(request.POST or None)
+        return render(
+        request,
+        "retro/create_article.html",
+        {"form": form},
+    )
+

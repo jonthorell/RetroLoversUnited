@@ -50,9 +50,7 @@ class Article(models.Model):
     excerpt = models.TextField(blank=False, null=False)
     status = models.IntegerField(choices=STATUS, default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.ManyToManyField(
-        User, related_name='article_rating', blank=False, default=0, choices=RATING
-        )
+    
 
     class Meta:
         ordering = ['-created_on']
