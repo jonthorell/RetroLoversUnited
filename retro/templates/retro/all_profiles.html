@@ -1,23 +1,44 @@
-{% extends "base.html" %}
+{% extends "base.html" %}}
 {% load static %}
 {% block title %}All Profiles{% endblock title %}
 
 {% block content %}
 
-<div class="container-fluid target-link text-center">
+<div class="container-fluid text-center target-link">
     <h1>All Profiles</h1>
 </div>
 
+
 <div class="container-fluid target-link">
-    <div class="row">
-        <div class="col d-none d-lg-block">
-            <img class='rounded-circle border border-5 border-success right-align' width="640" height="436" src="{% static 'images/wicked_witch.PNG' %}" />
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        {% for profile in profiles %}
+        <div class="col">
+            <div class="card h-100 categories">
+                {% if profile.user.is_active %}
+                <a href="view_profile" aria-label="Click to view Profile ">
+                    <div class="card-body">
+                        <h5 class="card-title blackfg">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                        <p class="blackfg">
+                            {{ profile.description }}
+                        </p>
+                    </div>
+                </a>
+                {% else %}
+                <a href="view_profile" aria-label="Click to view Profile ">
+                    <div class="card-body">
+                        <h5 class="card-title blackfg struck-out">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                        <p class="blackfg struck-out">
+                            {{ profile.description }}
+                        </p>
+                    </div>
+                </a>
+                {% endif %}
+            </div>
         </div>
-        <div class="col text-center">
-            <h1 class="" mb-3 cursive-font text-center">We will get back to you as soon as possible.</h1>
-        </div>
+        {% endfor %}
     </div>
-
 </div>
+<p>&nbsp;</p>
 
-{% endblock content %}
+
+    {% endblock content %}

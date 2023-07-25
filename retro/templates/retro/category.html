@@ -14,7 +14,6 @@
         {% for category in categories %}
         <div class="col">
             <div class="card h-100 categories">
-                <!--<img src="https://res.cloudinary.com/retroloversunited/image/upload/v1686733588/static/images/backdrop.89bfed3dd490.png" class="card-img-top" alt="MagicWB header" />-->
                 <a href="{% url 'articles_by_category' category.id %}" aria-label="Click to view {{ category.name }} ">
                     <div class="card-body">
                         <h5 class="card-title blackfg">{{ category.name }}</h5>

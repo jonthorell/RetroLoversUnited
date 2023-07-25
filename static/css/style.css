@@ -323,3 +323,8 @@ table th {
     /* used for read-only star-rating */
     color: #FFFF00;
 }
+
+.struck-out {
+    /* used for line-throgh on disabled accounts */
+    text-decoration: line-through;
+}

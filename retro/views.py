@@ -186,7 +186,14 @@ class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
     )
 
 class all_profiles(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
-    template_name = "retro/all_profiles.html"
+     template_name = 'retro/all_profiles.html'
+     model = User
+     context_object_name = 'profile'
+
+     def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['profiles'] = Profile.objects.select_related('user').all()
+        return context
 
 
 
