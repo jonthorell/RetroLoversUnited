@@ -118,14 +118,15 @@ class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['profiles'] = Profile.objects.filter(user_id__id=self.kwargs.get("pk")).select_related('user').all()
+        context['profiles'] = Profile.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
+        # context['profiles'] = Profile.objects.filter(user_id__id=self.kwargs.get("pk")).select_related('user').all()
         return context
 
 
 class view_my_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_my_profile.html'
-    model = User
-    context_object_name = 'profile'
+    model =Profile
+    context_object_name = 'profiles'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
