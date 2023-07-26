@@ -43,7 +43,7 @@
                                 <img src="{% static urlbase %}" alt="Author" />
                                 {% for user in users %}
                                 {% if user.id == profile.user_id %}
-                                <a href="{% url 'view_profile' %}">
+                                <a href="/view_profile/{{ profile.user.id }}">
                                     {{ user.first_name }}
                                 </a>
                                 {% endif %}

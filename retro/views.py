@@ -1,5 +1,6 @@
 
 from pyexpat import model
+from urllib import request
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
@@ -8,7 +9,9 @@ from retro.forms import CreateArticleForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
-from .utils import listing_links, listing_links_api, listing_article_api,listing_article_by_category
+from django.urls import reverse
+from .utils import listing_links, listing_links_api
+# from .utils import listing_article_api,listing_article_by_category
 # from .utils import check_user_able_to_see_page
 
 class EditorRequiredMixin(UserPassesTestMixin):
@@ -47,6 +50,9 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
     model = Article
     context_object_name = 'article'
+
+class inactive_account(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/inactive.html'
 
 class articles_by_category(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/articles_by_category.html'
@@ -108,12 +114,13 @@ class Kategories(custom_mixin_kategorimenu, ListView):
 class View_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_profile.html'
     model = Profile
-    context_object_name = 'profile'
+    context_object_name = 'profiles'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.filter(category__id=self.kwargs.get("pk")).select_related('category').all()
+        context['profiles'] = Profile.objects.filter(user_id__id=self.kwargs.get("pk")).select_related('user').all()
         return context
+
 
 class view_my_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/view_my_profile.html'

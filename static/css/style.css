@@ -82,6 +82,10 @@
     color: var(--red);
 }
 
+.orangefg {
+    color: var(--orange);
+}
+
 html, body {
     height: 100%;
 }

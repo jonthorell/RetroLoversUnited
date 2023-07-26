@@ -4,9 +4,7 @@
 
 {% block content %}
 
-<div class="container-fluid target-link text-center">
-    <h1>View profile</h1>
-</div>
+<p>&nbsp;</p>
 <div class="container-fluid target-link">
     <div class="row">
         <div class="col d-none d-lg-block">
@@ -17,10 +15,26 @@
                 <tbody class="background">
                     <tr>
                         <td>
-                            <p class="td-desc"><img src="{% static 'avatars/jack.png'' %}" with="80" height="80" alt="Author" /></p>
+                            <p class="td-desc">
+                                {% for profile in profiles %}
+                                {% with avatarimg="avatars/"|add:profile.avatar %}
+                                <img src="{% static avatarimg %}"
+                                     alt="Author"
+                                     class="rounded-circle"
+                                     height="80"
+                                     width="80"
+                                     loading="lazy">
+                                {% endwith %}
+                                {% endfor %}
+                            </p>
                         </td>
                         <td>
-                            <p>&nbsp;</p>
+                            <h1>
+                                View Profile of
+                                {% for profile in profiles %}
+                                {{ profile.user.first_name }} {{ profile.user.last_name }}
+                                {% endfor %}
+                            </h1>
                         </td>
                     </tr>
                     <tr>
@@ -28,7 +42,23 @@
                             <p class="td-desc">Full name:</p>
                         </td>
                         <td>
-                            <p class="td-desc">Jack Tramiel</p>
+                            <p class="td-desc">
+                                {% for profile in profiles %}
+                                {{ profile.user.first_name }} {{ profile.user.last_name }}
+                                {% endfor %}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="td-desc">E-mail:</p>
+                        </td>
+                        <td>
+                            {% for profile in profiles %}
+                            {% if forloop.counter == 1 %}
+                            <p class="td-desc">{{ profile.user.email }}</p>
+                            {% endif %}
+                            {% endfor %}
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +66,11 @@
                             <p class="td-desc">Description:</p>
                         </td>
                         <td>
-                            <p class="td-desc">Jack was one of the original founders of Commodore Business Machines, before he was "fired" and took revenge by buying the competing Atari Corporation.</p>
+                            {% for profile in profiles %}
+                            {% if forloop.counter == 1 %}
+                            <p class="td-desc">{{ profile.description }}</p>
+                            {% endif %}
+                            {% endfor %}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +78,11 @@
                             <p class="td-desc">Computer in use:</p>
                         </td>
                         <td>
-                            <p class="td-desc">Atari Falcon and Amiga 3000.</p>
+                            {% for profile in profiles %}
+                            {% if forloop.counter == 1 %}
+                            <p class="td-desc">{{ profile.computer }}</p>
+                            {% endif %}
+                            {% endfor %}
                         </td>
                     </tr>
                 </tbody>

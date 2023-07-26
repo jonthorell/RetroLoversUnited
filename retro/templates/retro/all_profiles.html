@@ -6,6 +6,7 @@
 
 <div class="container-fluid text-center target-link">
     <h1>All Profiles</h1>
+    <h2 class="orangefg"><span class="struck-out">Struck-thru</span> means the account is inactive.</h2>
 </div>
 
 
@@ -15,7 +16,7 @@
         <div class="col">
             <div class="card h-100 categories">
                 {% if profile.user.is_active %}
-                <a href="view_profile" aria-label="Click to view Profile ">
+                <a href="view_profile/{{ profile.user.id }}" aria-label="Click to view Profile ">
                     <div class="card-body">
                         <h5 class="card-title blackfg">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
                         <p class="blackfg">
@@ -24,7 +25,7 @@
                     </div>
                 </a>
                 {% else %}
-                <a href="view_profile" aria-label="Click to view Profile ">
+                <a href="inactive_account" aria-label="Click to view Profile ">
                     <div class="card-body">
                         <h5 class="card-title blackfg struck-out">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
                         <p class="blackfg struck-out">
