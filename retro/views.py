@@ -51,6 +51,11 @@ class article_detail(custom_mixin_kategorimenu, DetailView):
     model = Article
     context_object_name = 'article'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
+        return context
+
 class inactive_account(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/inactive.html'
 

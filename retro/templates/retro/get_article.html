@@ -5,8 +5,11 @@
 {% block content %}
 
 <div class="container-fluid target-link text-center">
-    <h1>{{ article.title }} </h1>
-    <p class="text-center">Posted by: {{ article.user.first_name }}&nbsp; {{ article.user.last_name }}</p>
+    <h1>{{ article.title }}</h1>
+    
+    <a href="/view_profile/{{ article.user.id }}">
+        <p class="text-center">Posted by: {{ article.user.first_name }}&nbsp; {{ article.user.last_name }}</p>
+    </a>
 </div>
 
 <div class="container-fluid target-link">
@@ -16,6 +19,7 @@
                 <div class="p-3">
                     <p>{{ article.content|safe}}</p>
                 </div>
+                <hr class="whitefg"/>
             </div>
             {% if user.is_authenticated %}
             {% if request.user == article.user %}
