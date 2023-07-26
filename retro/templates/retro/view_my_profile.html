@@ -30,7 +30,7 @@
                                 {% endwith %}
                                 {% endif %}
                                 {% endfor %}
-                                </p>
+                            </p>
                         </td>
                         <td>
                             <h1>
@@ -87,6 +87,20 @@
                             {% for profile in profiles %}
                             {% if forloop.counter == 1 %}
                             <p class="td-desc">{{ profile.computer }}</p>
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="td-desc">My Articles:</p>
+                        </td>
+                        <td>
+                            {% for profile in profiles %}
+                            {% if forloop.counter == 1 %}
+                            <p class="td-desc">
+                                <a href="/my-articles">&nbsp;{{ profile.user.first_name }} {{ profile.user.last_name }}</a>
+                            </p>
                             {% endif %}
                             {% endfor %}
                         </td>
