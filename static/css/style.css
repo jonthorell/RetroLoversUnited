@@ -332,3 +332,8 @@ table th {
     /* used for line-throgh on disabled accounts */
     text-decoration: line-through;
 }
+
+blockquote {
+    color: var(--black);
+    font-style: italic;
+}
