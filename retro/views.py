@@ -4,7 +4,7 @@ from urllib import request
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView
 from retro.forms import CreateArticleForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -210,7 +210,11 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView)
     model = User
     context_object_name="articles"
 
+    
+
     def get_context_data(self, *args, **kwargs):
+        print(f' Args: {args}' )
+        print(f' Kwargs: {kwargs}' )
         context = super().get_context_data(*args, **kwargs)
         context['articles'] = Article.objects.filter(user_id=self.request.user)
         return context

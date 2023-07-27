@@ -15,10 +15,10 @@
         <div class="col">
             {% if user.is_authenticated %}
                 <p>User is authenticated.</p>
-                <p>{{ request.path_info }}</p>
+                <p>Kwarg: {{ view.kwargs.pk }}</p>
                     {% for article in articles %}
                         {% if request.user.id == article.user_id %}
-                <p>And it is the users article. Allowed to edit.  User id: {{ request.user.id }} Article user id: {{ article.user_id }}. Article id {{ article.id }}.</p>
+                            <p>And it is the users article. Allowed to edit.  User id: {{ request.user.id }} Article user id: {{ article.user_id }}. Article id {{ article.id }}.</p>
                         {% else %}
                             <p>You are only allowed to edit your own articles. User id: {{ request.user.id }} Article user id: {{ article.user_id }}. Article id {{ article.id }}.</p>
                         {% endif %}
