@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\credits\\templates",
+    "\\credits\\templates\\credits",
     "\\retro",
     "\\retroloversunited",
     "\\retro\\templates",
+    "\\retro\\templates\\retro",
+    "\\static",
     "\\static\\css",
-    "\\static\\javascript",
-    "\\templates",
-    "\\templates\\allauth",
-    "\\templates\\allauth\\account",
-    "\\templates\\includes"
+    "\\templates"
   ],
-  "SelectedNode": "\\retro\\templates\\retro\\links.html",
+  "SelectedNode": "\\retroloversunited\\urls.py",
   "PreviewInSolutionExplorer": false
 }

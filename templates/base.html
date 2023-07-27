@@ -12,9 +12,9 @@
     <meta name="description" content="Community page for retro computers">
     <meta name="keywords" content="community retro computers amiga atari commodore">
     <meta name="author" content="Jonas Thorell">
+    <script src="https://retroloversunited.herokuapp.com/static/javascript/tinymce.min.js" referrerpolicy="origin"></script>
     {% block extra_css %}
-    <!-- summernote -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
     <!-- font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- materialize bootstrp -->
@@ -31,10 +31,12 @@
     <title>RetroLoversUnited: {% block title %}Default Title{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}
+    {{ form.media }}
 
 </head>
 
 <body>
+
     {% block body %}
     <div class="container-fluid">
         <div class="row">
@@ -57,9 +59,11 @@
     <!-- MDB -->
     <script src="{% static 'javascript/mdb.min.js' %}">
     </script>
-    <!--custom script -->
+   
+    <!--my custom script -->
     <script src="{% static 'javascript/script.js' %}">
     </script>
+   
     {% endblock %}
     {% endblock %}
 

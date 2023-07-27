@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
 from retro.models import Category, Profile,Article
+from tinymce.widgets import TinyMCE
 
  
 class CustomSignupForm(SignupForm):
@@ -73,7 +74,7 @@ class EditProfileForm(forms.ModelForm):
         #fields = '__all__'
 
 class CreateArticleForm(forms.ModelForm):
-    foo = SummernoteTextField()
+    
     
     content = forms.CharField(
         required=True,
@@ -111,8 +112,5 @@ class CreateArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        widgets = {
-            'foo': SummernoteWidget(),
-            'bar': SummernoteInplaceWidget(),
-        } 
+        widgets = {'content': TinyMCE(attrs={'cols': 80, 'rows': 30})}
         exclude = ("user", "featured_image", "rating")
