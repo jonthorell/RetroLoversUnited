@@ -334,6 +334,7 @@ table th {
 }
 
 blockquote {
+    /* used for blockquotes in articles */
     color: var(--black);
     font-style: italic;
 }
