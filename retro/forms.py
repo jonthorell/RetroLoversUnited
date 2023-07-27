@@ -74,10 +74,11 @@ class EditProfileForm(forms.ModelForm):
 
 class CreateArticleForm(forms.ModelForm):
     
+    # content = forms.CharField(widget=SummernoteWidget())
     
     content = forms.CharField(
         required=True,
-        widget=forms.widgets.Textarea(
+        widget=SummernoteWidget(
             attrs={
                 "placeholder": "Main content of article",
                 "class": "form-control form-control-sm",
@@ -111,4 +112,8 @@ class CreateArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
+        widgets = {
+            'foo': SummernoteWidget(),
+            'bar': SummernoteInplaceWidget(),
+        }
         exclude = ("user", "featured_image", "rating")
