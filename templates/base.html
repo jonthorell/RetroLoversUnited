@@ -12,7 +12,7 @@
     <meta name="description" content="Community page for retro computers">
     <meta name="keywords" content="community retro computers amiga atari commodore">
     <meta name="author" content="Jonas Thorell">
-    <script src="https://retroloversunited.herokuapp.com/static/javascript/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{% static 'javascript/'tinymce.min.js' %}" referrerpolicy="origin"></script>
     {% block extra_css %}
 
     <!-- font awsome -->
@@ -59,14 +59,14 @@
     <!-- MDB -->
     <script src="{% static 'javascript/mdb.min.js' %}">
     </script>
-   
+
     <!--my custom script -->
     <script src="{% static 'javascript/script.js' %}">
     </script>
-   
+
     {% endblock %}
     {% endblock %}
 
 
-</body>
+    </body>
 </html>
