@@ -205,6 +205,16 @@ class Links(custom_mixin_kategorimenu, ListView):
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
 
+class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = "retro/edit_article.html"
+    model = User
+    context_object_name="articles"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(user_id=self.request.user)
+        return context
+
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/create_article.html"
     model = Article
