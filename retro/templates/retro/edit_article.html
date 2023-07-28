@@ -16,13 +16,30 @@
             {% if user.is_authenticated %}
                 <p>User is authenticated.</p>
                 <p>Kwarg: {{ view.kwargs.pk }}</p>
+                {% if view.kwargs.pk == 91 %}
+                <!-- if statement will be removed -->
+                    <p>Editing article 91</p>
+                    <p>Your user id is: {{ request.user.id }}</p>
                     {% for article in articles %}
-                        {% if request.user.id == article.user_id %}
-                            <p>And it is the users article. Allowed to edit.  User id: {{ request.user.id }} Article user id: {{ article.user_id }}. Article id {{ article.id }}.</p>
-                        {% else %}
-                            <p>You are only allowed to edit your own articles. User id: {{ request.user.id }} Article user id: {{ article.user_id }}. Article id {{ article.id }}.</p>
+                        {% if article.id == view.kwargs.pk %}
+                            <p>The owner of article {{ article.title }} is: {{ article.user_id }}</p>
+                            {% if article.user_id == request.user.id %}
+                                <p>This is your article. You are allowed to edit it.</p>
+                                <!-- add forms logic here -->
+                            {% else %}
+                                <p class="not-logged-in">
+                                    <h2>
+                                        <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
+                                        You are not the owner of the article. You are not authorized to edit it.
+                                    </h2>
+                                </p>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
+                {% else %}
+                    <!-- else <p> and endif here will be removed -->
+                    <p>Not editing article 91</p>
+                {% endif %}    
             {% else %}
                 {% comment %}
                     Should never show up since the mixin is in place

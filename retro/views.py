@@ -217,18 +217,16 @@ class article_like(View):
 
         return HttpResponseRedirect(reverse('article_detail', args=[id]))
 
-class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
     template_name = "retro/edit_article.html"
-    model = User
+    model =Article
     context_object_name="articles"
 
     
 
     def get_context_data(self, *args, **kwargs):
-        print(f' Args: {args}' )
-        print(f' Kwargs: {kwargs}' )
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.filter(user_id=self.request.user)
+        context['articles'] = Article.objects.filter(user_id=self.request.user.id)
         return context
 
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
