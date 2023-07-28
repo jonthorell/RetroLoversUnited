@@ -14,12 +14,6 @@
     <div class="row">
         <div class="col">
             {% if user.is_authenticated %}
-                <p>User is authenticated.</p>
-                <p>Kwarg: {{ view.kwargs.pk }}</p>
-                {% if view.kwargs.pk == 91 %}
-                <!-- if statement will be removed -->
-                    <p>Editing article 91</p>
-                    <p>Your user id is: {{ request.user.id }}</p>
                     {% for article in articles %}
                         {% if article.id == view.kwargs.pk %}
                             <p>The owner of article {{ article.title }} is: {{ article.user_id }}</p>
@@ -30,16 +24,12 @@
                                 <p class="not-logged-in">
                                     <h2>
                                         <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
-                                        You are not the owner of the article. You are not authorized to edit it.
+                                        You can only edit your own articles.
                                     </h2>
                                 </p>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
-                {% else %}
-                    <!-- else <p> and endif here will be removed -->
-                    <p>Not editing article 91</p>
-                {% endif %}    
             {% else %}
                 {% comment %}
                     Should never show up since the mixin is in place
@@ -53,7 +43,6 @@
             {% endif %}
         </div>
     </div>
-
 </div>
 
 {% endblock content %}

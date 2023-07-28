@@ -1,4 +1,5 @@
-NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate
+NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate. Also, I probably should have set the different
+iterations without due-dates. 
 
 # Bugs
 
@@ -11,8 +12,9 @@ NOTE: timeline in Agileproject. Made an initial mistake there so had start over 
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
 8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
 9. When using view-by-author, the system inexplicable logs the user in as that user??. Fixed. context_view was wrong
-10. Faq gets same value from links.description all the time??
+10. Faq gets same value from links.description all the time?? Fixed
 11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving. Changed to pop-out instead
+12. If user manually changes article id in url bar for editarticle, the display is empty. Works good enough to get the form into place and look into that problem later
 
 # Todo
 
