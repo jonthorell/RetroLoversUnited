@@ -4,7 +4,7 @@ from django.urls import path
 from .views import Index, Links,Contact, About, Kategories, Thankyou, Test, edit_profile
 from .views import View_profile,List_Users,article_detail,articles_by_category,articles_by_author
 from .views import create_article,my_Articles,view_my_profile,all_profiles, inactive_account
-from .views import edit_article
+from .views import edit_article, article_like
 
 #app_name = "retro"
 
@@ -33,4 +33,5 @@ urlpatterns = [
     path("category/<int:pk>/", articles_by_category.as_view(), name="articles_by_category"),
     path("author/<int:pk>/", articles_by_author.as_view(), name="articles_by_author"),
     path("my-articles", my_Articles.as_view(), name="my-articles"),
+    path('rate/<int:pk>/', article_like.as_view(), name='article_like'),
     ]

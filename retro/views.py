@@ -1,10 +1,10 @@
 
-from pyexpat import model
-from urllib import request
-from django.shortcuts import render,redirect, get_object_or_404
+
+import http
+from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
-from django.views.generic import TemplateView, ListView, DetailView, DeleteView
+from django.views.generic import TemplateView, ListView, DetailView, View
 from retro.forms import CreateArticleForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -204,6 +204,18 @@ class Links(custom_mixin_kategorimenu, ListView):
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'
+
+class article_like(View):
+
+    def post(self, request, *args, **kwargs):
+        article = get_object_or_404(Article, id=request.user.id)
+
+        if article.ratings.filter(id=request.user.id).exists():
+            article.ratings.remove(request.user)
+        else:
+            article.ratings.add(request.user)
+
+        return HttpResponseRedirect(reverse('article_detail', args=[id]))
 
 class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/edit_article.html"

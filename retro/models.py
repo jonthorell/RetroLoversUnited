@@ -50,7 +50,7 @@ class Article(models.Model):
     excerpt = models.TextField(blank=False, null=False)
     status = models.IntegerField(choices=STATUS, default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.ManyToManyField(
+    ratings = models.ManyToManyField(
         User, related_name='article_rating', blank=True)
 
     class Meta:
@@ -66,8 +66,8 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse("article_detail", args=[str(self.id)])
 
-    def number_of_likes(self):
-        return self.rating.count()
+    def number_of_ratings(self):
+        return self.ratings.count()
 
 class Link(models.Model):
     name = models.CharField(max_length=60, blank=False, null=False, unique=True)

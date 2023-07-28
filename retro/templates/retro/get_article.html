@@ -19,7 +19,7 @@
                 <div class="p-3">
                     <p>{{ article.content|safe}}</p>
                 </div>
-                <hr class="whitefg"/>
+                <hr class="whitefg" />
             </div>
             {% if user.is_authenticated %}
             {% if request.user == article.user %}
@@ -28,10 +28,17 @@
                 <a href="" class="btn btn-danger">Delete</a>
             </div>
             {% else %}
-            <i class="fa-regular fa-thumbs-up whitefg"></i>
-            <i class="fa-solid fa-thumbs-up whitefg"></i>
+            <p>Up/down vote Article</p>
+            <form class="d-inline" action="{% url 'article_like' article.id %}" method="POST">
+                {% csrf_token %}
+                {% if not liked %}
+                    <button type="submit" name="blogpost_id" value="{{article.id}}" class="btn btn-link whitefg"><i class="fa-solid fa-thumbs-up"></i></button>
+                {% else %}
+                    <button type="submit" name="blogpost_id" value="{{article.id}}" class="btn btn-link whitefg"><i class="fa-regular fa-thumbs-up"></i></button>
+                {% endif %}
+            </form>
             <p>Rate Article</p>
-            <ul class="rating" data-mdb-toggle="rating" data-mdb-readonly="false" data-mdb-value="3">
+            <ul class="rating" data-mdb-toggle="rating" data-mdb-readonly="false" data-mdb-value="0">
                 <li><i class="far fa-star fa-sm text-yellow"></i></li>
                 <li><i class="far fa-star fa-sm text-yellow"></i></li>
                 <li><i class="far fa-star fa-sm text-yellow"></i></li>
