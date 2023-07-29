@@ -10,39 +10,41 @@
     <h1>Edit Article</h1>
 </div>
 
+<p>Your user id is: {{ request.user.id }}</p>
+<p>Kwarg: {{ view.kwargs.pk }}</p>
+
+
 <div class="container-fluid target-link">
     <div class="row">
         <div class="col">
             {% if user.is_authenticated %}
-                    {% for article in articles %}
-                        {% if article.id == view.kwargs.pk %}
-                            <p>The owner of article {{ article.title }} is: {{ article.user_id }}</p>
-                            {% if article.user_id == request.user.id %}
-                                <p>This is your article. You are allowed to edit it.</p>
-                                <!-- add forms logic here -->
-                            {% else %}
-                                <p class="not-logged-in">
-                                    <h2>
-                                        <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
-                                        You can only edit your own articles.
-                                    </h2>
-                                </p>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+            <form method="post" class="form p-2">
+                {% csrf_token %}
+                <fieldset>
+                    {{ form.as_p |safe}}
+                    {% if user.is_authenticated %}
+                    <label for="user">Post as user: </label>
+                    <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}" />
+                    <p> </p>
+                    <button type="submit" class="btn btn-primary btn-block">Update Article!</button>
+                    <p> </p>
+                    {% endif %}
+                </fieldset>
+            </form>
             {% else %}
-                {% comment %}
-                    Should never show up since the mixin is in place
-                {% endcomment %}
-                <p class="not-logged-in">
-                    <h2>
-                        <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
-                         Since you are not logged in, you are not authorized to see this page.
-                    </h2>
-                </p>
+            {% comment %}
+            Should never show up since the mixin is in place
+            {% endcomment %}
+            <p class="not-logged-in">
+                <h2>
+                    <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
+                    Since you are not logged in, you are not authorized to see this page.
+                </h2>
+            </p>
             {% endif %}
         </div>
     </div>
+
 </div>
 
 {% endblock content %}

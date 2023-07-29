@@ -1,6 +1,7 @@
 
 
 import http
+from pipes import Template
 from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
@@ -222,12 +223,14 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
     model =Article
     context_object_name="articles"
 
-    
-
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.filter(user_id=self.request.user.id)
+        context['articles'] = Article.objects.filter(user_id=self.request.user.id).select_related('user').all()
         return context
+
+    def get(self, request, *args, **kwargs):
+        form = CreateArticleForm()
+        return render(request,"retro/edit_article.html", {"form": form})
 
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/create_article.html"
