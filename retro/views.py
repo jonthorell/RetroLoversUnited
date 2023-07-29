@@ -229,8 +229,26 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
         return context
 
     def get(self, request, *args, **kwargs):
-        form = CreateArticleForm()
+        current_article = get_object_or_404(Article, id=104)
+        form = CreateArticleForm(instance=current_article)
         return render(request,"retro/edit_article.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        current_article = get_object_or_404(Article, id=104)
+        form = CreateArticleForm(data=request.POST, instance=current_article)
+        if form.is_valid():
+            my_article = form.save(commit=False)
+            my_article.post = current_article
+            my_article.save()
+            return redirect("/")
+        else:
+            form = CreateArticleForm()
+
+        return render(
+            request,
+            "retro/edit_article.html",
+            {"form": form},
+            )
 
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/create_article.html"
