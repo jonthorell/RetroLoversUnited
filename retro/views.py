@@ -243,7 +243,7 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
             my_article = form.save(commit=False)
             my_article.post = current_article
             my_article.save()
-            return redirect(reverse('article_detail', kwargs={'pk': my_id}))
+            return redirect(my_article)
         else:
             form = CreateArticleForm()
 
