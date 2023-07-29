@@ -140,7 +140,7 @@ class view_my_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
 
 class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/edit_profile.html'
-    model = User
+    model = Profile
     context_object_name = 'profile'
 
     def get_context_data(self, *args, **kwargs):
@@ -236,7 +236,8 @@ class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateVie
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Article.objects.select_related('user').all()
+        context['articles'] = Article.objects.filter(user_id=self.request.user.id).select_related('user').all()
+        
         return context
 
     def post(self, request, *args, **kwargs):

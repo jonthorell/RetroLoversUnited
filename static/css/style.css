@@ -333,8 +333,18 @@ table th {
     text-decoration: line-through;
 }
 
-blockquote {
+/* This section targets elements in articles created by summernote */
+
+.article-container .p-3 blockquote {
     /* used for blockquotes in articles */
-    color: var(--black);
+    color: var(--off-white);
     font-style: italic;
+}
+
+.article-container .p-3 td {
+    color: var(--white);
+}
+
+.article-container .p-3 li {
+    color: var(--white);
 }

@@ -1,7 +1,6 @@
 
 from allauth.account.forms import SignupForm
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
+from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
@@ -65,16 +64,10 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        widgets = {
-            'foo': SummernoteWidget(),
-            'bar': SummernoteInplaceWidget(),
-        } 
         exclude = ("short_description", "user", "avatar",)
-        #fields = '__all__'
+        
 
 class CreateArticleForm(forms.ModelForm):
-    
-    # content = forms.CharField(widget=SummernoteWidget())
     
     content = forms.CharField(
         required=True,
@@ -112,8 +105,5 @@ class CreateArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        widgets = {
-            'foo': SummernoteWidget(),
-            'bar': SummernoteInplaceWidget(),
-        }
+        
         exclude = ("user", "featured_image", "ratings")
