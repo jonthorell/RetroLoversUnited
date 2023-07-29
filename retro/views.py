@@ -229,18 +229,21 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
         return context
 
     def get(self, request, *args, **kwargs):
-        current_article = get_object_or_404(Article, id=104)
+        my_id = self.kwargs['pk']
+        current_article = get_object_or_404(Article, id=my_id)
+        print(Article.id)
         form = CreateArticleForm(instance=current_article)
         return render(request,"retro/edit_article.html", {"form": form})
 
     def post(self, request, *args, **kwargs):
-        current_article = get_object_or_404(Article, id=104)
+        my_id = self.kwargs['pk']
+        current_article = get_object_or_404(Article, id=my_id)
         form = CreateArticleForm(data=request.POST, instance=current_article)
         if form.is_valid():
             my_article = form.save(commit=False)
             my_article.post = current_article
             my_article.save()
-            return redirect("/")
+            return redirect(reverse('article_detail', kwargs={'pk': my_id}))
         else:
             form = CreateArticleForm()
 
