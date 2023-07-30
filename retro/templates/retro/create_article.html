@@ -7,6 +7,7 @@
 {% block content %}
 
 <div class="container-fluid text-center target-link">
+    <p></p>
     <h1>Create Article</h1>
 </div>
 
@@ -14,9 +15,9 @@
     <div class="row">
         <div class="col">
             {% if user.is_authenticated %}
-            <form method="post" class="form p-2">
+            <form method="post" class="form pt-3 m-2">
                 {% csrf_token %}
-                <fieldset>
+                <fieldset class="m-3">
                     {{ form.as_p |safe}}
                     {% if user.is_authenticated %}
                     <label for="user">Post as user: </label>
@@ -40,7 +41,6 @@
             {% endif %}
         </div>
     </div>
-
 </div>
 
 {% endblock content %}

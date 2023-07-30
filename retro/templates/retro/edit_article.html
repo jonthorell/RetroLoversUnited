@@ -8,15 +8,16 @@
 
 <div class="container-fluid text-center target-link">
     <h1>Edit Article</h1>
+    <p>As user: {{ user.first_name }} {{ user.last_name }}</p>
 </div>
 
 <div class="container-fluid target-link">
     <div class="row">
         <div class="col">
             {% if user.is_authenticated %}
-            <form method="post" class="form p-2">
+            <form method="post" class="form pt-3 m-2">
                 {% csrf_token %}
-                <fieldset>
+                <fieldset class="m-3">
                     {{ form.as_p |safe}}
                     {% if user.is_authenticated %}
                     <label for="user">Post as user: </label>
