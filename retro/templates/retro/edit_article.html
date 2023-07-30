@@ -15,9 +15,9 @@
     <div class="row">
         <div class="col">
             {% if user.is_authenticated %}
-            <form method="post" class="form p-1 m-1">
+            <form method="post" class="form pt-1 mt-1">
                 {% csrf_token %}
-                <fieldset class="p-1 m-1">
+                <fieldset class="mx-2 px-2">
                     {{ form.as_p |safe}}
                     {% if user.is_authenticated %}
                     <label for="user">Post as user: </label>
