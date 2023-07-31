@@ -231,7 +231,6 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
     def get(self, request, *args, **kwargs):
         my_id = self.kwargs['pk']
         current_article = get_object_or_404(Article, id=my_id)
-        print(Article.id)
         form = CreateArticleForm(instance=current_article)
         return render(request,"retro/edit_article.html", {"form": form})
 
@@ -252,6 +251,24 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
             "retro/edit_article.html",
             {"form": form},
             )
+
+class edit2(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
+    template_name = "retro/edit_article.html"
+    model =Article
+    context_object_name="articles"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        my_id = self.kwargs['pk']
+        context['articles'] = Article.objects.filter(id=my_id).select_related('user').all()
+        return context
+
+    #def get(self, request, *args, **kwargs):
+    #    my_id = self.kwargs['pk']
+    #    current_article = get_object_or_404(Article, id=my_id)
+    #    form = CreateArticleForm(instance=current_article)
+    #    return render(request,"retro/edit_article.html", {"form": form})
+
 
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/create_article.html"
