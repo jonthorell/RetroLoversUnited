@@ -12,40 +12,26 @@
         <div class="col d-none d-lg-block text-center">
             <img class='rounded-circle border border-5 border-success' src="{% static 'images/AmyEditor.png' %}" alt="Amy Editor" width="640" height="436" />
         </div>
-        <nav class="col categories" aria-label="Pagination navigation">
-            {% for kw in page_obj %}<i class="fa-solid fa-diamond" aria-hidden="true">&nbsp; </i><a href="{{ kw.url }}" target="_blank" alt="{{ kw.alt }}">{{kw}}</a>
-            <p>{{ kw.description }} </p>
-            {% endfor %}
-            {% block pagination %}
-            <div class="text-center shadow-pagination">
-                <h2>
-                {% if page_obj.has_previous %}
-                    <a href="{% url 'listing-links-by-page' 1 %}">
-                        <!--First -->
-                        <span class="material-symbols-sharp">first_page</span>
-                    </a>
-                <a href="{% url 'listing-links-by-page' page_obj.previous_page_number %}">
-                    <!--Previous -->
-                    <span class="material-symbols-sharp">chevron_left</span>
-                </a>
-                {% endif%}
-
-                &nbsp; {{page_obj.number}} of {{page_obj.paginator.num_pages}} &nbsp;
-
-                {% if page_obj.has_next %}
-                <a href="{% url 'listing-links-by-page' page_obj.next_page_number %}">
-                    <!--Next -->
-                    <span class="material-symbols-sharp">chevron_right</span>
-                </a>
-                <a href="{% url 'listing-links-by-page' page_obj.paginator.num_pages %}">
-                    <!-- last -->
-                    <span class="material-symbols-sharp">last_page</span>
-                </a>
-                {% endif%}
-                    </h2>
+        <div class='col table-responsive'>
+            <div class="datatable" data-mdb-striped='true' data-mdb-borderless='true' data-mdb-hover='true' data-mdb-fixed-header='false' data-mdb-color='grey' data-mdb-full-pagination='true'>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="th-small">URL</th>
+                        <th class="th-small">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for link in links %}
+                    <tr>
+                        <td><a href="{{link.url}}">{{ link.name }}</a></td>
+                        <td>{{ link.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
             </div>
-            {% endblock %}
-        </nav>
     </div>
 </div>
 <p>&nbsp;</p>

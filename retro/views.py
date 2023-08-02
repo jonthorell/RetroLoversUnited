@@ -1,7 +1,4 @@
 
-
-import http
-from pipes import Template
 from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
@@ -11,8 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
 from django.urls import reverse
-from .utils import listing_links, listing_links_api
-# from .utils import listing_article_api,listing_article_by_category
+# from .utils import listing_links, listing_links_api
 # from .utils import check_user_able_to_see_page
 
 class EditorRequiredMixin(UserPassesTestMixin):
@@ -196,12 +192,17 @@ class Links(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/links.html'
     model = Link
     context_object_name = 'links'
-    paginate_by = 5
+    #paginate_by = 5
 
-    def get_queryset(self, *args, **kwargs):
-         qs = super(Links, self).get_queryset(*args, **kwargs)
-         qs = qs.order_by("name")
-         return qs
+    #def get_queryset(self, *args, **kwargs):
+    #     qs = super(Links, self).get_queryset(*args, **kwargs)
+    #     qs = qs.order_by("name")
+    #     return qs
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['links'] = Link.objects.all()
+        return context
 
 class Thankyou(custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/thankyou.html'

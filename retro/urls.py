@@ -10,9 +10,6 @@ from .views import edit_article, article_like
 urlpatterns = [
     path('', Index.as_view(), name='home'),
     path('links', Links.as_view(), name='links'),
-    path('links/page/<int:page>',views.listing_links, name='listing-links-by-page'),
-    #path('links.json', views.listing_api, name='links-api'),
-    #path('article.json', views.listing_article_api, name='article-api'),
     path('contact',Contact.as_view(), name='contact'),
     path('inactive_account', inactive_account.as_view(), name='inactive_account'),
     path('about', About.as_view(), name='about'),
@@ -27,7 +24,6 @@ urlpatterns = [
     path("view_my_profile", view_my_profile.as_view(), name='view__my_profile'),
     path("all_profiles", all_profiles.as_view(), name="all_profiles"),
     path('list_users', List_Users.as_view(), name='list_users'),
-    path("article/<int:pk>/", article_detail.as_view(), name="article_detail"),
     path("article/<int:pk>/", article_detail.as_view(), name="article_detail"),
     path("category/<int:pk>/", articles_by_category.as_view(), name="articles_by_category"),
     path("author/<int:pk>/", articles_by_author.as_view(), name="articles_by_author"),
