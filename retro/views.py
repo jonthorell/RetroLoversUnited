@@ -218,7 +218,7 @@ class article_like(View):
 
         return HttpResponseRedirect(reverse('article_detail', args=[id]))
 
-class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
+class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = "retro/edit_article.html"
     model =Article
     context_object_name="articles"
