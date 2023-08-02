@@ -1,4 +1,5 @@
 
+from email.policy import default
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.models import User, Group
@@ -6,6 +7,7 @@ from django import forms
 from django.utils.translation import gettext as _
 from retro.models import Category, Profile,Article
 
+STATUS = ((0, "Draft"), (1,"Published"))
  
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -102,8 +104,26 @@ class CreateArticleForm(forms.ModelForm):
         label="",
     )
 
+    #category = forms.CharField(
+    #    required=True,
+    #    widget = forms.Select(
+    #        attrs={
+    #            "class": "form-control form-control-sm validate",
+    #            }
+    #        ),
+    #    label="",
+    #)
+
+    status = forms.CharField(initial=1,
+        required=True,
+        widget = forms.Select(choices=STATUS,
+            attrs={
+                "class": "form-control form-control-sm validate",
+                }
+            ),
+        label="",
+    )
 
     class Meta:
         model = Article
-        
         exclude = ("user", "featured_image", "ratings")
