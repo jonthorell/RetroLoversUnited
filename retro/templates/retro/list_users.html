@@ -5,26 +5,48 @@
 
 {% block content %}
 
-<div class="container-fluid target-link text-center">
-    <h1>List Active Users</h1>
-</div>
+<p>&nbsp;</p>
 <div class="container-fluid target-link">
     <div class="row">
         <div class="col d-none d-lg-block text-center">
             <img class='rounded-circle border border-5 border-success' src="{% static 'images/sabrina.jpg' %}" alt="Sabrina the Skunk" width="640" height="436" />
         </div>
-        <div class="col">
-
+        <div class="col table-responsive">
+            <h1>List Active Users</h1>
             <p>&nbsp;<i class="fa-sharp fa-solid fa-check"></i>&nbsp; are enabled. <i class="fa-solid fa-xmark"></i> are disabled. <br></p>
-            {% for user in users %}
-            {% if user.is_active %}
-            <i class="fa-sharp fa-solid fa-check user-names"></i>&nbsp; {{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) <br>
-            {% else %}
-            <i class="fa-solid fa-xmark user-names"></i> &nbsp; {{ user.first_name }} {{ user.last_name }} (username: {{ user.username }}) <br>
-            {% endif %}
-            {% endfor %}
+            <div class="datatable" data-mdb-striped='true' data-mdb-borderless='true' data-mdb-hover='true' data-mdb-fixed-header='false' data-mdb-color='grey' data-mdb-full-pagination='true'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="th-small">Active</th>
+                            <th class="th-small">Full name</th>
+                            <th class="th-small">Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            {% if user.is_active %}
+                            <td>
+                                <i class="fa-sharp fa-solid fa-check user-names"></i>
+                            </td>
+                            {% else %}
+                            <td>
+                                <i class="fa-solid fa-xmark user-names"></i>
+                            </td>
+                            {% endif %}
+                            <td>
+                                {{ user.first_name }} {{ user.last_name }}
+                            </td>
+                            <td>
+                                {{ user.username }}
+                            </td>
+                            {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+        </div>
 </div>
 
 
