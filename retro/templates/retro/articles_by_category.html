@@ -14,6 +14,11 @@
             {% if articles|length == 0 %}
             <h1>There are no articles (yet) in this category.</h1>
             {% else %}
+            {% for article in articles %}
+            {% if forloop.counter == 1 %}
+            <h1>Articles in Category: {{ category.name }}</h1>
+            {% endif %}
+            {% endfor %}
             <div class="datatable" data-mdb-striped='true' data-mdb-borderless='true' data-mdb-hover='true' data-mdb-fixed-header='false' data-mdb-color='grey' data-mdb-full-pagination='true'>
                 <table>
                     <thead>
