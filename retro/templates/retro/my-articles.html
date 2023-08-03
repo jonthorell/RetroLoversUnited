@@ -2,93 +2,90 @@
 {% load static %}
 {% block title %}My Articles{% endblock title %}
 
-
 {% block content %}
-
-
 <div class="container-fluid target-link">
-    <p>&nbsp;</p>
+    <br>
     <div class="row">
         <div class="col d-none d-lg-block text-center">
             <img class='rounded-circle border border-5 border-success' src="{% static 'images/sabrina.jpg' %}" alt="Sabrina the Skunk" width="640" height="436" />
         </div>
-        <div class="col table-responsive">
+        <div class='col table-responsive'>
             {% if articles|length == 0 %}
-                 <h1>You have not published any articles yet.</h1>
+            <h1>You have not published any articles yet.</h1>
             {% else %}
-                <div class="container-fluid target-link text-center">
-                    <h1>
-                          My Articles
-                             {% for article in articles %}
-                                 {% if forloop.counter == 1 %}
-                                     ({{ article.user.first_name }} {{ article.user.last_name }})
-                                 {% endif %}
-                              {% endfor %}
-                    </h1>
-                    <table class="table table-striped table-hover table-borderless align-middle mb-0">
-                        <thead class="light">
-                            <tr>
-                                <th>Article</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody class="background">
-                            {% for article in articles %}
-                            <tr>
-                                <td>
-                                    <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-                                </td>
-                                <td>
-                                    {% for category in categories %}
-                                    {% comment %}
-                                    This loop prints the category the article belongs to
-                                    {% endcomment %}
-                                    {% if article.category_id == category.id %}
-                                    {% comment %}
-                                    Only print when the category of the article match up with the category in the loop
-                                    {% endcomment %}
-                                    {% if category.name == 'Software development' %}
-                                    {% comment %}
-                                    if/else clause shortens the category name when it is "Software development"
-                                    reason is to make it look better on lower resolutions
-                                    {% endcomment %}
-                                    <a href="{{ category.get_absolute_url }}">
-                                        <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
-                                    </a>
-                                    {% else %}
-                                    <a href="{{ category.get_absolute_url }}">
-                                        <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
-                                    </a>
+            <h1>
+                My Articles
+                {% for article in articles %}
+                {% if forloop.counter == 1 %}
+                ({{ article.user.first_name }} {{ article.user.last_name }})
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <div class="datatable" data-mdb-striped='true' data-mdb-borderless='true' data-mdb-hover='true' data-mdb-fixed-header='false' data-mdb-color='grey' data-mdb-full-pagination='true'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="th-small">Article</th>
+                            <th class="th-small">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articles %}
+                        <tr>
+                            <td>
+                                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                                <p>
+                                    {{ article.excerpt }}
+                                    {% if article.status == 0 %}
+                                    <img src="{% static 'icons/draft-button.png' %}" alt="Draft" width="64" height="64" />
                                     {% endif %}
-                                    {% endif %}
-                                    {% endfor %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-desc">{{ article.excerpt }} </td>
-                                <td>
-                                    {% if request.user == article.user %}
-                                    <span class="text-center">
-                                        <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
-                                    </span>
-                                    {% else %}
-                                    <p>&nbsp;</p>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <p>&nbsp;</p>
-                 </div>
+                                </p>
+                            </td>
+                            <td>
+                                {% for category in categories %}
+                                {% comment %}
+                                This loop prints the category the article belongs to
+                                {% endcomment %}
+                                {% if article.category_id == category.id %}
+                                {% comment %}
+                                Only print when the category of the article match up with the category in the loop
+                                {% endcomment %}
+                                {% if category.name == 'Software development' %}
+                                {% comment %}
+                                if/else clause shortens the category name when it is "Software development"
+                                reason is to make it look better on lower resolutions
+                                {% endcomment %}
+                                <a href="{{ category.get_absolute_url }}">
+                                    <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
+                                </a>
+                                {% else %}
+                                <a href="{{ category.get_absolute_url }}">
+                                    <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">{{ category.name }}</div>
+                                </a>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                                {% if request.user == article.user %}
+                                <span class="text-center">
+                                    <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                </span>
+                                {% else %}
+                                <p>&nbsp;</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p>&nbsp;</p>
+            </div>
             {% endif %}
             {% comment %}
-                Ends article length=0
+            Ends article length=0
             {% endcomment %}
         </div>
     </div>
 </div>
-
 
     {% endblock content %}
