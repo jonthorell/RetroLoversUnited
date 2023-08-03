@@ -5,122 +5,73 @@
 {% block content %}
 
 <div class="container-fluid target-link">
-    <br>
+    <p>&nbsp;</p>
     <div class="row">
         <div class="col d-none d-lg-block text-center">
-            <img class='rounded-circle border border-5 border-success' width="640" height="436" src="{% static 'images/amylogin.jpg' %}">
+            <img class='rounded-circle border border-5 border-success' src="{% static 'images/amylogin.jpg' %}" alt="Amy Editor" width="640" height="436" />
         </div>
-        <div class="col table-responsive">
+        <div class='col table-responsive'>
             {% if articles|length == 0 %}
             <h1>There are no articles (yet) in this category.</h1>
             {% else %}
-            <h1>Articles in Category: {{ category.name }}</h1>
-            <table class="table table-striped table-hover table-borderless align-middle mb-0">
-                <thead class="light">
-                    <tr>
-                        <th>Article</th>
-                        <th>Author</th>
-                    </tr>
-                </thead>
-                <tbody class="background">
+            <div class="datatable" data-mdb-striped='true' data-mdb-borderless='true' data-mdb-hover='true' data-mdb-fixed-header='false' data-mdb-color='grey' data-mdb-full-pagination='true'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="th-small">Article</th>
+                            <th class="th-small">Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articles %}
+                        {% if article.status == 1 %}
+                        {% comment %}
+                        Article is published
+                        {% endcomment %}
+                        <tr>
+                            <td>
+                                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                                <p>{{ article.excerpt }}</p>
+                            </td>
+                            <td>
+                                {% for profile in profiles %}
+                                {% if article.user_id == profile.user_id %}
+                                {% with urlbase="avatars/"|add:profile.avatar %}
+                                <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
 
-                    {% for article in articles %}
-                    {% if article.status == 1 %}
-                    {% comment %}
-                    Article is published
-                    {% endcomment %}
+                                    <img src="{% static urlbase %}" alt="Author" />
+                                    {% for user in users %}
+                                    {% if user.id == profile.user_id %}
+                                    <a href="/view_profile/{{ profile.user.id }}">
+                                        {{ user.first_name }}
+                                    </a>
+                                    {% endif %}
+                                    {% endfor %}
 
-                    <tr>
-                        <td>
-                            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-                            <br />{{ article.excerpt }}
-                        </td>
-                        <td>
-                            {% for profile in profiles %}
-                            {% if article.user_id == profile.user_id %}
-                            {% with urlbase="avatars/"|add:profile.avatar %}
-                            <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
-
-                                <img src="{% static urlbase %}" alt="Author" />
-                                {% for user in users %}
-                                {% if user.id == profile.user_id %}
-                                <a href="/view_profile/{{ profile.user.id }}">
-                                    {{ user.first_name }}
-                                </a>
+                                </div>
+                                {% endwith %}
                                 {% endif %}
                                 {% endfor %}
-
-                            </div>
-                            {% endwith %}
-                            {% endif %}
-                            {% endfor %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-desc">{{ article.excerpt }} </td>
-                        <td>
-                            {% if request.user == article.user %}
-                            <span class="text-center">
-                                <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
-                            </span>
-                            {% else %}
-                            <p>&nbsp;</p>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% else %}
-                    {% comment %}
-                    Article is not published
-                    {% endcomment %}
-                    {% if request.user == article.user %}
-                    <tr>
-                        <td>
-                            <p class="text-info text-opacity-75 not-published">{{ article.title }}</p>
-                        </td>
-                        <td>
-                            {% for profile in profiles %}
-                            {% if article.user_id == profile.user_id %}
-                            {% with urlbase="avatars/"|add:profile.avatar %}
-                            <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
-                                <img src="{% static urlbase %}" alt="Author" />
-                                {% for user in users %}
-                                {% if user.id == profile.user_id %}
-                                <a href="{% url 'view_profile' %}">
-                                    {{ user.first_name }}
-                                </a>
+                                {% if request.user == article.user %}
+                                <span class="text-center">
+                                    <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                </span>
+                                {% else %}
+                                <p>&nbsp;</p>
                                 {% endif %}
-                                {% endfor %}
-                            </div>
-                            {% endwith %}
-                            {% endif %}
-                            {% endfor %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-desc">{{ article.excerpt }} </td>
-                        <td>
-                            {% if request.user == article.user %}
-                            <span class="text-center">
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
-                            </span>
-                            {% else %}
-                            <p>&nbsp;</p>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-
-                </tbody>
-            </table>
-            {% endif %}
-            <p>&nbsp;</p>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
+<p>&nbsp;</p>
 
     {% endblock content %}
 

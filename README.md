@@ -30,6 +30,7 @@ iterations without due-dates.
 2. Code for pagination adapted from examples at: https://realpython.com/django-pagination/
 3. Filter on status. Done in views.py for index. Cant do that for the others since it needs custom code in the template with if/else/for-loops
 4. After editing a article, user is redirected to the article view
+5. Articles in draft-mode will only be shown in "My articles". It is the only place where it makes sense to show it since no other editor should ever need to see it.
 
 # User classes
 
