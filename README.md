@@ -15,6 +15,8 @@ iterations without due-dates.
 10. Faq gets same value from links.description all the time?? Fixed
 11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving. Changed to pop-out instead
 12. If user manually changes article id in url bar for editarticle, the display is empty. Works good enough to get the form into place and look into that problem later
+13. In edit_article, the kwarg-value was empty when the get-method was available. It worked fine when the get-method was commented-out. Which was a bit of a bummer since the kwarg-value was essential for the logic that checked whether the logged in user was authorized to edit it.
+It is fixed, although I am not entirely sure which of the changes that accomplished the task. 
 
 # Todo
 

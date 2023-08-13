@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
 from django.urls import reverse
+
+#from django.views.generic.edit import FormView
+#from django.shortcuts import render_to_response
 # from .utils import listing_links, listing_links_api
 # from .utils import check_user_able_to_see_page
 
@@ -224,35 +227,39 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
     model =Article
     context_object_name="articles"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
         my_id = self.kwargs['pk']
         context['articles'] = Article.objects.filter(id=my_id).select_related('user').all()
         return context
 
-    #def get(self, request, **kwargs):
-    #    my_id = self.kwargs['pk']
-    #    current_article = get_object_or_404(Article, id=my_id)
-    #    form = CreateArticleForm(instance=current_article)
-    #    return render(request,"retro/edit_article.html", {"form": form})
-
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
         my_id = self.kwargs['pk']
         current_article = get_object_or_404(Article, id=my_id)
-        form = CreateArticleForm(data=request.POST, instance=current_article)
-        if form.is_valid():
-            my_article = form.save(commit=False)
-            my_article.post = current_article
-            my_article.save()
-            return redirect(my_article)
-        else:
-            form = CreateArticleForm()
+        context = self.get_context_data(object=current_article)
+        form = CreateArticleForm(instance=current_article)
+        context["form"] = form
+        # return render(request,"retro/edit_article.html", {"form": form})
+        return self.render_to_response(context)
 
-        return render(
-            request,
-            "retro/edit_article.html",
-            {"form": form},
-            )
+    #def post(self, request, *args, **kwargs):
+    #    my_id = self.kwargs['pk']
+    #    current_article = get_object_or_404(Article, id=my_id)
+    #    form = CreateArticleForm(data=request.POST, instance=current_article)
+    #    if form.is_valid():
+    #        my_article = form.save(commit=False)
+    #        my_article.post = current_article
+    #        my_article.save()
+    #        return redirect(my_article)
+    #    else:
+    #        form = CreateArticleForm()
+
+    #    return render(
+    #        request,
+    #        "retro/edit_article.html",
+    #        {"form": form},
+    #        )
 
 
 class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
