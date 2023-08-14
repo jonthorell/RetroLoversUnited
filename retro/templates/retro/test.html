@@ -69,7 +69,10 @@
 
 </table>-->
  {% if user.is_authenticated %}
-<p>Your Username is : {{user}} Your User Id is  : {{user.id}} </p>
+<p>Your Username is : {{user}} Your User Id is  : {{request.user.id}} </p>
+{% if request.user.id == 1 %}
+    printAlert('User ID 1')
+{% endif %}
 
 {% if user.is_active %}
 <p>User is valid, active and authenticated</p>

@@ -351,3 +351,10 @@ table th {
     color: var(--white);
 }
 
+
+.title-edit-article {
+    color: var(--orange);
+    text-align: center;
+}
+
+

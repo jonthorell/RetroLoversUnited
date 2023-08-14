@@ -10,24 +10,6 @@
     <h1>Edit Article</h1>
 </div>
 
-<p>Your user id is: {{ request.user.id }}</p>
-<p>Kwarg: {{ view.kwargs.pk }}</p>
-
-{% for article in articles %}
-<p class="orange">{{article.title}}</p>
-    <p class="grey2">User: {{article.user_id}}, Article: {{ article.id }}
-    {% if article.id == view.kwargs.pk %}
-    This is the current article.
-    {% if article.user_id == user.id %}
-    And you own it.
-    {% else %}
-    You do not own it.
-    {% endif %}
-    {% endif %}
-        </p>
-
-{% endfor %}
-
 
 <div class="container-fluid target-link">
     <div class="row">
@@ -35,6 +17,7 @@
             {% if user.is_authenticated %}
             {% for article in articles %}
             {% if article.user_id == user.id %}
+            <p class="title-edit-article">Article Name: {{ article.title }}</p>
             <form method="post" class="form pt-1 mt-1">
                 {% csrf_token %}
                 <fieldset class="mx-2 px-2">
@@ -47,25 +30,30 @@
                 </fieldset>
             </form>
             {% else %}
+            <!--<h2 class="text-center">-->
+            <p class="title-edit-article">Article Name: {{ article.title }}</p>
+            
             <h2 class="text-center">
                 <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
                 It is not your article so you are not allowed to edit it.
                 <br />
                 <a href="/">Return to Home</a>
+                <br />
+                <a href="{{ article.get_absolute_url }}">View Article</a>
             </h2>
-            {% endif %}
-            {% endfor %}
-            {% else %}
-            {% comment %}
-            Should never show up since the mixin is in place
-            {% endcomment %}
-            <p class="not-logged-in">
-                <h2>
-                    <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
-                    Since you are not logged in, you are not authorized to see this page.
-                </h2>
-            </p>
-            {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                {% comment %}
+                Should never show up since the mixin is in place
+                {% endcomment %}
+                <p class="not-logged-in">
+                    <h2>
+                        <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
+                        Since you are not logged in, you are not authorized to see this page.
+                    </h2>
+                </p>
+                {% endif %}
         </div>
     </div>
 </div>
