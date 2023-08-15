@@ -1,10 +1,28 @@
-//start with defining some constants
 
+const triggers = [
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+];
+const basicInstances = [
+    'alert-primary',
+    'alert-secondary',
+    'alert-success',
+    'alert-danger',
+    'alert-warning',
+    'alert-info',
+    'alert-light',
+    'alert-dark',
+];
 
-function printAlert(newMessage) {
-    let myAlert = '<h2><img src="https://res.cloudinary.com/retroloversunited/raw/upload/v1686394021/static/images/Boing_Ball.5037f34b676b.svg" height="40" width="40" alt="BoingBall logo" loading="lazy">'
-    myAlert += "    " + newMessage + "</h2><hr>"
-    console.log(myAlert)
-    document.getElementById('alert-id').innerHTML = myAlert;
-    mdb.Alert.getInstance(document.getElementById('alert-id')).show();
-}
+triggers.forEach((trigger, index) => {
+    let basicInstance = mdb.Alert.getInstance(document.getElementById(basicInstances[index]));
+    document.getElementById(trigger).addEventListener('click', () => {
+        basicInstance.show();
+    });
+});

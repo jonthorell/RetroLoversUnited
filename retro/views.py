@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
 from django.urls import reverse
+from django.contrib import messages
 
 #from django.views.generic.edit import FormView
 #from django.shortcuts import render_to_response
@@ -251,6 +252,7 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
             my_article = form.save(commit=False)
             my_article.post = current_article
             my_article.save()
+            messages.error(request, '   Article Updated!')
             return redirect(my_article)
         else:
             form = CreateArticleForm()

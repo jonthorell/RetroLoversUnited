@@ -187,6 +187,9 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
 
+                <!-- Icon -->
+               
+                
 
                 <!-- Avatar -->
                 {% if user.is_authenticated %}
@@ -240,31 +243,31 @@
                     </ul>
                 </div>
             </div>
-            {% else %}
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
-                   href="#"
-                   id="navbarDropdownMenuAvatar"
-                   role="button"
-                   data-mdb-toggle="dropdown"
-                   aria-expanded="false">
-                    <img src="{% static 'avatars/not-logged-in.png' %}"
-                         class="rounded-circle"
-                         height="25"
-                         alt="Default avatar"
-                         loading="lazy">
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="navbarDropdownMenuAvatar">
-                    <li>
-                        <a class="dropdown-item" href="/accounts/signup"><i class="fa-solid fa-plus pe-2"></i>Create account</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="/accounts/login"><i class="fas fa-door-open pe-2"></i>Login</a>
-                    </li>
-                </ul>
+                {% else %}
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
+                       href="#"
+                       id="navbarDropdownMenuAvatar"
+                       role="button"
+                       data-mdb-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="{% static 'avatars/not-logged-in.png' %}"
+                             class="rounded-circle"
+                             height="25"
+                             alt="Default avatar"
+                             loading="lazy">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="/accounts/signup"><i class="fa-solid fa-plus pe-2"></i>Create account</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/accounts/login"><i class="fas fa-door-open pe-2"></i>Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
         {% endif %}
         <!-- Right elements -->
         <!-- Container wrapper -->
