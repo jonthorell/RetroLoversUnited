@@ -9,6 +9,8 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
 from django.urls import reverse
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail,EmailMessage, get_connection
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
@@ -101,6 +103,34 @@ class Contact(custom_mixin_kategorimenu, DetailView):
         form = ContactForm(request.POST)
         if form.is_valid():
             messages.info(request, "Thank you. Your response has been logged.")
+            req_user = request.POST.get("name")
+            req_mess = request.POST.get("mess")
+            req_email = request.POST.get("email")
+            req_subject = request.POST.get("subject")
+            if req_subject == "0":
+                req_subj_string = "Technical Issue"
+            elif req_subject == "1":
+                req_subj_string = "Factual Issue"
+            elif req_subject == "2":
+                req_subj_string = "Dead link or missing image"
+            elif req_subject == "3":
+                req_subj_string = "Suggestion for accessability"
+            elif req_subject == "4":
+                req_subj_string = "Suggestion for new idea"
+            elif req_subject == "5":
+                req_subj_string = "Suggestion for new link"
+            elif req_subject == "6":
+                req_subj_string = "General praise/hate"
+            else:
+                # should never occur
+                req_subj_string = "Other"
+
+            subject = 'Mail from RetroLoversUnited'
+            message = f'Hi { req_user }, your issue has been received. We will look into it as soon as possible.\nThe message you submitted was { req_mess }. \n\nYou classified it as { req_subj_string }'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [req_email, ]
+            send_mail( subject, message, email_from, recipient_list )
+            messages.info(request, "Check your e-mail.")
             return HttpResponseRedirect("/")
     def get(self, request, *args, **kwargs):
         form = ContactForm(request.POST)

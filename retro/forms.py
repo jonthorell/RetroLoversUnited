@@ -155,7 +155,7 @@ class ContactForm(forms.Form):
             label="Your e-mail",
         )
 
-    status = forms.CharField(initial=0,
+    subject = forms.CharField(initial=0,
         required=False,
         widget = forms.Select(choices=SUBJECT,
             attrs={
