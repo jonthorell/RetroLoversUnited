@@ -3,17 +3,12 @@ from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
 from django.views.generic import TemplateView, ListView, DetailView, View
-from retro.forms import CreateArticleForm, EditProfileForm
+from retro.forms import CreateArticleForm, EditProfileForm,ContactForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
 from django.urls import reverse
 from django.contrib import messages
-
-#from django.views.generic.edit import FormView
-#from django.shortcuts import render_to_response
-# from .utils import listing_links, listing_links_api
-# from .utils import check_user_able_to_see_page
 
 class EditorRequiredMixin(UserPassesTestMixin):
     # Class used to restrict access to views where user needs to be editor
@@ -100,8 +95,20 @@ class Index(custom_mixin_kategorimenu, TemplateView):
 
         return context
 
-class Contact(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/contact.html'
+class Contact(custom_mixin_kategorimenu, DetailView):
+    
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            messages.info(request, "Thank you. Your response has been logged.")
+            return HttpResponseRedirect("/")
+    def get(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+        return render(
+        request,
+        "retro/contact.html",
+        {"form": form},
+    )
 
 class FAQ(custom_mixin_kategorimenu, TemplateView):
     template_name = 'faq/faq.html'
@@ -166,6 +173,7 @@ class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
             my_profile = profile_form.save(commit=False)
             my_profile.post = user_profile
             my_profile.save()
+            messages.info(request, "Your profile has been updated.")
             return HttpResponseRedirect("/view_my_profile")
         else:
             profile_form = EditProfileForm()
@@ -196,20 +204,11 @@ class Links(custom_mixin_kategorimenu, ListView):
     template_name = 'retro/links.html'
     model = Link
     context_object_name = 'links'
-    #paginate_by = 5
-
-    #def get_queryset(self, *args, **kwargs):
-    #     qs = super(Links, self).get_queryset(*args, **kwargs)
-    #     qs = qs.order_by("name")
-    #     return qs
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['links'] = Link.objects.all()
         return context
-
-class Thankyou(custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/thankyou.html'
 
 class article_like(View):
 
@@ -241,7 +240,6 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
         context = self.get_context_data(object=current_article)
         form = CreateArticleForm(instance=current_article)
         context["form"] = form
-        # return render(request,"retro/edit_article.html", {"form": form})
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
@@ -252,7 +250,7 @@ class edit_article(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
             my_article = form.save(commit=False)
             my_article.post = current_article
             my_article.save()
-            messages.error(request, '   Article Updated!')
+            messages.info(request, 'Article Updated!')
             return redirect(my_article)
         else:
             form = CreateArticleForm()
@@ -282,6 +280,7 @@ class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateVie
             Article = form.save(commit=False)
             Article.user_id = request.user.id
             Article.save()
+            messages.info(request, "Article has been created.")
             return redirect("/")
     def get(self, request, *args, **kwargs):
         form = CreateArticleForm(request.POST or None)

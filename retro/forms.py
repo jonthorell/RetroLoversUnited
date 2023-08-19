@@ -7,8 +7,10 @@ from django import forms
 from django.utils.translation import gettext as _
 from retro.models import Category, Profile,Article
 
+
 STATUS = ((0, "Draft"), (1,"Published"))
- 
+SUBJECT = ((0,"Technical Issue"), (1,"Factual Issue"), (2,"Dead link or missing image"), (3,"Suggestion for accessability"), (4,"Suggestion for new idea"), (5,"Suggestion for new link"), (6,"Generic praise/hate"))
+
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=30, label='Last Name')
@@ -127,3 +129,56 @@ class CreateArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         exclude = ("user", "featured_image", "ratings")
+
+class ContactForm(forms.Form):
+    
+    name = forms.CharField(
+        required = False,
+        widget = forms.widgets.TextInput(
+            attrs={
+                "placeholder": "Your name",
+                "class": "form-control form-control-sm",
+                "required": "true",
+                }
+            ),
+            label="Your name",
+        )
+    email = forms.EmailField(
+        required = False,
+        widget = forms.widgets.EmailInput(
+            attrs={
+                "placeholder": "Your e-mail",
+                "class": "form-control form-control-sm",
+                "required": "true",
+                }
+            ),
+            label="Your e-mail",
+        )
+
+    status = forms.CharField(initial=0,
+        required=False,
+        widget = forms.Select(choices=SUBJECT,
+            attrs={
+                "class": "form-control form-control-sm select",
+                "id": "contact-subject",
+                "data-mdb-clear-button": "true",
+                "required": "true",
+                }
+            ),
+        label="Subject",
+    )
+
+    mess = forms.CharField(
+        required=False,
+        widget = forms.widgets.Textarea(
+            attrs={
+                 "placeholder": "Enter message here",
+                "class": "form-control form-control-sm validate",
+                "required": "true",
+                }
+            ),
+        label="What do you want to say to us?",
+    )
+
+    
+    

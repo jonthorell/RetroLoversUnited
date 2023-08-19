@@ -1,7 +1,7 @@
 
 from . import views
 from django.urls import path
-from .views import Index, Links,Contact, About, Kategories, Thankyou, Test, edit_profile
+from .views import Index, Links,Contact, About, Kategories, Test, edit_profile
 from .views import View_profile,List_Users,article_detail,articles_by_category,articles_by_author
 from .views import create_article,my_Articles,view_my_profile,all_profiles, inactive_account
 from .views import edit_article, article_like
@@ -17,7 +17,6 @@ urlpatterns = [
     path('create_article', create_article.as_view(), name='create_article'),
     path('edit_article/<int:pk>', edit_article.as_view(), name='edit_article'),
     path('test', Test.as_view(), name='test'),
-    path('thankyou', Thankyou.as_view(), name='thankyou'),
     path('edit_profile', edit_profile.as_view(), name='edit_profile'),
     path("view_profile/<int:pk>/", View_profile.as_view(), name='view_profile'),
     path("view_profile", View_profile.as_view(), name='view_profile'),

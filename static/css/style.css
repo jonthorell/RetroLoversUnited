@@ -357,4 +357,10 @@ table th {
     text-align: center;
 }
 
-
+#select-wrapper-contact-subject {
+    /* This is only used to style the subject drop-down menu in the contact form so it is styled the same way as the rest of the fields
+        Apparently the mdb-js that adds the clear-button to it does something to change the color. It was easiest to override it this
+        way.
+    */
+    background-color: var(--off-white);
+}
