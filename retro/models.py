@@ -1,5 +1,6 @@
 # from getpass import getuser
 
+from collections import UserString
 from django.db.models import CharField, Model
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -58,7 +59,7 @@ class Article(models.Model):
 
     def __str__(self):
         return (
-            f"Excerpt: {self.excerpt[:30]}..., "
+            f"Title: {self.title[:30]}..., "
             f"Editor: {self.user} "
             f"({self.created_on:%Y-%m-%d %H:%M}): "
         )
@@ -86,11 +87,9 @@ class Link(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    title = models.CharField(max_length=80, blank=False, null=False)
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
-    slug = AutoSlugField(populate_from='title', unique=True)
+    name = models.ForeignKey(User, on_delete=models.PROTECT, null=True, related_name='user')
+    body = models.TextField(max_length=200,blank=False, null=False)
+    slug = AutoSlugField(populate_from='name', unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -99,7 +98,11 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return (
+            f"User: {self.name}, "
+            f"body: {self.body[:30]}..., "
+            f"({self.created_on:%Y-%m-%d %H:%M}): "
+        )
 
 class Profile(models.Model):
     short_description = models.CharField(max_length=60, blank=False, null=False)
