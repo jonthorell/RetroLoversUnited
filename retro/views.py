@@ -41,7 +41,7 @@ class custom_mixin_kategorimenu(object):
         context['articles'] = Article.objects.all()
         context['comments'] = Comment.objects.all()
         context['profiles'] = Profile.objects.all()
-
+        context['comments'] = Comment.objects.all()
         return context
 
 class article_detail(custom_mixin_kategorimenu, DetailView):

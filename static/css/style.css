@@ -38,6 +38,11 @@
     background-color: var(--blue);
 }
 
+.comment-bg {
+    /* used for background of comments */
+    background-color: var(--blue);
+}
+
 .black {
     background-color: var(--black);
 }
