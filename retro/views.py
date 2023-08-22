@@ -224,9 +224,6 @@ class all_profiles(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
         context['profiles'] = Profile.objects.select_related('user').all()
         return context
 
-class Test(AdminRequiredMixin, custom_mixin_kategorimenu, TemplateView):
-    template_name = 'retro/test.html'
-
 class List_Users(ManagerRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/list_users.html'    
 
