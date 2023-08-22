@@ -20,9 +20,9 @@ const basicInstances = [
     'alert-dark',
 ];
 
-triggers.forEach((trigger, index) => {
-    let basicInstance = mdb.Alert.getInstance(document.getElementById(basicInstances[index]));
-    document.getElementById(trigger).addEventListener('click', () => {
-        basicInstance.show();
-    });
-});
+//triggers.forEach((trigger, index) => {
+//    let basicInstance = mdb.Alert.getInstance(document.getElementById(basicInstances[index]));
+//    document.getElementById(trigger).addEventListener('click', () => {
+//        basicInstance.show();
+//    });
+//});
