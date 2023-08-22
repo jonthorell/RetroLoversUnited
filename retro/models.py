@@ -87,7 +87,7 @@ class Link(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    name = models.ForeignKey(User, on_delete=models.PROTECT, null=True, related_name='user')
+    name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='user')
     body = models.TextField(max_length=200,blank=False, null=False)
     slug = AutoSlugField(populate_from='name', unique=True)
     created_on = models.DateTimeField(auto_now_add=True)

@@ -1,4 +1,5 @@
 
+from pipes import Template
 from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django import forms
@@ -142,6 +143,22 @@ class Contact(custom_mixin_kategorimenu, DetailView):
 
 class FAQ(custom_mixin_kategorimenu, TemplateView):
     template_name = 'faq/faq.html'
+
+class delete_account(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/delete_account.html'
+
+class confirm_delete_user(custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/confirm_delete_user.html'
+    # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
+    def get(self, request, *args, **kwargs):
+        u = request.user
+        fname = request.user.first_name
+        lname = request.user.last_name
+        outmess = "User " + fname + " " + lname + " is deleted."
+        messages.info(request, outmess)
+        u.delete()
+        return HttpResponseRedirect("/")
+
 
 class Credits(custom_mixin_kategorimenu, TemplateView):
     template_name = 'credits/credits.html'

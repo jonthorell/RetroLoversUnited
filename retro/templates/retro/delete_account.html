@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Delete Account{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid target-link text-center">
+    <p>&nbsp;</p>
+    <h1><i class="fa-solid fa-trash-can pe-2"></i>Delete Account</h1>
+    <p>Are you absolutely sure? This can not be undone! All articles and comments associated with your user account will be deleted as well!</p>
+    <span class="text-center">
+        <a href="/confirm_delete_user/" class="btn btn-danger">Yes, Delete {{ user.first_name }} {{ user.last_name }}</a>
+        <a href="/" class="btn btn-info">Get me out of here!</a>
+    </span>
+</div>
+
+<p>&nbsp;</p>
+    {% endblock content %}
