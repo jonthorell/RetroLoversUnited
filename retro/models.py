@@ -89,7 +89,7 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='user')
     body = models.TextField(max_length=200,blank=False, null=False)
-    slug = AutoSlugField(populate_from='name', unique=True)
+    slug = AutoSlugField(populate_from='name', unique=False)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
