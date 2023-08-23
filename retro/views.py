@@ -144,10 +144,51 @@ class Contact(custom_mixin_kategorimenu, DetailView):
 class FAQ(custom_mixin_kategorimenu, TemplateView):
     template_name = 'faq/faq.html'
 
-class delete_account(custom_mixin_kategorimenu, TemplateView):
+class delete_account(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/delete_account.html'
 
-class confirm_delete_user(custom_mixin_kategorimenu, TemplateView):
+class delete_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/delete_article.html'
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        my_id = self.kwargs['pk']
+        current_article = get_object_or_404(Article, id=my_id)
+        context = self.get_context_data(object=current_article)
+        return self.render_to_response(context)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        #context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
+        context['articles'] = Article.objects.all()
+        return context
+
+class confirm_delete_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/confirm_delete_article.html'
+    # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
+    def get(self, request, *args, **kwargs):
+        #u = request.user
+        #fname = request.user.first_name
+        #lname = request.user.last_name
+        #outmess = "User " + fname + " " + lname + " is deleted."
+        super().get(request, *args, **kwargs)
+        my_id = self.kwargs['pk']
+        current_article = get_object_or_404(Article, id=my_id)
+        context = self.get_context_data(object=current_article)
+        if current_article.user_id == request.user.id:
+            art_mess = "Article "+ "\"" + current_article.title+"\"" +" is deleted."
+        else:
+            art_mess = "You do not have permission to delete that article."
+        messages.info(request, art_mess)
+        #u.delete()
+        return HttpResponseRedirect("/")
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        #context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
+        context['articles'] = Article.objects.all()
+        return context
+
+class confirm_delete_user(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
     template_name = 'retro/confirm_delete_user.html'
     # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
     def get(self, request, *args, **kwargs):

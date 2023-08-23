@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Delete Article{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid target-link text-center">
+    <p>&nbsp;</p>
+    <h1><i class="fa-solid fa-trash-can pe-2"></i>Delete Article</h1>
+    <p>Are you absolutely sure? This can not be undone! All comments associated with your article will be deleted as well!</p>
+    <span class="text-center">
+        {% if user.is_authenticated %}
+            {% for article in articles %}
+                {% if article.user_id == user.id %}
+                    {% if article.id == view.kwargs.pk %}
+                        <a href="/confirm_delete_article/{{ view.kwargs.pk }}" class="btn btn-danger">Yes, Delete {{ article.title }}</a>
+                        <a href="/" class="btn btn-info">Get me out of here!</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </span>
+</div>
+
+<p>&nbsp;</p>
+    {% endblock content %}

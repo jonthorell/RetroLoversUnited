@@ -68,7 +68,7 @@
                                 {% if request.user == article.user %}
                                 <span class="text-center">
                                     <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="/delete_article/{{ article.id }}" class="btn btn-danger">Delete</a>
                                 </span>
                                 {% else %}
                                 <p>&nbsp;</p>
