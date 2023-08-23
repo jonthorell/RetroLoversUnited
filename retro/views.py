@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.views.generic import TemplateView, ListView, DetailView, View
 from retro.forms import CreateArticleForm, EditProfileForm,ContactForm
+from retro.forms import CommentForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
 from retro.models import Link, Article, Category, Comment,User,Profile
@@ -47,6 +48,16 @@ class custom_mixin_kategorimenu(object):
 
 class article_detail(custom_mixin_kategorimenu, DetailView):
     template_name = 'retro/get_article.html'
+    model = Article
+    context_object_name = 'article'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
+        return context
+
+class comment_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    template_name = 'retro/comment_article.html'
     model = Article
     context_object_name = 'article'
 

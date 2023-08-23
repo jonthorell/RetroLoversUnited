@@ -24,46 +24,36 @@
             </div>
             <div class="article-container">
                 <div class="p-3">
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="comments-div">
                         {% for comment in comments %}
                         {% if comment.status == 1 and comment.approved == True and article.id == comment.article_id %}
                         <div class="comment-bg">
                             <p>
                                 Comment by: {{ comment.slug }}
-                                <br>{{ comment.body }}
+                                <p class="blackfg">{{ comment.body }}</p>
+                                <p>Created: {{ comment.created_on }}</p>
+                                <div>
+                                    <a href="" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
+                                    <br />
+                                </div>
                             </p>
                         </div>
                         {% endif %}
                         {% endfor %}
                     </div>
                 </div>
+
             </div>
             {% if user.is_authenticated %}
             {% if request.user == article.user %}
             <div>
-                <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
-                <a href="/delete_article/{{ article.id }}" class="btn btn-danger">Delete</a>
+                <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit Article</a>
+                <a href="/delete_article/{{ article.id }}" class="btn btn-danger">Delete Article</a>
             </div>
             {% else %}
-            <p>Up/down vote Article</p>
-            <form class="d-inline" action="{% url 'article_like' article.id %}" method="POST">
-                {% csrf_token %}
-                {% if not liked %}
-                    <button type="submit" name="blogpost_id" value="{{article.id}}" class="btn btn-link whitefg"><i class="fa-solid fa-thumbs-up"></i></button>
-                {% else %}
-                    <button type="submit" name="blogpost_id" value="{{article.id}}" class="btn btn-link whitefg"><i class="fa-regular fa-thumbs-up"></i></button>
-                {% endif %}
-            </form>
-            <p>Rate Article</p>
-            <ul class="rating" data-mdb-toggle="rating" data-mdb-readonly="false" data-mdb-value="0">
-                <li><i class="far fa-star fa-sm text-yellow"></i></li>
-                <li><i class="far fa-star fa-sm text-yellow"></i></li>
-                <li><i class="far fa-star fa-sm text-yellow"></i></li>
-                <li><i class="far fa-star fa-sm text-yellow"></i></li>
-                <li><i class="far fa-star fa-sm text-yellow"></i></li>
-            </ul>
             <div>
-                <a href="" class="btn btn-info">Comment article</a>
+                <a href="/comment_article/" class="btn btn-info">Comment article</a>
             </div>
             {% endif %}
             {% endif %}

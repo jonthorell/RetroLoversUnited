@@ -1,11 +1,11 @@
 
-from email.policy import default
 from allauth.account.forms import SignupForm
 from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.utils.translation import gettext as _
-from retro.models import Category, Profile,Article
+from retro.models import Category, Profile, Article, Comment
+
 
 
 STATUS = ((0, "Draft"), (1,"Published"))
@@ -179,6 +179,11 @@ class ContactForm(forms.Form):
             ),
         label="What do you want to say to us?",
     )
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)
 
     
     
