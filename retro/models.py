@@ -46,7 +46,6 @@ class Article(models.Model):
     title = models.CharField(max_length=60, blank=False, null=False, unique=True)
     content = models.TextField(max_length=2000, blank=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)
-    featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     excerpt = models.TextField(blank=False, null=False)
     status = models.IntegerField(choices=STATUS, default=1)
