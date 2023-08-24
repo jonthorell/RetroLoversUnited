@@ -80,13 +80,7 @@ class comment_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
             approved = comment_form.cleaned_data.get("approved")
             comment_form.name_id=User.id
             
-            print("ArticleID: "+str(article_id))
-            print("User: "+str(request.user.id))
-            print("Body: "+str(body))
-            print("Status: "+str(status))
-            print("Approved: "+str(approved))
-
-            record = Comment(name_id=request.user.id,body=body,status=0,approved=False,article_id=article_id)
+            record = Comment(name_id=request.user.id,body=body,status=1,approved=False,article_id=article_id)
             record.save()
 
             messages.info(request, "Your comment has been added.")
