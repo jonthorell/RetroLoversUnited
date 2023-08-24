@@ -35,7 +35,6 @@
                                 <div>
                                     <a href="" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                                     <a href="" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
-                                    <br />
                                 </div>
                             </p>
                         </div>
@@ -43,7 +42,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
             </div>
             {% if user.is_authenticated %}
             {% if request.user == article.user %}
@@ -53,7 +51,7 @@
             </div>
             {% else %}
             <div>
-                <a href="/comment_article/" class="btn btn-info">Comment article</a>
+                <a href="/comment_article/{{ article.id }}" class="btn btn-info">Comment article</a>
             </div>
             {% endif %}
             {% endif %}

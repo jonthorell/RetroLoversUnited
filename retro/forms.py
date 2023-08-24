@@ -181,9 +181,21 @@ class ContactForm(forms.Form):
     )
 
 class CommentForm(forms.ModelForm):
+    body = forms.CharField(
+        required=False,
+        widget = forms.widgets.Textarea(
+            attrs={
+                 "placeholder": "Enter comment here",
+                "class": "form-control form-control-sm validate",
+                "required": "true",
+                }
+            ),
+        label="",
+    )
     class Meta:
         model = Comment
         fields = ('body',)
+        #fields = '__all__'
 
     
     

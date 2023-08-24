@@ -1,4 +1,5 @@
 
+from email.base64mime import body_decode
 from pipes import Template
 from django.shortcuts import render,redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
@@ -60,6 +61,45 @@ class comment_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
     template_name = 'retro/comment_article.html'
     model = Article
     context_object_name = 'article'
+
+    def get(self, request, *args, **kwargs):
+        form = CommentForm(request.POST)
+        return render(
+        request,
+        "retro/comment_article.html",
+        {"form": form},
+    )
+
+    def post(self, request, *args, **kwargs):
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            for arg in kwargs.values():
+                article_id=arg
+            body = comment_form.cleaned_data.get("body")
+            status = comment_form.cleaned_data.get("status")
+            approved = comment_form.cleaned_data.get("approved")
+            comment_form.name_id=User.id
+            
+            print("ArticleID: "+str(article_id))
+            print("User: "+str(request.user.id))
+            print("Body: "+str(body))
+            print("Status: "+str(status))
+            print("Approved: "+str(approved))
+
+            record = Comment(name_id=request.user.id,body=body,status=0,approved=False,article_id=article_id)
+            record.save()
+
+            messages.info(request, "Your comment has been added.")
+            messages.info(request, "It is awaiting approval.")
+            return HttpResponseRedirect("/article/"+str(article_id))
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "retro/comment_article.html",
+            {"form": comment_form},
+    )
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)

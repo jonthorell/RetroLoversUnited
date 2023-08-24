@@ -31,5 +31,5 @@ urlpatterns = [
     path('rate/<int:pk>/', article_like.as_view(), name='article_like'),
     path('delete_article/<int:pk>/', delete_article.as_view(), name='delete_article'),
     path('confirm_delete_article/<int:pk>/', confirm_delete_article.as_view(), name='confirm_delete_article'),
-    path('comment_article/', comment_article.as_view(), name='comment_article'),
+    path('comment_article/<int:pk>/', comment_article.as_view(), name='comment_article'),
     ]

@@ -13,6 +13,19 @@
         <div class="col">
             <h1>Comment Article</h1>
             <p>Not implemented yet</p>
+            <form method="post" class="form pt-1 mt-1">
+                {% csrf_token %}
+                <fieldset class="mx-2 px-2">
+                    {{ form.as_p |safe}}
+                    {% if user.is_authenticated %}
+                    <label for="user">Post as user: </label>
+                    <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}" />
+                    <p> </p>
+                    <button type="submit" class="btn btn-primary btn-block">Add comment!</button>
+                    <p> </p>
+                    {% endif %}
+                </fieldset>
+            </form>
         </div>
     </div>
 
