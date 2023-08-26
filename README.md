@@ -128,7 +128,17 @@ This might include things not necessarily referenced, but it will make sure the 
 
 # Database design
 
-The different models works like this.
+Since the entire site is built around three apps, there is a possibility to use models in three different places.
+
+App: Retro
+
+App: FAQ
+
+U
+
+App: Retro
+
+Does not use one.
 
 # Bugs encountered and fixed
 
