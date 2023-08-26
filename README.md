@@ -33,9 +33,19 @@ The icon on the far right controls account related functions such as sign up, lo
 
 ![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
 
-In the middle you have the main part where you can see list of articles, categories, and interact with them using forms.
+In the middle you have the main part where you can see list of articles, categories, and interact with them using forms. In the above example, a list of articles
+by author Amy Squirrel.
 
-![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.PNG?raw=true)
+![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.png?raw=true)
+
+# Design considerations (visual).
+1. Colors and other graphical elements have been "stolen" or mimicked from AmigaOS as much as possible. 
+1.1. The beachball at the top-left is a sort-of unofficial logo.
+1.2. The grey background is the default background color of the GUI.
+1.3. The navbar uses the same white as the AmigaOS menubar.
+1.4. The black text is the default font-color.
+1.5. The orange text comes from the "fuel-gauge" that indicates how full a disk is (from an earlier version of AmigaOS).
+1.6. The black background and the blinking graphics on the 403 page is how the Amiga indicates it has run into a dead-end software failure.
 
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate. Also, I probably should have set the different
 iterations without due-dates. 
