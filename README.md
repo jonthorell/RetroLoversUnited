@@ -1,3 +1,25 @@
+# RetroLoversUnited
+
+The aim of this project is to create a community site for everyone that is as obessive with the classic Amiga-computer as I am.
+
+The project is live 
+[here](https://retroloversunited.herokuapp.com/)
+
+![mockup-picture](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/mockup.PNG?raw=true)
+
+# Background and use-case
+
+The project is for all intents and purposes a community site for that use or is interested in the old Amiga-line of computers.
+
+Designated editors can create and edit articles that may or may not be commented on by ordinary users. Those comments must be approved by a moderator
+before they are visible, to prevent spam comments. Users can always edit or delete their comment if they want to. The editors can likewise delete their
+articles (although if they do that, the associated comments will be deleted as well).
+
+Everyone can at any time delete their account, but the same caveat applies. Associated articles (in case user was an editor) and commments will
+be deleted as well.
+
+
+
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate. Also, I probably should have set the different
 iterations without due-dates. 
 
