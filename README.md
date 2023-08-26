@@ -167,3 +167,23 @@ The categories and authors menues in some situations fails to display their cont
 
 # Testing
 
+Testing has been done manually in selecting the different menu entries, trying to get an unauthorized user getting the possibility to edit something, and trying to get user
+A to be able to edit/delete something belonging to user B, among other things. Further details in subheadings but as a general rule I have not been able to trigger errors
+of that sort but get the proper error message as expected.
+
+## Lighthouse
+
+One Lighthouse screenshot per view. In All cases Lighthouse complains about missing explicit size-tags (not surprising since it is in a header.html that in turn is included in base.html). However,
+the error is misleading. The width and height attributes are set using css-classes which lighthouse does not pick up upon.
+
+Index
+
+# Lessons learned
+
+Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology and trying to learn the Django framework at the same time. Especially since I can not work
+on the project full-time due to other things on my plate. Having just the user stories and the project board would have been sufficient.
+
+As always, I tend to make the project too big in scope.
+
+
+
