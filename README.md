@@ -31,24 +31,87 @@ to use the function.
 
 The icon on the far right controls account related functions such as sign up, login, logout, edit profile, & delete account.
 
-![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
-
 In the middle you have the main part where you can see list of articles, categories, and interact with them using forms. In the above example, a list of articles
 by author Amy Squirrel.
+
+![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
+
+And finally, at the bottom. A footer with copyright information and links to social media.
 
 ![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.png?raw=true)
 
 # Design considerations (visual).
+
 1. Colors and other graphical elements have been "stolen" or mimicked from AmigaOS as much as possible. 
-1.1. The beachball at the top-left is a sort-of unofficial logo.
-1.2. The grey background is the default background color of the GUI.
-1.3. The navbar uses the same white as the AmigaOS menubar.
-1.4. The black text is the default font-color.
-1.5. The orange text comes from the "fuel-gauge" that indicates how full a disk is (from an earlier version of AmigaOS).
-1.6. The black background and the blinking graphics on the 403 page is how the Amiga indicates it has run into a dead-end software failure.
+2. The beachball at the top-left is a sort-of unofficial logo.
+3. The grey background is the default background color of the GUI.
+4. The navbar uses the same white as the AmigaOS menubar.
+5. The black text is the default font-color.
+6. The orange text comes from the "fuel-gauge" that indicates how full a disk is (from an earlier version of AmigaOS).
+7. The black background and the blinking graphics on the 403 page is how the Amiga indicates it has run into a dead-end software failure.
+8. The site should be fully responsive.
+
+# Technologies used
+
+1. HTML
+2. CSS (with classes from MaterializeBootstrap as well as my own)
+3. Javascript
+4. Django
+5. Python
+6. Git (from within Visual Studio), pushed to GitHub. UserStories and Kanban board is also hosted at GitHub.
+7. Postgres SQL
 
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate. Also, I probably should have set the different
-iterations without due-dates. 
+iterations without due-dates. See further under lessons learned.
+
+# Design considerations (code)
+
+1. Since it is a django-project, configuation is done in settings.py, forms.py, & urls.py
+2. The project consists of three apps. One main where the main logic takes place. And two subapps, faq and credits. Point one applies here as well.
+3. The main code is in views.py and "scattered" in the django template files as well such as the articles_by_author file. In the latter case it stuff like this:
+```django
+{% if profile.user.is_active %}
+{% endif %
+```
+4. Comments are used in both the python code and the template files. In the latter case, it is html-comments surrounded by the django comment-tags. The purpose for doing it twice is that the html-comment sticks out color-wise in the code editor and the django-tags make sure commens are not visible in view source.
+
+# Deployment
+
+All coding takes place in Visual Studio and regularily pushed to the repo at GitHub. There are some "hidden" environmental variables in a file called env.py that is excluded from git
+pushes. Those variables are used when running locally. The variables in question are:
+
+* DATABASE_URL
+* SECRET_KEY
+* CLOUDINARY_URL
+* EMAIL_HOST_PASSWORD
+* EMAIL_HOST_USER
+
+# Deployment to Heroku
+
+In order to deploy something to Heroku, several steps needs to be taken care of.
+
+This is taken for granted that the project is already hosted at GitHub.
+
+Code changes are regularily pushed into that repository using either Github Desktop or the cli command git using:
+
+git add .
+git commit -m "commit message"
+git push
+
+The steps for deployment to Heroku are:
+
+1. Create an account at Heroku.
+2. Create an app in Heroku, with a unique name and a region
+3. Under settings, create an environment variable with the name PORT and value of 8000. Duplicate the variables under deployment here as well.
+4. In your development environment, do: pip freeze > requirements.txt to add the requirements needed to build the project at heroku.
+Things installed, if any, locally will be added to the requirements file, to make sure everything necessary will be available when deployed.
+This might include things not necessarily referenced, but it will make sure the build will be complete.
+5. Make sure there's a file named Procfile in the root of your repo with this line: web: gunicorn retroloversunited.wsgi
+6. Under deployment, connect the github account to the heroku-account
+7. Under deployment method, connect the app to the correct github repository
+8. Decide if you want the deployment to be automatic or manual. That is a matter of preference. For now, I have opted to make it manual.
+
+
 
 # Bugs
 
