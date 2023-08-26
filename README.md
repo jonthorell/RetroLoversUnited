@@ -130,15 +130,25 @@ This might include things not necessarily referenced, but it will make sure the 
 
 Since the entire site is built around three apps, there is a possibility to use models in three different places.
 
-App: Retro
-
 App: FAQ
 
-U
+Uses one very simple model called Terminology. It has four fields (5 if you count the automatically created id/pk field).
+
+* Name: Charfield, max 40 characters in length. Can not be blank and must be unique. It must be unique because it is used as a title in the display and I do not want to confuse the user with having the same name twice or more.
+* Created_on: Datefield, is automatically filled in.
+* Slug: filled automatically using the third-party django-autoslug package. In the end I ended up not using slugs to create more intuiative urls since I could not quite get it to work the way I wanted, but left the field if I want to extend the site later on.
+* Description: Charfield, max length 3000, must not be empty. Used to provide the "meat" of the terminology so the user can get more information.
+
+There are no relations to other models. Also, this particular model needs to be populated from django-admin.
+
+
+
+App: Credits
+
+Does not use a model.
 
 App: Retro
 
-Does not use one.
 
 # Bugs encountered and fixed
 
@@ -204,11 +214,11 @@ View-by-author
 
 # Lessons learned
 
-Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology (besides, the Agile methodology works better if it is a team responsible and not a sole developer)
-and trying to learn the Django framework at the same time. Especially since I can not work
-on the project full-time due to other things on my plate. Having just the user stories and the project board would have been sufficient.
+* Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology (besides, the Agile methodology works better if it is a team responsible and not a sole developer) and trying to learn the Django framework at the same time. Especially since I can not work on the project full-time due to other things on my plate. Having just the user stories and the project board would have been sufficient.
 
-As always, I tend to make the project too big in scope.
+* In retrospect, I also would have added more logic in the views.py file where it belongs instead of in the templates. It would make everything more manageable and a better split between layout/logic.
+
+* As always, I tend to make the project too big in scope.
 
 
 
