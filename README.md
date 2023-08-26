@@ -5,7 +5,7 @@ The aim of this project is to create a community site for everyone that is as ob
 The project is live 
 [here](https://retroloversunited.herokuapp.com/)
 
-![mockup-picture](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/mockup.PNG?raw=true)
+![mockup-picture](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/mockup.PNG?raw=true?raw=true)
 
 # Background and use-case
 
@@ -18,7 +18,24 @@ articles (although if they do that, the associated comments will be deleted as w
 Everyone can at any time delete their account, but the same caveat applies. Associated articles (in case user was an editor) and commments will
 be deleted as well.
 
+The screen is divided into three parts.
 
+At the top,
+
+![navbar](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/navbar.PNG?raw=true)
+
+Authors and Categories are pop-down menues that will show shortcuts to all articles by a given editor, or articles
+in a given category (i.e. Hardware). Contact, About, FAQ (essentially a "list" of vocabulary specific to the Amiga), & Credits
+are always shown. Create Article, Admin, and List Active Users are shown depending on whether the logged in user has the right
+to use the function.
+
+The icon on the far right controls account related functions such as sign up, login, logout, edit profile, & delete account.
+
+![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
+
+In the middle you have the main part where you can see list of articles, categories, and interact with them using forms.
+
+![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.PNG?raw=true)
 
 NOTE: timeline in Agileproject. Made an initial mistake there so had start over from scratch. The dates are therefor not necessarily completely accurate. Also, I probably should have set the different
 iterations without due-dates. 
