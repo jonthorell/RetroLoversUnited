@@ -78,8 +78,6 @@ iterations without due-dates. See further under lessons learned.
 
 # Design considerations (user classes)
 
-# User classes
-
 Every user belongs to one or more classes of user. This is implemented using django groups.
 
 1. Admin. Or superusers. They can do anything.
@@ -141,6 +139,10 @@ Uses one very simple model called Terminology. It has four fields (5 if you coun
 
 There are no relations to other models. Also, this particular model needs to be populated from django-admin.
 
+The output of this model looks like this:
+
+![model-faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/faq-model.PNG)
+
 
 
 App: Credits
@@ -200,7 +202,7 @@ Lighthouse also complains about things I can not do much about without re-rewrit
 
 In this example for instance.
 
-https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/error-lh.PNG?raw=true
+![lighthouse-error](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/error-lh.PNG?raw=true)
 
 The buttons are created on the fly by the classname added and the data-* fields needed for the class to work. In some cases there might be work-arounds for it, but not always.
 
@@ -210,7 +212,11 @@ Index
 
 View-by-author
 
-![index](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/index.PNG?raw=true)
+![view-by-author](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/by-author.PNG?raw=true)
+
+Credits
+
+![view-by-author](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/credits.PNG?raw=true)
 
 # Lessons learned
 
