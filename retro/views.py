@@ -203,7 +203,6 @@ class delete_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateVie
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        #context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
         context['articles'] = Article.objects.all()
         return context
 
@@ -221,12 +220,10 @@ class confirm_delete_article(MemberRequiredMixin, custom_mixin_kategorimenu, Tem
         else:
             art_mess = "You do not have permission to delete that article."
         messages.info(request, art_mess)
-        #u.delete()
         return HttpResponseRedirect("/")
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        #context['articles'] = Article.objects.filter(user__id=kwargs.get("pk")).select_related('user').all()
         context['articles'] = Article.objects.all()
         return context
 
@@ -235,11 +232,16 @@ class confirm_delete_user(MemberRequiredMixin, custom_mixin_kategorimenu, Templa
     # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
     def get(self, request, *args, **kwargs):
         u = request.user
+        print(u)
         fname = request.user.first_name
         lname = request.user.last_name
-        outmess = "User " + fname + " " + lname + " is deleted."
+
+        if fname == "Administrator":
+            outmess = "The admin account can not be deleted!"
+        else:
+            outmess = "User " + fname + " " + lname + " is deleted."
+            u.delete()
         messages.info(request, outmess)
-        u.delete()
         return HttpResponseRedirect("/")
 
 
