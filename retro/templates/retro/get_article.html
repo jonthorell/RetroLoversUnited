@@ -6,7 +6,6 @@
 
 <div class="container-fluid target-link text-center">
     <h1>{{ article.title }}</h1>
-    
     <a href="/view_profile/{{ article.user.id }}">
         <p class="text-center">Posted by: {{ article.user.first_name }}&nbsp; {{ article.user.last_name }}</p>
     </a>
@@ -29,7 +28,7 @@
                         {% if comment.status == 1 and comment.approved == True and article.id == comment.article_id %}
                         <div class="comment-bg">
                             <p>
-                                Comment by: {{ comment.slug }}
+                                <p>Comment by: {{ comment.slug }}</p>
                                 <p class="blackfg">{{ comment.body }}</p>
                                 <p>Created: {{ comment.created_on }}</p>
                                 <div>
@@ -57,7 +56,6 @@
             {% endif %}
         </div>
     </div>
-    
 </div>
 <p>&nbsp;</p>
     {% endblock content %}

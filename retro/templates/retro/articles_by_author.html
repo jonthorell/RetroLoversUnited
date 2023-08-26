@@ -15,7 +15,7 @@
             {% else %}
             {% for article in articles %}
             {% comment %}
-            For loop gets the full name of the editor
+            <!--For loop gets the full name of the editor-->
             {% endcomment %}
             {% if forloop.counter == 1 %}
             <h1>Articles by Author: {{ article.user.first_name }} {{ article.user.last_name }}</h1>
@@ -33,7 +33,7 @@
                         {% for article in articles %}
                         {% if article.status == 1 %}
                         {% comment %}
-                        Article is published
+                        <!--Article is published-->
                         {% endcomment %}
                         <tr>
                             <td>
@@ -43,16 +43,16 @@
                             <td>
                                 {% for category in categories %}
                                 {% comment %}
-                                This loop prints the category the article belongs to
+                                <!--This loop prints the category the article belongs to-->
                                 {% endcomment %}
                                 {% if article.category_id == category.id %}
                                 {% comment %}
-                                Only print when the category of the article match up with the category in the loop
+                                <!--Only print when the category of the article match up with the category in the loop-->
                                 {% endcomment %}
                                 {% if category.name == 'Software development' %}
                                 {% comment %}
-                                if/else clause shortens the category name when it is "Software development"
-                                reason is to make it look better on lower resolutions
+                                <!--if/else clause shortens the category name when it is "Software development"
+                                reason is to make it look better on lower resolutions-->
                                 {% endcomment %}
                                 <a href="{{ category.get_absolute_url }}">
                                     <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
@@ -65,6 +65,9 @@
                                 {% endif %}
                                 {% endfor %}
                                 {% if request.user == article.user %}
+                                {% comment %}
+                                <!-- enable edit delete buttons if user owns article -->
+                                {% endcomment %}
                                 <span class="text-center">
                                     <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
                                     <a href="/delete_article/{{ article.id }}" class="btn btn-danger">Delete</a>
@@ -80,7 +83,7 @@
                 </table>
                 {% endif %}
                 {% comment %}
-                endif closes if that checks if articles is zero
+                <!--endif closes if that checks if articles is zero-->
                 {% endcomment %}
                 <p>&nbsp;</p>
             </div>

@@ -13,11 +13,8 @@
         </div>
         <div class="col">
             <p>&nbsp;</p>
-
             <h1>Edit my Profile ({{ user.first_name }} {{ user.last_name }})</h1>
-            
             <form method="post" class="form p-2">
-                
                 {% csrf_token %}
                 {{ form.as_p |safe}}
                 <button type="submit" class="btn btn-primary btn-block">Update profile of {{ user.first_name }} {{ user.last_name }}!</button>

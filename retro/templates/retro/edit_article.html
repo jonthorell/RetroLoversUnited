@@ -30,9 +30,7 @@
                 </fieldset>
             </form>
             {% else %}
-            <!--<h2 class="text-center">-->
             <p class="title-edit-article">Article Name: {{ article.title }}</p>
-            
             <h2 class="text-center">
                 <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
                 It is not your article so you are not allowed to edit it.
@@ -45,7 +43,7 @@
                 {% endfor %}
                 {% else %}
                 {% comment %}
-                Should never show up since the mixin is in place
+                <!--Should never show up since the mixin is in place-->
                 {% endcomment %}
                 <p class="not-logged-in">
                     <h2>

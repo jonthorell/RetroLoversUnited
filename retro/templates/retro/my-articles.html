@@ -44,16 +44,16 @@
                             <td>
                                 {% for category in categories %}
                                 {% comment %}
-                                This loop prints the category the article belongs to
+                                <!--This loop prints the category the article belongs to-->
                                 {% endcomment %}
                                 {% if article.category_id == category.id %}
                                 {% comment %}
-                                Only print when the category of the article match up with the category in the loop
+                                <!--Only print when the category of the article match up with the category in the loop-->
                                 {% endcomment %}
                                 {% if category.name == 'Software development' %}
                                 {% comment %}
-                                if/else clause shortens the category name when it is "Software development"
-                                reason is to make it look better on lower resolutions
+                                <!--if/else clause shortens the category name when it is "Software development"
+                                reason is to make it look better on lower resolutions-->
                                 {% endcomment %}
                                 <a href="{{ category.get_absolute_url }}">
                                     <div class="chip btn-outline-dark" data-mdb-close="true" data-mdb-ripple-color="dark">Devel</div>
@@ -82,7 +82,7 @@
             </div>
             {% endif %}
             {% comment %}
-            Ends article length=0
+            <!--Ends article length=0-->
             {% endcomment %}
         </div>
     </div>

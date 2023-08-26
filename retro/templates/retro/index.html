@@ -4,7 +4,9 @@
 
 {% block content %}
 
-<!-- Jumbotron -->
+{% comment %}
+<!-- Jumbotron header -->
+{% endcomment %}
 <div class="container my-5">
     <div class="p-5 text-center bg-secondary border border-dashed rounded-5">
         <h1 class="mb-3 cursive-font">Welcome to the Retro Lovers United site!</h1>
@@ -12,18 +14,17 @@
         <p class="last_articles">Last three articles:</p>
         <p class="last_articles">
             {% for article in articles %}
-
             <a href="{{ article.get_absolute_url }}">
                 &nbsp;&nbsp;<i class="fa-solid fa-check">&nbsp;</i>{{ article.title }}
             </a>
-
             {% endfor %}
         </p>
     </div>
 </div>
 
-
-<!-- Jumbotron -->
+{% comment %}
+<!-- Jumbotrons -->
+{% endcomment %}
 
 <div class="container-fluid">
     <div class="row">

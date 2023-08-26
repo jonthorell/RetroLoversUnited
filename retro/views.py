@@ -232,7 +232,7 @@ class confirm_delete_user(MemberRequiredMixin, custom_mixin_kategorimenu, Templa
     # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
     def get(self, request, *args, **kwargs):
         u = request.user
-        print(u)
+        
         fname = request.user.first_name
         lname = request.user.last_name
 
