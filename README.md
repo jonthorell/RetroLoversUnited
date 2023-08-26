@@ -176,7 +176,15 @@ of that sort but get the proper error message as expected.
 One Lighthouse screenshot per view. In All cases Lighthouse complains about missing explicit size-tags (not surprising since it is in a header.html that in turn is included in base.html). However,
 the error is misleading. The width and height attributes are set using css-classes which lighthouse does not pick up upon.
 
+Lighthouse also complains about things I can not do much about without re-rewriting the front-end framework that is being used.
+
+In this example for instance.
+
+The buttons are created on the fly by the classname added. 
+
 Index
+
+![index](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/index.PNG?raw=true)
 
 # Lessons learned
 
