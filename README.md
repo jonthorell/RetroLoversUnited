@@ -176,19 +176,26 @@ of that sort but get the proper error message as expected.
 One Lighthouse screenshot per view. In All cases Lighthouse complains about missing explicit size-tags (not surprising since it is in a header.html that in turn is included in base.html). However,
 the error is misleading. The width and height attributes are set using css-classes which lighthouse does not pick up upon.
 
-Lighthouse also complains about things I can not do much about without re-rewriting the front-end framework that is being used.
+Lighthouse also complains about things I can not do much about without re-rewriting the front-end framework that is being used (Materialize bootstrap).
 
 In this example for instance.
 
-The buttons are created on the fly by the classname added. 
+https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/error-lh.PNG?raw=true
+
+The buttons are created on the fly by the classname added and the data-* fields needed for the class to work. In some cases there might be work-arounds for it, but not always.
 
 Index
 
 ![index](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/index.PNG?raw=true)
 
+View-by-author
+
+![index](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/index.PNG?raw=true)
+
 # Lessons learned
 
-Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology and trying to learn the Django framework at the same time. Especially since I can not work
+Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology (besides, the Agile methodology works better if it is a team responsible and not a sole developer)
+and trying to learn the Django framework at the same time. Especially since I can not work
 on the project full-time due to other things on my plate. Having just the user stories and the project board would have been sufficient.
 
 As always, I tend to make the project too big in scope.
