@@ -31,7 +31,7 @@ to use the function.
 
 The icon on the far right controls account related functions such as sign up, login, logout, edit profile, & delete account.
 
-In the middle you have the main part where you can see list of articles, categories, and interact with them using forms. In the above example, a list of articles
+In the middle you have the main part where you can see list of articles, categories, and interact with them using forms. In this example, a list of articles
 by author Amy Squirrel.
 
 ![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
@@ -74,6 +74,21 @@ iterations without due-dates. See further under lessons learned.
 {% endif %
 ```
 4. Comments are used in both the python code and the template files. In the latter case, it is html-comments surrounded by the django comment-tags. The purpose for doing it twice is that the html-comment sticks out color-wise in the code editor and the django-tags make sure commens are not visible in view source.
+5. Everything is based upon class-based views rather than being function based.
+
+# Design considerations (user classes)
+
+# User classes
+
+Every user belongs to one or more classes of user. This is implemented using django groups.
+
+1. Admin. Or superusers. They can do anything.
+2. Editors. Has the ability to create new articles.
+3. Members. Can comment on articles. Also needed to view profiles. When someone sign up, they are automatically added to this group.
+4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
+5. Managers. Can see all active and inactive users.
+
+In the issues tracker, webuser is a not logged in user. User is a logged in user.
 
 # Deployment
 
@@ -92,11 +107,11 @@ In order to deploy something to Heroku, several steps needs to be taken care of.
 
 This is taken for granted that the project is already hosted at GitHub.
 
-Code changes are regularily pushed into that repository using either Github Desktop or the cli command git using:
+Code changes are regularily pushed into that repository using either Visual Studio or the cli command git using:
 
-git add .
-git commit -m "commit message"
-git push
+1. git add .
+2. git commit -m "commit message"
+3. git push
 
 The steps for deployment to Heroku are:
 
@@ -111,93 +126,44 @@ This might include things not necessarily referenced, but it will make sure the 
 7. Under deployment method, connect the app to the correct github repository
 8. Decide if you want the deployment to be automatic or manual. That is a matter of preference. For now, I have opted to make it manual.
 
+# Database design
 
+The different models works like this.
 
-# Bugs
+# Bugs encountered and fixed
 
 1. Navbar did not list categories for all pages at first. Solved with a mixin to the class-based views
-2. Navbar catgories does not work from error pages
+2. The code to retrieve categories from the database threw a "has no attributes" error. Turned out to be a name-mismatch since the name Category was used for a view as well.
+Renaming the view name was not the same as the model name fixed the problem.
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
-5. Bell-drop down created an empty menu if there were no messages. Fixed by moving the ul-container.
+5. Change chip in category to display right avatar and editor-name. DONE
 6. Spacing issue between author and category menu. DONE
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
 8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
 9. When using view-by-author, the system inexplicable logs the user in as that user??. Fixed. context_view was wrong
 10. Faq gets same value from links.description all the time?? Fixed
 11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving. Changed to pop-out instead
-12. If user manually changes article id in url bar for editarticle, the display is empty. Works good enough to get the form into place and look into that problem later
-13. In edit_article, the kwarg-value was empty when the get-method was available. It worked fine when the get-method was commented-out. Which was a bit of a bummer since the kwarg-value was essential for the logic that checked whether the logged in user was authorized to edit it.
-It is fixed, although I am not entirely sure which of the changes that accomplished the task. 
+12. If user manually changes article id in url bar for editarticle, the display is empty. Works good enough to get the form into place and look into that problem later. Fixed.
+13. In edit_article, the kwarg-value was empty when the get-method was available. It worked fine when the get-method was commented-out. Which was a bit of a bummer since the kwarg-value was essential for the logic that checked whether the logged in user was authorized to edit it. Fixed.
+
+## Remaining bugs
+
+The categories and authors menues in some situations fails to display their content. Works in most cases but has not been able to find the root cause.
 
 # Todo
 
 1. Clean up css from redundant classes
 2. Document models
 3. Add comments wherever needed
-4. Chnage chip in category to display right avatar and editor-name. DONE
-5. Add a credits view. Avatars needs to be added there apart from the rest. DONE
+
 
 # Other
 
-1. Credits works fine. Should be moved to separate app. DONE
-2. Code for pagination adapted from examples at: https://realpython.com/django-pagination/
-3. Filter on status. Done in views.py for index. Cant do that for the others since it needs custom code in the template with if/else/for-loops
-4. After editing a article, user is redirected to the article view
-5. Articles in draft-mode will only be shown in "My articles". It is the only place where it makes sense to show it since no other editor should ever need to see it.
+1. Credits worked fines as is, but decided to move it and the FAQ to separate apps.
+2. Code for pagination uses classes from Materialize Bootstrap.
+3. Filter on status. Done in views.py for index. Can't do that for the others since it needs custom code in the template with if/else/for-loops
+4. Articles in draft-mode will only be shown in "My articles". It is the only place where it makes sense to show it since no other editor should ever need to see it.
 
-# User classes
+# Testing
 
-Every user belongs to one or more classes of user.
-
-1. Admin. Or superusercs. They can do anything.
-2. Editors. Has the ability to create new articles.
-3. Members. Can comment on articles (and potentially like articles). Also needed to view profiles.
-4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
-5. Managers. Can see all active and inactive users.
-
-In the issues tracker, webuser is a not logged in user. User is a logged in user.
-
-Members is essentially everyone that is logged in. Admins is the designated superusers. Should also be a member of the editor group.
-Editors are those users the admin has added to the editors group. If not a member of the editors group, the create article link disappears.
-
-Bug: the code to retrieve categories from the database threw a "has no attributes" error. Turned out to be a name-mismatch since the name Category was used for a view as well.
-Renaming the view name was not the same as the model name.
-
-# Retro Lovers United
-
-This is a site for dedicated users of the now very old Amiga-line of computers where they can get help, tips, and ideas of things to do with their beloved antiques.
-Mostly just as a fun hobby, but maybe find some small niche where it can still be useful.
-
-The site is written using HTML, CSS, Django, Python, and MD Bootstrap (Material Design Bootstrap)
-
-# Main Page
-
-When the site is launched, the screen is essentially divided into three parts.
-
-![navbar](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/navbar.PNG?raw=true)
-
-The navbar will of course always be visible no matter where you are on the page. The beachball on the far left takes you back to the homepage (the icon itself comes from the very first
-demo released for the Amiga 1000 back in 1985 to showcase some of what it could do). Categories is a drop-down menu where you can choose which category of articles you want to view.
-Contact and abouts are just links. Create Article and Admin will not be visible unless you are logged in with sufficient rights.
-
-On the right hand side, the bell indicates whether you have unread notifications (for example, a comment has just been approved). It also acts as a drop-down menu. This icon will also not be shown if you
-are not logged in.
-
-The avatar finally will just show a generic one if you are not logged in. Depending on whether you are logged in or out, the menu it offers will offer you either:
-* Create Account
-* Login
-
-Or:
-
-* Logout
-
-![landing-page](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
-
-The landing page is essentially just a welcome page, but with links to three latest articles added to the site.
-
-![footer](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/footer.png?raw=true)
-
-The copyright message in the footer will be hidden on smaller screens so the most important thing here is highlighted, the social media icons.
-JUst a few that I deemed most suitable for a community site. The URLs for twitter and youtube are search strings into respective platform with
-a relevant searchphrase. Github leads straight to this repository.
