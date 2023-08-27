@@ -10,7 +10,7 @@ from retro.models import Category, Profile, Article, Comment
 
 STATUS = ((0, "Draft"), (1,"Published"))
 SUBJECT = ((0,"Technical Issue"), (1,"Factual Issue"), (2,"Dead link or missing image"), (3,"Suggestion for accessability"), (4,"Suggestion for new idea"), (5,"Suggestion for new link"), (6,"Generic praise/hate"))
-CATEGORY = ((7,"AmigaOS"),(12,"Game"))
+
 
 class CustomSignupForm(SignupForm):
     '''Class used to alter some of the allauth fields '''
