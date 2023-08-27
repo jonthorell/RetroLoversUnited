@@ -361,7 +361,7 @@ I got the following result for the pages listed below (listed this way to make i
 ![html-checker](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/html-checker.PNG?raw=true)
 
 * Index
-* 
+* By author
 
 
 
