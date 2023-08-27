@@ -6,24 +6,27 @@ from .models import Category,Article,Link,Comment,Profile
 from allauth import account
 
 class ArticleAdmin(SummernoteModelAdmin):
+    '''Class used to add summernote to adminview '''
+
     summernote_fields = ('content',)
 
 class ProfileInline(admin.StackedInline):
+    '''Class used to aextend the user part of adminview with profile in the same view '''
     model = Profile
 
 class UserAdmin(admin.ModelAdmin):
+    '''Class used to aextend the user part of adminview with profile in the same view '''
+
     model = User
     inlines = [ProfileInline]
 
-# Register your models here.
+#register everything in admin
 
 admin.site.unregister(User)
 admin.site.unregister(get_attachment_model())
-#admin.site.unregister(account)
 admin.site.unregister(Group)
 admin.site.register(User, UserAdmin)
 admin.site.register(Category)
 admin.site.register(Article,ArticleAdmin)
 admin.site.register(Link)
 admin.site.register(Comment)
-#admin.site.register(Profile)
