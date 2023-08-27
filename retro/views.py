@@ -121,6 +121,32 @@ class delete_comment(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVie
 
     template_name = 'retro/delete_comment.html'
 
+class confirm_delete_comment(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    '''Class used to really delete the comment '''
+
+    template_name = 'retro/confirm_delete_comment.html'
+    # template file is not present since it is never really displayed. Another view could have been used but template view is convenient :-)
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        my_id = self.kwargs['pk']
+        current_comment = get_object_or_404(Comment, id=my_id)
+        context = self.get_context_data(object=current_comment)
+        # get current comment
+        if current_comment.name_id == request.user.id:
+            # if logged in user owns the article, delete it
+            art_mess = "Comment is deleted."
+            current_comment.delete()
+        else:
+            # Otherwise, inform the user he/she can not do that
+            art_mess = "You do not have permission to delete that comment."
+        messages.info(request, art_mess)
+        return HttpResponseRedirect("/")
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['comments'] = Comment.objects.all()
+        return context
+
 
 
 class inactive_account(custom_mixin_kategorimenu, TemplateView):
