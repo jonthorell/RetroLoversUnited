@@ -43,7 +43,7 @@
                                 {% if article.user_id == profile.user_id %}
                                 {% with urlbase="avatars/"|add:profile.avatar %}
                                 <div data-mdb-close="false" class="chip btn-outline-dark" data-mdb-ripple-color="dark">
-                                    <img src="{% static urlbase %}" alt="Author" />
+                                    <img src="{% static urlbase %}" width="25" height="25 "alt="Author" />
                                     {% for user in users %}
                                     {% if user.id == profile.user_id %}
                                     <a href="/view_profile/{{ profile.user.id }}">
