@@ -250,6 +250,18 @@ View-by-author
 
 ![view-by-author](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/by-author.PNG?raw=true)
 
+View-by-category
+
+![view-by-category](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/by-category.PNG?raw=true)
+
+All-categoeies
+
+![all-categories](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/all_categories.PNG?raw=true)
+
+Contact
+
+![contact](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/all_categories.PNG?raw=true)
+
 Credits
 
 ![view-by-author](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/credits.PNG?raw=true)
