@@ -363,6 +363,8 @@ I got the following result for the pages listed below (listed this way to make i
 * Index
 * By author
 * All categories
+* By Category
+* 
 
 
 
