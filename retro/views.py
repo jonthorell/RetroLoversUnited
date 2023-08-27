@@ -43,14 +43,16 @@ class custom_mixin_kategorimenu(object):
     # all other classes needs this mixin
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        try:
+            context = super().get_context_data(**kwargs)
+        except AttributeError:
+            context = {}
         context['links'] = Link.objects.all()
         context['categories'] = Category.objects.all()
-        context['users'] = User.objects.all()
-        context['articles'] = Article.objects.all()
+        context['users'] = User.objects.prefetch_related("groups")
+        context['articles'] = Article.objects.prefetch_related("groups")
         context['comments'] = Comment.objects.all()
         context['profiles'] = Profile.objects.all()
-        context['comments'] = Comment.objects.all()
         return context
 
 class article_detail(custom_mixin_kategorimenu, DetailView):
@@ -75,11 +77,12 @@ class comment_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
 
     def get(self, request, *args, **kwargs):
         # display the form
+        context = self.get_context_data()
         form = CommentForm(request.POST)
         return render(
         request,
         "retro/comment_article.html",
-        {"form": form},
+        {"form": form, **context},
     )
 
     def post(self, request, *args, **kwargs):
@@ -249,9 +252,10 @@ class Index(custom_mixin_kategorimenu, TemplateView):
 
         return context
 
-class Contact(custom_mixin_kategorimenu, DetailView):
+class Contact(custom_mixin_kategorimenu, View):
     '''Class used to display the contact page '''
-    
+
+
     def post(self, request, *args, **kwargs):
         # display form
         form = ContactForm(request.POST)
@@ -293,11 +297,12 @@ class Contact(custom_mixin_kategorimenu, DetailView):
             return HttpResponseRedirect("/")
     def get(self, request, *args, **kwargs):
         # display form
+        context = self.get_context_data()
         form = ContactForm(request.POST)
         return render(
         request,
         "retro/contact.html",
-        {"form": form},
+        {"form": form, **context},
     )
 
 class FAQ(custom_mixin_kategorimenu, TemplateView):
@@ -420,7 +425,7 @@ class view_my_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
         # return logged in user to template
         return context
 
-class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, View):
     '''Class used to edit your profile '''
 
     template_name = 'retro/edit_profile.html'
@@ -435,12 +440,13 @@ class edit_profile(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView)
 
     def get(self, request, *args, **kwargs):
         # show the form and pre-fill it with data for currently logged in user
+        context = self.get_context_data()
         user_profile = get_object_or_404(Profile, user_id=self.request.user.id)
         form = EditProfileForm(instance=user_profile)
         return render(
             request,
             "retro/edit_profile.html",
-            {"form": form},
+            {"form": form, **context},
     )
 
     def post(self, request, *args, **kwargs):
@@ -563,10 +569,11 @@ class create_article(EditorRequiredMixin, custom_mixin_kategorimenu, TemplateVie
             return redirect("/")
     def get(self, request, *args, **kwargs):
         # create and display empty form
+        context = self.get_context_data()
         form = CreateArticleForm(request.POST or None)
         return render(
         request,
         "retro/create_article.html",
-        {"form": form},
+        {"form": form, **context},
     )
 
