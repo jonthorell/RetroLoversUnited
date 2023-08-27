@@ -180,7 +180,7 @@ class edit_comment(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
             my_article.post = current_comment
             my_article.save()
             messages.info(request, 'Comment Updated!')
-            # update the article and return to article view
+            # update the article and return to main view
             return HttpResponseRedirect("/")
         else:
             form = CommentForm()
