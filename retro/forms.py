@@ -160,7 +160,7 @@ class ContactForm(forms.Form):
                 "id": "contact-subject",
                 "data-mdb-clear-button": True,
                 "required": True,
-                "placeholder": "empty",
+                "size": 7,
                 }
             ),
         label="Subject",
