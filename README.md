@@ -12,7 +12,8 @@ The project is live
 The project is for all intents and purposes a community site for that use or is interested in the old Amiga-line of computers.
 
 Designated editors can create and edit articles that may or may not be commented on by ordinary users. Those comments must be approved by a moderator
-before they are visible, to prevent spam comments. Users can always edit or delete their comment if they want to. The editors can likewise delete their
+before they are visible (although articles do not, editors are presumed to be trustworthy), to prevent spam comments. Users can always edit or delete 
+their comment if they want to. The editors can likewise delete their
 articles (although if they do that, the associated comments will be deleted as well).
 
 Everyone can at any time delete their account, but the same caveat applies. Associated articles (in case user was an editor) and commments will
@@ -32,7 +33,7 @@ to use the function.
 The icon on the far right controls account related functions such as sign up, login, logout, edit profile, & delete account.
 
 In the middle you have the main part where you can see list of articles, categories, and interact with them using forms. In this example, a list of articles
-by author Amy Squirrel.
+by author Amy Squirrel. As a sidenote, most editors in the authors menu should be recognizable by Amiga-users.
 
 ![middle-part](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/landing_page.PNG?raw=true)
 
@@ -82,7 +83,7 @@ Every user belongs to one or more classes of user. This is implemented using dja
 
 1. Admin. Or superusers. They can do anything.
 2. Editors. Has the ability to create new articles.
-3. Members. Can comment on articles. Also needed to view profiles. When someone sign up, they are automatically added to this group.
+3. Members. Can comment on articles. Also needed to view profiles. When someone sign up, they are automatically added to this group. If they need to be in another group (say editors) an admin has to add them there manually.
 4. Anonymous users (or not logged in users). Can view articles and comments but not able to comment themselves.
 5. Managers. Can see all active and inactive users.
 
@@ -143,8 +144,6 @@ The output of this model looks like this:
 
 ![model-faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/faq-model.PNG)
 
-
-
 App: Credits
 
 Does not use a model.
@@ -159,28 +158,53 @@ App: Retro
 Renaming the view name was not the same as the model name fixed the problem.
 3. Problem finding a way of getting the group for the current user. The solution found is not as elegant as I would like, but it works.
 4. Got error in devtools for two label lines. Turned out I had forgotten to remove them when the corresponding input field was removed.
-5. Change chip in category to display right avatar and editor-name. DONE
-6. Spacing issue between author and category menu. DONE
+5. Change chip in category to display right avatar and editor-name. Fixed.
+6. Spacing issue between author and category menu. Fixed.
 7. Ran into an issue where the view-category-by-category retrieved data from articles instead of categories. Had forgotten to change the Model as well as it was the wrong template type.
-8. article-by-author tried to look up category instead of user-id. FIXED. Wrong model.
+8. article-by-author tried to look up category instead of user-id. Fixed. Accidentally used the wrong model.
 9. When using view-by-author, the system inexplicable logs the user in as that user??. Fixed. context_view was wrong
-10. Faq gets same value from links.description all the time?? Fixed
+10. Faq gets same value from links.description all the time?? Fixed, the for-loop retrieved data from the wrong place.
 11. Modal did not close properly on mobile. Seems duplicated ids were responsible, but the browser on the PC was more forgiving. Changed to pop-out instead
 12. If user manually changes article id in url bar for editarticle, the display is empty. Works good enough to get the form into place and look into that problem later. Fixed.
 13. In edit_article, the kwarg-value was empty when the get-method was available. It worked fine when the get-method was commented-out. Which was a bit of a bummer since the kwarg-value was essential for the logic that checked whether the logged in user was authorized to edit it. Fixed.
+14. The categories and authors menues in some situations failed to display their content. Worked in most cases though. I am not enirely sure why the solution works. Since the start I have used a custom mixin in every other class
+	to make sure the navbar gets access to everything it needs. But from certain views it did not.
+	
+	In the mixin, the try/except construct was added.
 
+```django
+def get_context_data(self, **kwargs):
+        try:
+            context = super().get_context_data(**kwargs)
+        except AttributeError:
+            context = {}
+        context['links'] = Link.objects.all()
+        context['categories'] = Category.objects.all()
+        context['users'] = User.objects.prefetch_related("groups")
+        context['articles'] = Article.objects.prefetch_related("groups")
+        context['comments'] = Comment.objects.all()
+        context['profiles'] = Profile.objects.all()
+        return context
+```		
+		
+In the "offending" class, the line below the comment and the **context line at the bottom was added.
+
+```django
+def get(self, request, *args, **kwargs):
+        # display the form
+        context = self.get_context_data()
+        form = CommentForm(request.POST)
+        return render(
+        request,
+        "retro/comment_article.html",
+        {"form": form, **context},
+    )	
+```		
 ## Remaining bugs
 
-The categories and authors menues in some situations fails to display their content. Works in most cases but has not been able to find the root cause.
+None known.
 
-# Todo
-
-1. Clean up css from redundant classes
-2. Document models
-3. Add comments wherever needed
-
-
-# Other
+# Notes
 
 1. Credits worked fines as is, but decided to move it and the FAQ to separate apps.
 2. Code for pagination uses classes from Materialize Bootstrap.
@@ -190,7 +214,7 @@ The categories and authors menues in some situations fails to display their cont
 # Testing
 
 Testing has been done manually in selecting the different menu entries, trying to get an unauthorized user getting the possibility to edit something, and trying to get user
-A to be able to edit/delete something belonging to user B, among other things. Further details in subheadings but as a general rule I have not been able to trigger errors
+A to be able to edit/delete something belonging to user B, among other things. I have not been able to trigger errors
 of that sort but get the proper error message as expected.
 
 ## Lighthouse
