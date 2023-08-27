@@ -17,7 +17,7 @@
                 {% if profile.user.is_active %}
                 <a href="view_profile/{{ profile.user.id }}" aria-label="Click to view Profile ">
                     <div class="card-body">
-                        <h5 class="card-title blackfg">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                        <h3 class="card-title blackfg">{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
                         <p class="blackfg">
                             {{ profile.description }}
                         </p>
@@ -26,7 +26,7 @@
                 {% else %}
                 <a href="inactive_account" aria-label="Click to view Profile ">
                     <div class="card-body">
-                        <h5 class="card-title blackfg struck-out">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                        <h3 class="card-title blackfg struck-out">{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
                         <p class="blackfg struck-out">
                             {{ profile.description }}
                         </p>
