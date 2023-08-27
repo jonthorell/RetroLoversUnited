@@ -258,6 +258,10 @@ All-categoeies
 
 ![all-categories](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/all_categories.PNG?raw=true)
 
+Links
+
+![links](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/links.PNG?raw=true)
+
 Contact
 
 ![contact](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/contact.PNG?raw=true)
@@ -270,10 +274,79 @@ FAQ
 
 ![faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/faq.PNG?raw=true)
 
-
 Credits
 
-![view-by-author](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/credits.PNG?raw=true)
+![credits](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/credits.PNG?raw=true)
+
+Create-article
+
+![create-article](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/create_article.PNG?raw=true)
+
+Edit-article
+
+![edit-article](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/edit_article.PNG?raw=true)
+
+Delete article
+
+![delete-article](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/delete_article.PNG?raw=true)
+
+View article
+
+![view-article](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/get_article.PNG?raw=true)
+
+My articles
+
+![my-articles](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/my-articles.PNG?raw=true)
+
+All profiles
+
+![all-profiles](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/all_profiles.PNG?raw=true)
+
+View my profile
+
+![my-profile](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/view_my_profile.PNG?raw=true)
+
+Edit profile
+
+![edit-profile](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/edit_profile.PNG?raw=true)
+
+Delete account
+
+![delete-account](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/delete_account.PNG?raw=true)
+
+Inactive account
+
+![inactive-account](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/inactive_account.PNG?raw=true)
+
+List users
+
+![list-users](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/list_users.PNG?raw=true)
+
+Comment article
+
+![comment-article](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/comment_article.PNG?raw=true)
+
+Delete comment
+
+![delete-comment](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/delete_comment.PNG?raw=true)
+
+Edit comment
+
+![edit-comment](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/edit_comment.PNG?raw=true)
+
+As can be seen, the values from lighthouse are fairly consistant across the board. But see above for a partial explantion of what could potentially
+lower the scores. Some of them are, as far as I can tell, out of my control at this point. I could have found out about those issues earler on and
+found ways to fix it, but I did not spot the issues in time.
+
+That being said, there is one thing that I could fix:
+
+Contrast problem
+
+![contrast-problem](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/contrast.PNG?raw=true)
+
+Now, I am not sure how lighthouse determines the contast issue. However it does it, I decided not to fix the issue. Why? Partially because if someone like me with a notoriously bad sight
+can read the text without problems it can not be that big of an issue. Which, of couse, is subjective. The other reason is also subjective, but since the site is about the Amiga I want the color-scheme
+to reflect it as close as possible, warts and all. 
 
 # Lessons learned
 
