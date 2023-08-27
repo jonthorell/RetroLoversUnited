@@ -230,6 +230,18 @@ In this example for instance.
 
 The buttons are created on the fly by the classname added and the data-* fields needed for the class to work. In some cases there might be work-arounds for it, but not always.
 
+It also complains about some issues logged:
+
+![lighthouse-error2](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/issues_logged.PNG?raw=true)
+
+Those issues turned out to be cookie-related stuff coming from cloudinary, nothing much I can do about that as far as I can tell.
+
+![coookies](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/cookies-cloudinary.PNG?raw=true)
+
+When viewing an article, it complains about explicit width and height not set. It seems like summernote does not set those values when you upload an image using that component.
+
+![summernote-no-explicit-width](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/no-explicit-summernote.PNG?raw=true)
+
 Index
 
 ![index](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/index.PNG?raw=true)
