@@ -260,7 +260,16 @@ All-categoeies
 
 Contact
 
-![contact](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/all_categories.PNG?raw=true)
+![contact](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/contact.PNG?raw=true)
+
+About
+
+![about](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/about.PNG?raw=true)
+
+FAQ
+
+![faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/faq.PNG?raw=true)
+
 
 Credits
 
