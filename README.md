@@ -365,6 +365,7 @@ I got the following result for the pages listed below (listed this way to make i
 * All categories
 * By Category
 * Links
+* Contact
 * 
 * 
 
