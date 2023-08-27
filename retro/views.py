@@ -147,7 +147,49 @@ class confirm_delete_comment(MemberRequiredMixin, custom_mixin_kategorimenu, Tem
         context['comments'] = Comment.objects.all()
         return context
 
+class edit_comment(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
+    '''Class used to edit a comment '''
 
+    template_name = "retro/edit_comment.html"
+    model =Comment
+    context_object_name="comments"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        my_id = self.kwargs['pk']
+        context['comments'] = Comment.objects.filter(id=my_id).all()
+        # return comments owned by current user to template
+        return context
+
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        my_id = self.kwargs['pk']
+        current_comment = get_object_or_404(Comment, id=my_id)
+        context = self.get_context_data(object=current_comment)
+        form = CommentForm(instance=current_comment)
+        # display form with whatever was in the comment to begin with
+        context["form"] = form
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        my_id = self.kwargs['pk']
+        current_comment = get_object_or_404(Comment, id=my_id)
+        form = CommentForm(data=request.POST, instance=current_comment)
+        if form.is_valid():
+            my_article = form.save(commit=False)
+            my_article.post = current_comment
+            my_article.save()
+            messages.info(request, 'Comment Updated!')
+            # update the article and return to article view
+            return HttpResponseRedirect("/")
+        else:
+            form = CommentForm()
+
+        return render(
+            request,
+            "retro/edit_comment.html",
+            {"form": form},
+            )
 
 class inactive_account(custom_mixin_kategorimenu, TemplateView):
     '''Class used to display page when you are trying to view the details of an inacctive account (from list all profiles, clicking on an inactive account) '''

@@ -31,10 +31,12 @@
                                 <p>Comment by: {{ comment.slug }}</p>
                                 <p class="blackfg">{{ comment.body }}</p>
                                 <p>Created: {{ comment.created_on }}</p>
+                                {% if comment.name_id == user.id %}
                                 <div>
-                                    <a href="" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="/edit_comment/{{comment.id}}" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                                     <a href="/delete_comment/{{comment.id}}" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
                                 </div>
+                                {% endif %}
                             </p>
                         </div>
                         {% endif %}

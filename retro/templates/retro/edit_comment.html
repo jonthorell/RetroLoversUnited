@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Edit Comment{% endblock title %}
+
+{{ form.media }}
+
+{% block content %}
+
+<div class="container-fluid text-center target-link">
+    <h1>Edit Comment</h1>
+</div>
+
+
+<div class="container-fluid target-link">
+    <div class="row">
+        <div class="col">
+            {% if user.is_authenticated %}
+            {% for comment in comments %}
+            {% if comment.name_id == user.id %}
+            <form method="post" class="form pt-1 mt-1">
+                {% csrf_token %}
+                <fieldset class="mx-2 px-2">
+                    {{ form.as_p |safe}}
+                    <label for="user">Post as user: </label>
+                    <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}" />
+                    <p> </p>
+                    <button type="submit" class="btn btn-primary btn-block">Update Comment!</button>
+                    <p> </p>
+                </fieldset>
+            </form>
+            {% else %}
+            <h2 class="text-center">
+                <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
+                It is not your article so you are not allowed to edit it.
+                <br />
+                <a href="/">Return to Home</a>
+            </h2>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {% comment %}
+            <!--Should never show up since the mixin is in place-->
+            {% endcomment %}
+            <p class="not-logged-in">
+                <h2>
+                    <i class="fas fa-circle-exclamation me-2 text-warning" aria-hidden="true"></i>
+                    Since you are not logged in, you are not authorized to see this page.
+                </h2>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
