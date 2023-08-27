@@ -141,7 +141,7 @@ There are no relations to other models. Also, this particular model needs to be 
 
 The output of this model looks like this:
 
-![model-faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/lighthouse/faq-model.PNG)
+![model-faq](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/faq-model.PNG)
 
 
 
