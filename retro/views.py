@@ -176,10 +176,12 @@ class edit_comment(EditorRequiredMixin, custom_mixin_kategorimenu, DetailView):
         current_comment = get_object_or_404(Comment, id=my_id)
         form = CommentForm(data=request.POST, instance=current_comment)
         if form.is_valid():
-            my_article = form.save(commit=False)
-            my_article.post = current_comment
-            my_article.save()
+            comment = form.save(commit=False)
+            comment.post = current_comment
+            comment.approved = False
+            comment.save()
             messages.info(request, 'Comment Updated!')
+            messages.info(request, 'It needs to be approved again!')
             # update the article and return to main view
             return HttpResponseRedirect("/")
         else:

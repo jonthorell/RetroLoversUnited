@@ -16,7 +16,6 @@ from autoslug import AutoSlugField
 # Comments are in draft status by default. That means an admin has to approve the comment before it can be seen
 
 STATUS = ((0, "Draft"), (1,"Published"))
-RATING = ((0, "Not rated"), (1,"Really Low"), (2,"Low"), (3,"Medium"), (4,"Good"), (5,"Excellent"))
 
 User=get_user_model()
 
