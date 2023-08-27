@@ -8,8 +8,6 @@ from cloudinary.models import CloudinaryField
 from django.urls import reverse
 from autoslug import AutoSlugField
 
-# Create your models here.
-
 # status is used to check wheter comment or article has been approved. Some of this has been adapted for my own use from the codestar code-along
 # Articles have their status automatically set to published (although can be changed). If not changed, it is immediately visible. 
 # User needs to be a member of the editors group to be able to create an article and the only one that can do that
@@ -17,14 +15,14 @@ from autoslug import AutoSlugField
 
 # Comments are in draft status by default. That means an admin has to approve the comment before it can be seen
 
-
-
 STATUS = ((0, "Draft"), (1,"Published"))
 RATING = ((0, "Not rated"), (1,"Really Low"), (2,"Low"), (3,"Medium"), (4,"Good"), (5,"Excellent"))
 
 User=get_user_model()
 
 class Category(models.Model):
+    '''Class used to create the category model '''
+
     name = models.CharField(max_length=40, blank=False, null=False, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from='name', unique=True)
@@ -41,6 +39,8 @@ class Category(models.Model):
         return reverse("articles_by_category", args=[str(self.id)])
 
 class Article(models.Model):
+    '''Class used to create the article model '''
+
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False, null=False)
     slug = AutoSlugField(populate_from='title', unique=True)
     title = models.CharField(max_length=60, blank=False, null=False, unique=True)
@@ -50,8 +50,6 @@ class Article(models.Model):
     excerpt = models.TextField(blank=False, null=False)
     status = models.IntegerField(choices=STATUS, default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    ratings = models.ManyToManyField(
-        User, related_name='article_rating', blank=True)
 
     class Meta:
         ordering = ['-created_on']
@@ -66,10 +64,10 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse("article_detail", args=[str(self.id)])
 
-    def number_of_ratings(self):
-        return self.ratings.count()
 
 class Link(models.Model):
+    '''Class used to create the links model '''
+
     name = models.CharField(max_length=60, blank=False, null=False, unique=True)
     slug = AutoSlugField(populate_from='name', unique=True)
     url = models.CharField(max_length=255, blank=False, null=False, unique=True)
@@ -82,9 +80,9 @@ class Link(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Comment(models.Model):
+    '''Class used to create the comment model '''
+
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='user')
     body = models.TextField(max_length=200,blank=False, null=False)
@@ -104,6 +102,8 @@ class Comment(models.Model):
         )
 
 class Profile(models.Model):
+    '''Class used to create the profile model '''
+
     short_description = models.CharField(max_length=60, blank=False, null=False)
     description = models.TextField(max_length=2000, blank=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)

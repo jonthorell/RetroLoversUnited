@@ -12,6 +12,7 @@ STATUS = ((0, "Draft"), (1,"Published"))
 SUBJECT = ((0,"Technical Issue"), (1,"Factual Issue"), (2,"Dead link or missing image"), (3,"Suggestion for accessability"), (4,"Suggestion for new idea"), (5,"Suggestion for new link"), (6,"Generic praise/hate"))
 
 class CustomSignupForm(SignupForm):
+    '''Class used to alter some of the allauth fields '''
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=30, label='Last Name')
     password1 = forms.CharField(label=_("Password"),
@@ -31,6 +32,8 @@ class CustomSignupForm(SignupForm):
         user = super(CustomSignupForm, self).save(request)
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        
+        # add signupped user to member group
         user_group = "members"
         g = Group.objects.get(name=user_group)
         user.groups.add(g)
@@ -45,6 +48,7 @@ class CustomSignupForm(SignupForm):
         return user
 
 class EditProfileForm(forms.ModelForm):
+    '''Class used to create form for edit profile '''
     description = forms.CharField(
         required = True,
         widget = forms.widgets.TextInput(
@@ -72,7 +76,8 @@ class EditProfileForm(forms.ModelForm):
         
 
 class CreateArticleForm(forms.ModelForm):
-    
+    '''Class used to create form for create/edit article '''
+
     content = forms.CharField(
         required=True,
         widget=SummernoteWidget(
@@ -131,7 +136,8 @@ class CreateArticleForm(forms.ModelForm):
         exclude = ("user", "featured_image", "ratings")
 
 class ContactForm(forms.Form):
-    
+    '''Class used to create contact form '''
+
     name = forms.CharField(
         required = False,
         widget = forms.widgets.TextInput(
@@ -181,6 +187,8 @@ class ContactForm(forms.Form):
     )
 
 class CommentForm(forms.ModelForm):
+    '''Class used to create comment form '''
+
     body = forms.CharField(
         required=False,
         widget = forms.widgets.Textarea(
@@ -195,7 +203,6 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
-        #fields = '__all__'
 
     
     
