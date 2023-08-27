@@ -42,15 +42,19 @@
                         {% for group in user.groups.all %}
                         {% if group.name == 'Editors' %}
                         {% comment %}
-                        Only list user that are editors
+                        <!--Only list user that are editors-->
                         {% endcomment %}
                         <li>
                             <a class="dropdown-item" href="{% url 'articles_by_author' user.id %}">
                                 {% for profile in profiles %}
                                 {% if user.id == profile.user_id %}
                                 {% with avatarimg="avatars/"|add:profile.avatar %}
+                                {% comment %}
+                                <!--with creates path to avatar image -->
+                                {% endcomment %}
                                 <img src="{% static avatarimg %}"
                                      height="25"
+                                     width="25"
                                      alt="Author"
                                      class="rounded-circle"
                                      loading="lazy" />
@@ -81,6 +85,7 @@
                             <a class="dropdown-item sans-font" href="/category">
                                 <img src="{% static 'categories/all.png' %}"
                                      height="25"
+                                     width="25"
                                      alt="Category"
                                      class="rounded-circle"
                                      loading="lazy" />
@@ -91,8 +96,12 @@
                         <li>
                             <a class="dropdown-item" href="{{ category.get_absolute_url }}">
                                 {% with catimg="categories/"|add:category.avatar %}
+                                {% comment %}
+                                <!--with creates path to category image -->
+                                {% endcomment %}
                                 <img src="{% static catimg %}"
                                      height="25"
+                                     width="25"
                                      alt="Category"
                                      class="rounded-circle"
                                      loading="lazy" />
@@ -122,19 +131,19 @@
                         <a class="nav-link" href="/credits">Credits</a>
                     </li>
                     {% comment %}
-                    Add links depending on group membership
+                    <!--Add links depending on group membership-->
                     {% endcomment %}
 
                     {% if user.is_authenticated %}
                     {% comment %}
-                    first check if user is authenticated in the first place
-                    If not, skip create/admin links
+                    <!--first check if user is authenticated in the first place
+                    If not, skip create/admin links-->
                     {% endcomment %}
 
                     {% for group in user.groups.all %}
                     {% comment %}
-                    Iterate over the groups of the current user
-                    If user is a member of group Editors, add create article link
+                    <!--Iterate over the groups of the current user
+                    If user is a member of group Editors, add create article link-->
                     {% endcomment %}
                     {% if group.name == 'Editors' %}
                     <li class="nav-item">
@@ -144,16 +153,16 @@
                     {% endfor %}
 
                     {% comment %}
-                    Do the same for admin link
+                    <!--Do the same for admin link
                     Admin link should not be necessary when everything is ready
                     but remains anyway since it sometimes could be a handier way
-                    of doing things.
+                    of doing things.-->
                     {% endcomment %}
 
                     {% for group in user.groups.all %}
                     {% comment %}
-                    Iterate over the groups of the current user
-                    if user is a member of the admins group, add admin link
+                    <!--Iterate over the groups of the current user
+                    if user is a member of the admins group, add admin link-->
                     {% endcomment %}
 
                     {% if group.name == 'admins' %}
@@ -164,12 +173,12 @@
                     {% endfor %}
 
                     {% comment %}
-                    Do the same for list users link
+                    <!--Do the same for list users link-->
                     {% endcomment %}
                     {% for group in user.groups.all %}
                     {% comment %}
-                    Iterate over the groups of the current user
-                    if user is a member of the managers group, add managers link
+                    <!--Iterate over the groups of the current user
+                    if user is a member of the managers group, add managers link-->
                     {% endcomment %}
 
                     {% if group.name == 'Managers' %}
@@ -200,6 +209,9 @@
                         {% for profile in profiles %}
                         {% if user.id == profile.user_id %}
                         {% with avatarimg="avatars/"|add:profile.avatar %}
+                        {% comment %}
+                        <!--with creates path to avatar image -->
+                        {% endcomment %}
                         <img src="{% static avatarimg %}"
                              alt="Author"
                              class="rounded-circle"
@@ -226,8 +238,8 @@
                         </li>
                         {% for group in user.groups.all %}
                         {% comment %}
-                        Iterate over the groups of the current user
-                        If user is a member of group Editors, add view my articles link
+                        <!--Iterate over the groups of the current user
+                        If user is a member of group Editors, add view my articles link-->
                         {% endcomment %}
                         {% if group.name == 'Editors' %}
                         <li class="nav-item">
