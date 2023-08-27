@@ -356,6 +356,15 @@ The different pages have been validated through
 
 In order to not get complaints about Django-tags, the "view source" output for every page has been pasted into the validator. 
 
+I got the following result for the pages listed below (listed this way to make it more digestable).
+
+![html-checker](https://github.com/jonthorell/RetroLoversUnited/blob/main/static/images/readme-files/html-checker.PNG?raw=true)
+
+* Index
+* 
+
+
+
 # Lessons learned
 
 * Setting deadlines on Agile milestones was not a good idea when you are new to both the Agile methodology (besides, the Agile methodology works better if it is a team responsible and not a sole developer) and trying to learn the Django framework at the same time. Especially since I can not work on the project full-time due to other things on my plate. Having just the user stories and the project board would have been sufficient.
