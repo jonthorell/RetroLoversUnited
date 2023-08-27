@@ -352,7 +352,7 @@ to reflect it as close as possible, warts and all.
 
 The different pages have been validated through 
 
-![validator](https://validator.w3.org/?raw=true)
+[validator](https://validator.w3.org)
 
 In order to not get complaints about Django-tags, the "view source" output for every page has been pasted into the validator. 
 
@@ -362,6 +362,7 @@ I got the following result for the pages listed below (listed this way to make i
 
 * Index
 * By author
+* All categories
 
 
 
