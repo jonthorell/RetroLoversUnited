@@ -69,8 +69,8 @@
                                 <!-- enable edit delete buttons if user owns article -->
                                 {% endcomment %}
                                 <span class="text-center">
-                                    <a href="/edit_article/{{ article.id }}" class="btn btn-warning">Edit</a>
-                                    <a href="/delete_article/{{ article.id }}" class="btn btn-danger">Delete</a>
+                                    <a href="/edit_article/{{ article.id }}" class="btn btn-warning" aria-label="Edit Article">Edit</a>
+                                    <a href="/delete_article/{{ article.id }}" class="btn btn-danger" aria-label="Delete Article">Delete</a>
                                 </span>
                                 {% else %}
                                 <p>&nbsp;</p>
