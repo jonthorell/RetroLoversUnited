@@ -366,10 +366,10 @@ I got the following result for the pages listed below (listed this way to make i
 * By Category
 * Links
 * Contact
-* 
+* About
 * 
 
-
+FAQ complains about weird non-matching tags. 
 
 # Lessons learned
 
