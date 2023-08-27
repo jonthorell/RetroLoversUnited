@@ -5,7 +5,7 @@ from .views import Index, Links,Contact, About, Kategories, confirm_delete_user,
 from .views import View_profile,List_Users,article_detail,articles_by_category,articles_by_author
 from .views import create_article,my_Articles,view_my_profile,all_profiles, inactive_account
 from .views import edit_article,delete_account, delete_article, confirm_delete_article
-from .views import comment_article
+from .views import comment_article,delete_comment
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
@@ -31,4 +31,5 @@ urlpatterns = [
     path('delete_article/<int:pk>/', delete_article.as_view(), name='delete_article'),
     path('confirm_delete_article/<int:pk>/', confirm_delete_article.as_view(), name='confirm_delete_article'),
     path('comment_article/<int:pk>/', comment_article.as_view(), name='comment_article'),
+    path('delete_comment/<int:pk>/', delete_comment.as_view(), name='delete_comment'),
     ]

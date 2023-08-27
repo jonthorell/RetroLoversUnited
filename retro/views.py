@@ -116,6 +116,13 @@ class comment_article(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateVi
         # return articles to template that has the corresponding kwarg (i.e. the article being displayed)
         return context
 
+class delete_comment(MemberRequiredMixin, custom_mixin_kategorimenu, TemplateView):
+    '''Class used to display the delete comment warning page '''
+
+    template_name = 'retro/delete_comment.html'
+
+
+
 class inactive_account(custom_mixin_kategorimenu, TemplateView):
     '''Class used to display page when you are trying to view the details of an inacctive account (from list all profiles, clicking on an inactive account) '''
 
