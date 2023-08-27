@@ -135,7 +135,7 @@ class ContactForm(forms.Form):
             attrs={
                 "placeholder": "Your name",
                 "class": "form-control form-control-sm",
-                "required": "true",
+                "required": "True",
                 }
             ),
             label="Your name",
@@ -146,7 +146,7 @@ class ContactForm(forms.Form):
             attrs={
                 "placeholder": "Your e-mail",
                 "class": "form-control form-control-sm",
-                "required": "true",
+                "required": "True",
                 }
             ),
             label="Your e-mail",
@@ -158,8 +158,9 @@ class ContactForm(forms.Form):
             attrs={
                 "class": "form-control form-control-sm select",
                 "id": "contact-subject",
-                "data-mdb-clear-button": "true",
-                "required": "true",
+                "data-mdb-clear-button": "True",
+                "required": "True",
+                "value": "",
                 }
             ),
         label="Subject",
@@ -171,7 +172,7 @@ class ContactForm(forms.Form):
             attrs={
                  "placeholder": "Enter message here",
                 "class": "form-control form-control-sm validate",
-                "required": "true",
+                "required": "True",
                 }
             ),
         label="What do you want to say to us?",

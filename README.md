@@ -364,6 +364,8 @@ I got the following result for the pages listed below (listed this way to make i
 * By author
 * All categories
 * By Category
+* Links
+* 
 * 
 
 
