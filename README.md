@@ -374,6 +374,8 @@ I got the following result for the pages listed below (listed this way to make i
 * List active users
 * View article
 * Edit profile
+* View my profile
+* List all profiles
 * 
 
 FAQ complains about weird non-matching tags. 
