@@ -378,6 +378,8 @@ I got the following result for the pages listed below (listed this way to make i
 * List all profiles
 * Inactive account
 * View profile
+* my-articles
+* Delete account
 * 
 
 FAQ complains about weird non-matching tags. 
