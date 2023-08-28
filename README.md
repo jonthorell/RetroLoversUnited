@@ -376,6 +376,8 @@ I got the following result for the pages listed below (listed this way to make i
 * Edit profile
 * View my profile
 * List all profiles
+* Inactive account
+* View profile
 * 
 
 FAQ complains about weird non-matching tags. 
