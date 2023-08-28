@@ -131,7 +131,7 @@ Since the entire site is built around three apps, there is a possibility to use 
 
 App: FAQ
 
-Uses one very simple model called Terminology. It has four fields (5 if you count the automatically created id/pk field).
+Uses one very simple model called __Terminology__. It has four fields (5 if you count the automatically created id/pk field).
 
 * Name: Charfield, max 40 characters in length. Can not be blank and must be unique. It must be unique because it is used as a title in the display and I do not want to confuse the user with having the same name twice or more.
 * Created_on: Datefield, is automatically filled in.
@@ -149,6 +149,71 @@ App: Credits
 Does not use a model.
 
 App: Retro
+
+The main app, uses the following models:
+
+The default django user-model
+
++the following (all uses the default id/pk field)
+
+__Category__
+
+* Name: Name of category. Charfield, max_length 40 and must be unique and not null
+* Created_on: created by default with the current time-stamp
+* Slug: see above regarding slugs
+* Description: Description of the category. Max_length 200 (can be seen in all-categories boxes), must not be null
+* Avatar: filename of category-image (can be seen in categories menu). Max-length 60, must not be null. File is pulled from static/categories
+
+Does not refer to any other model, but others refer to this.
+
+__Article__
+
+* Category: refers to the id of category model so the article is linked to one category.
+* Slug: see above regarding slugs
+* Title: name of the article. Charfield, maxlength 60. Must not be null
+* Content: main body of the article. Max length 200, must not be null and is linked to a summernote field
+* updated_on/created_on: DateTimeField, updated automatically
+* excerpt: short description of article. 
+* status: published or not (integer). 1=published, which is the default
+* user: refers to the id of the user in the usertable so the article is linked to one user (=owner)
+
+Both user and category has on_delete CASCADE so if the user or category is deleted, so is the article
+
+__Link__
+
+* Name. Charfield, Name of the link, max_length 60, must be unique and not null
+* Slug: see above regarding slugs
+* URL: max length 255, must be unique and not null
+* Description: Charfield, max length 255. Must not be null. A short description of the url.
+* Alt: Charfield. Maxlength 255, not null. Provides the alt= text
+
+Link model is self-contained and does not refer to any other models or is referred to one.
+
+__Comment__
+
+* Article. Refers to the article model to keep track of which article it is a comment on.
+* Name. Refers to the user model to keep track of who wrote the comment
+* Body. Textfield, maxlength 200. Can not be null
+* Slug. See above regarding slugs
+* Created_on: DateTimeField, updated automatically
+* Approved. Boolean. Comments needs to be approved by an admin before they are visible so set to False automatically so admin needs to approve it.
+* Status. Integer. Either 0 (not published, or invisible) or 1 (published and visible). 
+
+Article and name are set on_delete CASCADE so if the article or user the comment belongs to is deleted, so is the comment
+
+__Profile__
+
+In django-admin, this one is not listed as a model on its own. Instead the fields show up if one clicks on a user. It is sort of an extension of the user model.
+
+* Short_description. Charfield, maxlength 60. Not null.
+* Description. Charfield, max 2000. Not null. Longer description. A biography if you will.
+* updated on/created on. DateTimeField. Added automatically
+* slug. See above regarding slugs.
+* user. Refers to the id of the user in the user model.
+* avatar. Charfield, maxlength 60. Not null. See under categories. Same principle, except the picture is fetched from static/avatars. Can be null in principle but gets a default on creation.
+* conputer. Textfield, maxlength 400. A computer oriented site needs to let the user describe their setup, right?
+
+User has on_delete CASCADE set so if user is deleted, so is the profile
 
 
 # Bugs encountered and fixed
@@ -384,9 +449,9 @@ I got the following result for the pages listed below (listed this way to make i
 * signup
 * login
 * Delete article
-* 
-
-FAQ complains about weird non-matching tags. 
+* Add comment
+* Edit comment
+* Delete comment
 
 # Lessons learned
 
