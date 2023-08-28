@@ -202,7 +202,9 @@ def get(self, request, *args, **kwargs):
 ```		
 ## Remaining bugs
 
-None known.
+Some error in html checking on:
+
+* Edit article (works, but needs checking anyway). Some is becuase of summernote.
 
 # Notes
 
@@ -369,6 +371,9 @@ I got the following result for the pages listed below (listed this way to make i
 * About
 * FAQ
 * Credits
+* List active users
+* View article
+* Edit profile
 * 
 
 FAQ complains about weird non-matching tags. 
