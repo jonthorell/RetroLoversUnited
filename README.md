@@ -368,6 +368,7 @@ I got the following result for the pages listed below (listed this way to make i
 * Contact
 * About
 * FAQ
+* Credits
 * 
 
 FAQ complains about weird non-matching tags. 
