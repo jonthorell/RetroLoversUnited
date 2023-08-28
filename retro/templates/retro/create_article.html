@@ -21,7 +21,7 @@
                     {{ form.as_p |safe}}
                     {% if user.is_authenticated %}
                     <label for="user">Post as user: </label>
-                    <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}" />
+                    <input type="text" id="user" name="user" class="form-control form-control-sm form-ro" disabled placeholder="{{ user.first_name }} {{ user.last_name }}">
                     <p> </p>
                     <button type="submit" class="btn btn-primary btn-block">Create Article!</button>
                     <p> </p>

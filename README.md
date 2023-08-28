@@ -204,7 +204,7 @@ def get(self, request, *args, **kwargs):
 
 Some error in html checking on:
 
-* Edit article (works, but needs checking anyway). Some is becuase of summernote.
+* Create/Edit article (works, but needs checking anyway). Some is becuase of summernote.
 
 # Notes
 
@@ -380,6 +380,10 @@ I got the following result for the pages listed below (listed this way to make i
 * View profile
 * my-articles
 * Delete account
+* logout
+* signup
+* login
+* Delete article
 * 
 
 FAQ complains about weird non-matching tags. 

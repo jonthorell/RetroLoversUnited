@@ -187,7 +187,7 @@ class CommentForm(forms.ModelForm):
             attrs={
                  "placeholder": "Enter comment here",
                 "class": "form-control form-control-sm validate",
-                "required": "true",
+                "required": True,
                 }
             ),
         label="",
