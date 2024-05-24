@@ -3,9 +3,11 @@
     "",
     "\\retro",
     "\\retro\\templates",
-    "\\retro\\templates\\retro",
     "\\static",
+    "\\static\\css",
+    "\\static\\javascript",
     "\\templates"
   ],
+  "SelectedNode": "\\static\\javascript\\script.js",
   "PreviewInSolutionExplorer": false
 }
