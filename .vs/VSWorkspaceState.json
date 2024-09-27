@@ -1,13 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\media",
     "\\retro",
+    "\\retroloversunited",
     "\\retro\\templates",
-    "\\static",
-    "\\static\\css",
-    "\\static\\javascript",
+    "\\retro\\templates\\retro",
     "\\templates"
   ],
-  "SelectedNode": "\\static\\javascript\\script.js",
   "PreviewInSolutionExplorer": false
 }

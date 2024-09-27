@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 import dj_database_url
+
 from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
@@ -30,7 +31,12 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEBUG' in os.environ
+DEBUG = os.environ.get("DEBUG")
+# print(DEBUG)
+
+# DEBUG = False
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
