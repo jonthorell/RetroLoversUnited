@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\media",
-    "\\retro",
     "\\retroloversunited",
-    "\\retro\\templates",
-    "\\retro\\templates\\retro",
+    "\\static",
+    "\\static\\javascript",
     "\\templates"
   ],
   "PreviewInSolutionExplorer": false
