@@ -4,8 +4,10 @@
     "\\media",
     "\\retroloversunited",
     "\\static",
+    "\\static\\css",
     "\\static\\javascript",
-    "\\templates"
+    "\\templates",
+    "\\templates\\includes"
   ],
   "PreviewInSolutionExplorer": false
 }
